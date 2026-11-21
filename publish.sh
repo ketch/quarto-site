@@ -34,7 +34,10 @@ done
 
 # .well-known/ holds DreamHost's HTTPS certificate (Let's Encrypt) challenge
 # files; it is not part of the site and must survive --delete.
-rsync -avz --delete --exclude=/.well-known/ --itemize-changes ${DRY:+"$DRY"} _site/ "$DEST"
+# --chmod makes everything world-readable on the server regardless of local
+# permissions (files copied from Box/Dropbox can be owner-only, which the web
+# server then refuses to serve).
+rsync -avz --delete --exclude=/.well-known/ --chmod=D755,F644 --itemize-changes ${DRY:+"$DRY"} _site/ "$DEST"
 
 if [ -n "$DRY" ]; then
   echo
