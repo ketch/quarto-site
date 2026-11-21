@@ -1,0 +1,37 @@
+# Extra data for build_publications.py, keyed by BibTeX citation key.
+#
+# tags: topic tags used by the filter buttons on the publications page
+#   (time-integration, periodic-media, hyperbolic, ssp, runge-kutta).
+#   These are added to any `keywords` already in the .bib entry.
+#   Tags below were assigned by Claude from each paper's arXiv abstract;
+#   entries marked "check" were borderline calls.
+#
+# title_overrides: replacement titles for entries whose .bib title is
+#   malformed.  Remove an override once the .bib entry is fixed.
+
+tags:
+  biswas2023multiple:        [time-integration, runge-kutta]
+  biswas2024accurate:        [time-integration, runge-kutta]
+  alamri2024very:            [time-integration, runge-kutta]
+  rajvanshi2024integral:     [hyperbolic]
+  izgin2025order:            [time-integration, runge-kutta]
+  biswas2025explicit:        [time-integration, runge-kutta]
+  barrios2025pseudo:         [time-integration, runge-kutta]
+  bleecke2025asymptotic:     [hyperbolic, time-integration, runge-kutta]
+  biswas2025traveling:       [hyperbolic, time-integration, runge-kutta]
+  biswas2025hyperbolic:      [hyperbolic, time-integration]   # check: time-integration
+  ranocha2025high:           [time-integration, hyperbolic]   # check: runge-kutta not added
+  2025_hyperbolization:      [hyperbolic]
+  2025_sw1d_homogenization:  [periodic-media, hyperbolic]
+  2025_sw2d_homogenization:  [periodic-media, hyperbolic]
+  2025_Euler_homogenization: [periodic-media, hyperbolic]
+  busaleh2024homogenized:    [periodic-media, hyperbolic]
+  ranocha2026conserving:     [time-integration]               # check: hyperbolic not added
+  rajvanshi2026efficient:    [time-integration, runge-kutta]
+  munoz2026hyperbolic:       [hyperbolic]                     # check: time-integration not added
+  munoz2026adaptive:         [hyperbolic]
+  jensen2026optimized:       [time-integration]
+  biswas2026asymptotic:      [hyperbolic, time-integration]   # check: runge-kutta not added
+  ramirez2026compartmental:  []                               # epidemiology; no matching filter
+
+title_overrides: {}

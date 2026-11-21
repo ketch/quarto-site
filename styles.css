@@ -1,0 +1,21 @@
+/* Show the sidebar photo at a readable size, as a circle. */
+.sidebar-logo {
+  max-width: 140px;
+  max-height: none !important;
+  border-radius: 50%;
+}
+
+/* Publications page */
+.pub-controls { margin-bottom: 1.5rem; }
+#pub-search { width: 100%; max-width: 28rem; padding: .4rem .6rem; margin-bottom: .6rem;
+  border: 1px solid var(--bs-border-color); border-radius: .3rem; }
+.pub-filters { display: flex; flex-wrap: wrap; gap: .4rem; }
+.pub-filter { border: 1px solid var(--bs-border-color); background: transparent;
+  border-radius: 1rem; padding: .15rem .8rem; font-size: .9rem; }
+.pub-filter.active { background: var(--bs-primary); border-color: var(--bs-primary); color: #fff; }
+#pub-count { font-size: .9rem; color: var(--bs-secondary-color); margin: .6rem 0 0; }
+#pub-list .pub { margin: 0 0 1.1rem; overflow: hidden; }
+#pub-list .pub img { float: right; max-width: 140px; max-height: 100px; margin: 0 0 .5rem 1rem; }
+#pub-list name { font-weight: 600; }
+#pub-list authors, #pub-list links { font-size: .92rem; }
+#pub-list journal { font-style: italic; }

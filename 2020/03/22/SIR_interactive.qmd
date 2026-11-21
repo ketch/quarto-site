@@ -1,0 +1,84 @@
+---
+title: Modeling Coronavirus part V -- try the model yourself
+date: '2020-03-22'
+categories:
+- dynamical-systems
+- epidemiology
+- COVID-19
+- interactive
+---
+
+As a follow up to this series of posts, here is a version of the SIR model
+that you can experiment with directly on this page, without needing to know
+any computer programming.  Move the sliders and the solution is recomputed in
+your browser.
+
+If you arrived here and haven't already read the series of posts on this
+topic, I recommend that you [start at the beginning](/2020/03/17/SIR_model.html).
+
+The model is
+
+$$
+\begin{aligned}
+\frac{dS}{dt} & = -\beta I \frac{S}{N} \\
+\frac{dI}{dt} & = \beta I \frac{S}{N}-\gamma I \\
+\frac{dR}{dt} & = \gamma I
+\end{aligned}
+$$
+
+with $N=1$, so $S$, $I$, and $R$ are fractions of the population.
+
+```{ojs}
+//| echo: false
+viewof beta = Inputs.range([0.01, 1], {value: 0.25, step: 0.01, label: "β (contact rate)"})
+viewof gamma = Inputs.range([0.01, 0.5], {value: 0.05, step: 0.005, label: "γ (recovery rate)"})
+viewof I0 = Inputs.range([1e-6, 0.01], {value: 1e-4, step: 1e-6, label: "I(0)"})
+viewof T = Inputs.range([10, 365], {value: 200, step: 1, label: "Days"})
+```
+
+```{ojs}
+//| echo: false
+// Classical 4th-order Runge-Kutta for the SIR system with N = 1.
+sol = {
+  const f = ([S, I, R]) => [-beta * I * S, beta * I * S - gamma * I, gamma * I];
+  const dt = 0.1;
+  const nsteps = Math.round(T / dt);
+  let u = [1 - I0, I0, 0];
+  const out = [{t: 0, S: u[0], I: u[1], R: u[2]}];
+  const axpy = (a, x, y) => y.map((yi, i) => yi + a * x[i]);
+  for (let n = 1; n <= nsteps; n++) {
+    const k1 = f(u);
+    const k2 = f(axpy(dt / 2, k1, u));
+    const k3 = f(axpy(dt / 2, k2, u));
+    const k4 = f(axpy(dt, k3, u));
+    u = u.map((ui, i) => ui + dt / 6 * (k1[i] + 2 * k2[i] + 2 * k3[i] + k4[i]));
+    out.push({t: n * dt, S: u[0], I: u[1], R: u[2]});
+  }
+  return out;
+}
+
+peak = sol.reduce((a, b) => (b.I > a.I ? b : a))
+
+Plot.plot({
+  width: 700,
+  height: 400,
+  x: {label: "Time (days)"},
+  y: {label: "Fraction of population", domain: [0, 1]},
+  color: {legend: true, domain: ["S", "I", "R"]},
+  marks: [
+    Plot.ruleY([0]),
+    ...["S", "I", "R"].map(k =>
+      Plot.line(sol, {x: "t", y: k, stroke: () => k, strokeWidth: 2})),
+    Plot.ruleX([peak.t], {strokeDasharray: "4,4", stroke: "gray"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+md`Basic reproduction number R₀ = β/γ = **${(beta / gamma).toFixed(2)}**.
+The infection peak (dashed line) is at day ${peak.t.toFixed(1)}, where
+I = ${peak.I.toFixed(3)} and S = ${peak.S.toFixed(3)}
+(theory predicts S = γ/β = ${(gamma / beta).toFixed(3)} at the peak,
+provided R₀ > 1).`
+```

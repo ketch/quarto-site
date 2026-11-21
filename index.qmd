@@ -1,0 +1,40 @@
+---
+title: Science in the Sands
+subtitle: Mathematics and computation from the shores of the Red Sea
+toc: false
+listing:
+  id: recent-posts-listing
+  contents: "20*/**/*.{md,qmd}"
+  sort: "date desc"
+  type: default
+  max-items: 4
+  # Workaround for a Quarto 1.7 bug: the listing script decides on pagination
+  # using the item count before max-items is applied, while the page template
+  # uses the count after, causing a JavaScript error.  A page size larger than
+  # the total number of posts turns pagination off in both places.
+  page-size: 1000
+  categories: false
+  feed: false
+---
+
+**David I. Ketcheson**
+
+I am a Professor of
+[Applied Mathematics and Computational Science](https://amcs.kaust.edu.sa/)
+at King Abdullah University of Science and Technology ([KAUST](http://www.kaust.edu.sa)),
+where I lead the [Numerical Mathematics Group](http://numerics.kaust.edu.sa).
+
+My [research](http://numerics.kaust.edu.sa/research.html) involves
+analysis and development of numerical methods for integration of ordinary
+and partial differential equations, as well as the implementation of such methods
+in [open source, accessible, high performance software](https://github.com/ketch)
+and its application to understanding behavior of nonlinear waves in heterogeneous materials.
+
+Office: 4202 Al-Khawarizmi Building
+
+## Recent posts
+
+::: {#recent-posts-listing}
+:::
+
+[All posts →](/posts.html)

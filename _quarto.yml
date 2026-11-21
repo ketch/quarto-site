@@ -1,0 +1,64 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - assets/
+
+website:
+  title: "David Ketcheson"
+  description: "Numerical analysis and nonlinear waves"
+  site-url: https://www.davidketcheson.info
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: posts.qmd
+        text: Posts
+      - href: publications.qmd
+        text: Publications
+      - href: teaching.qmd
+        text: Teaching
+      - href: philosophy.qmd
+        text: Philosophy
+  sidebar:
+    style: docked
+    collapse-level: 1
+    logo: assets/img/davidketcheson.jpg
+    logo-alt: "Photo of David Ketcheson"
+    title: "David Ketcheson"
+    contents:
+      # Quarto shows the sidebar only on pages listed here, so the site's
+      # pages are listed even though they are also in the navbar.
+      - href: index.qmd
+        text: "Home"
+      - href: posts.qmd
+        text: "Posts"
+      - href: publications.qmd
+        text: "Publications"
+      - href: teaching.qmd
+        text: "Teaching"
+      - href: philosophy.qmd
+        text: "Philosophy"
+      - text: "GitHub"
+        icon: github
+        href: https://github.com/ketch
+      - text: "Google Scholar"
+        icon: mortarboard
+        href: https://scholar.google.com/citations?user=ORoYyrYAAAAJ&hl=en
+      - text: "ORCID"
+        icon: person-badge
+        href: https://orcid.org/0000-0002-1212-126X
+      - text: "KAUST"
+        icon: building
+        href: https://www.kaust.edu.sa
+      # Quarto shows a sidebar only on pages it lists, so the posts must be
+      # listed here for the sidebar to appear on them.  Collapsed by default.
+      - section: "All posts"
+        contents: "20*/**/*.{md,qmd}"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    html-math-method: mathjax
+    toc: true
