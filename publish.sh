@@ -11,9 +11,11 @@ cd "$(dirname "$0")"
 
 DEST="dketch@davidketcheson.info:~/davidketcheson.info/"
 
+# (A plain string, not an array: macOS's bash 3.2 treats an empty array as
+# unset under "set -u".)
 case "${1:-}" in
-  "")   DRY=(--dry-run) ;;
-  --go) DRY=() ;;
+  "")   DRY=--dry-run ;;
+  --go) DRY= ;;
   *)    echo "usage: $0 [--go]" >&2; exit 2 ;;
 esac
 
@@ -32,9 +34,9 @@ done
 
 # .well-known/ holds DreamHost's HTTPS certificate (Let's Encrypt) challenge
 # files; it is not part of the site and must survive --delete.
-rsync -avz --delete --exclude=/.well-known/ --itemize-changes "${DRY[@]}" _site/ "$DEST"
+rsync -avz --delete --exclude=/.well-known/ --itemize-changes ${DRY:+"$DRY"} _site/ "$DEST"
 
-if [ ${#DRY[@]} -gt 0 ]; then
+if [ -n "$DRY" ]; then
   echo
   echo "Dry run only: nothing was copied.  Lines starting with *deleting are files"
   echo "that --go would remove from the server."
