@@ -28,16 +28,18 @@ fi
 rm -rf _site
 quarto render
 
+# Make everything world-readable: files copied from Box/Dropbox can be
+# owner-only, and rsync -a carries that to the server, which then answers 403.
+# (Done with chmod because macOS's openrsync does not apply --chmod.)
+chmod -R u+rwX,go+rX,go-w _site
+
 for f in index.html posts.xml publications.html 404.html .htaccess favicon.ico; do
   [ -e "_site/$f" ] || { echo "Render is missing _site/$f; not publishing." >&2; exit 1; }
 done
 
 # .well-known/ holds DreamHost's HTTPS certificate (Let's Encrypt) challenge
 # files; it is not part of the site and must survive --delete.
-# --chmod makes everything world-readable on the server regardless of local
-# permissions (files copied from Box/Dropbox can be owner-only, which the web
-# server then refuses to serve).
-rsync -avz --delete --exclude=/.well-known/ --chmod=D755,F644 --itemize-changes ${DRY:+"$DRY"} _site/ "$DEST"
+rsync -avz --delete --exclude=/.well-known/ --itemize-changes ${DRY:+"$DRY"} _site/ "$DEST"
 
 if [ -n "$DRY" ]; then
   echo
