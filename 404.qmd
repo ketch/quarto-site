@@ -1,0 +1,11 @@
+---
+title: Page not found
+toc: false
+---
+
+The page you requested does not exist on this site.
+The site was rebuilt in 2026, and a few old pages were retired.
+
+- [Home](/index.html)
+- [All posts](/posts.html)
+- [Publications](/publications.html)

@@ -3,11 +3,13 @@ project:
   output-dir: _site
   resources:
     - assets/
+    - .htaccess
 
 website:
   title: "David Ketcheson"
   description: "Numerical analysis and nonlinear waves"
   site-url: https://www.davidketcheson.info
+  favicon: favicon.ico
   navbar:
     left:
       - href: index.qmd

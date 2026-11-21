@@ -1,0 +1,26 @@
+# Apache settings for davidketcheson.info (copied to the server by publish.sh).
+# These take effect only if the server allows .htaccess overrides.
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_alias.c>
+  # Feeds from the old Jekyll site; the Quarto site has a single feed.
+  Redirect 301 /atom.xml /posts.xml
+  Redirect 301 /notebook.xml /posts.xml
+  Redirect 301 /scienceinthesands.xml /posts.xml
+  Redirect 301 /R.xml /posts.xml
+
+  # Index pages of the old site that Quarto's Posts listing replaces.
+  Redirect 301 /archives.html /posts.html
+  Redirect 301 /categories.html /posts.html
+  Redirect 301 /tags.html /posts.html
+  Redirect 301 /noteblog.html /posts.html
+  Redirect 301 /search.html /posts.html
+
+  # The server had two identical copies of this PDF differing only in case;
+  # macOS file systems cannot hold both, so the site keeps the lower-case one.
+  Redirect 301 /assets/papers/SSPreview.pdf /assets/papers/sspreview.pdf
+
+  # Pages that were not ported.
+  Redirect 301 /code.html https://github.com/ketch
+</IfModule>
