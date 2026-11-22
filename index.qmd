@@ -32,6 +32,12 @@ and its application to understanding behavior of nonlinear waves in heterogeneou
 
 Office: 4202 Al-Khawarizmi Building
 
+## Recent preprints
+
+{{< include _recent_preprints.qmd >}}
+
+[All publications →](/publications.html)
+
 ## Recent posts
 
 ::: {#recent-posts-listing}
