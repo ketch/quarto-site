@@ -30,8 +30,6 @@ and partial differential equations, as well as the implementation of such method
 in [open source, accessible, high performance software](https://github.com/ketch)
 and its application to understanding behavior of nonlinear waves in heterogeneous materials.
 
-Office: 4202 Al-Khawarizmi Building
-
 ## Recent preprints
 
 {{< include _recent_preprints.qmd >}}
