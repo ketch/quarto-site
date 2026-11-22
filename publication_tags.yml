@@ -15,7 +15,8 @@
 #
 # repos: reproducibility repositories, for papers not listed with one in the
 #   Jekyll site's paperlinks.txt.  null hides a paperlinks.txt repository
-#   (e.g. a dead link) from the paper's supplementary page.
+#   (e.g. a dead link) from the paper's supplementary page.  To replace a
+#   paperlinks.txt repository that moved, give {url: <new>, replaces: <old>}.
 #
 # title_overrides: replacement titles for entries whose .bib title is
 #   malformed.  Remove an override once the .bib entry is fixed.
@@ -116,4 +117,8 @@ repos:
   ranocha2021rate:                 https://github.com/ranocha/Dispersive-wave-error-growth-notebooks
   ranocha2025high:                 https://github.com/ranocha/2025_nls
   ranocha2026conserving:           https://github.com/ranocha/2025_BBM_KdV_NLS
-  2012_pyclaw-sisc:                null   # bitbucket.org/ahmadia/pyclaw-sisc-rr (in paperlinks.txt) is 404; no copy found
+  2012_pyclaw-sisc:
+    # Bitbucket deleted this Mercurial repository in 2020; recovered from
+    # Software Heritage and archived on Zenodo (Nov 2026).
+    url: https://doi.org/10.5281/zenodo.24432819
+    replaces: http://bitbucket.org/ahmadia/pyclaw-sisc-rr

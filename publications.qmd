@@ -679,7 +679,7 @@ include-after-body:
 <a href="/papers/2012_pyclaw-sisc/"><span class="pub-title">PyClaw: Accessible, Extensible, Scalable Tools for Wave Propagation Problems</span></a><br>
 <span class="pub-authors">David I. Ketcheson, Kyle T. Mandli, Aron J. Ahmadia, Amal Alghamdi, Manuel Quezada de Luna, Matteo Parsani, Matthew G. Knepley,  and Matthew Emmett</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 34(4):C210--C231 (2012)<br>
-<span class="pub-links"><a href="/papers/2012_pyclaw-sisc/">More information</a> | <a href="/assets/papers/2012_pyclaw-sisc.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110856976">Published version</a> | <a href="https://arxiv.org/abs/1111.6583">arXiv version</a> | <a href="https://numerics.kaust.edu.sa/papers/pyclaw-sisc/pyclaw-sisc.html">Figures with interactive code</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2012_pyclaw-sisc/">More information</a> | <a href="/assets/papers/2012_pyclaw-sisc.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110856976">Published version</a> | <a href="https://arxiv.org/abs/1111.6583">arXiv version</a> | <a href="https://numerics.kaust.edu.sa/papers/pyclaw-sisc/pyclaw-sisc.html">Figures with interactive code</a> | <a href="https://doi.org/10.5281/zenodo.24432819">Reproducibility repository</a></span><div style="clear:both"></div>
 
 </div>
 
