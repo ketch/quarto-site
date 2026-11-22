@@ -47,13 +47,13 @@ $$
 The eigenvalues are the diagonal entries, $-1$ and $-10$, and the
 eigenvectors point along the two axes (the dashed lines in the plot above).
 
-If $A$ is a matrix with negative eigenvalues, the solution of
+**If $\boldsymbol{A}$ is a matrix with negative eigenvalues, the solution of**
 
 $$
-u'(t) = A u(t)
+\boldsymbol{u'(t) = A u(t)}
 $$
 
-must always decay to zero eventually.  But does it always decay monotonically?
+**must always decay to zero eventually.  But does it always decay monotonically?**
 
 ## A coupled system with perpendicular eigenvectors
 
