@@ -1,10 +1,13 @@
 # Extra data for build_publications.py, keyed by BibTeX citation key.
 #
 # tags: topic tags used by the filter buttons on the publications page
-#   (time-integration, periodic-media, hyperbolic, ssp, runge-kutta).
+#   (time-integration, periodic-media, hyperbolic, ssp, runge-kutta, epidemiology).
 #   These are added to any `keywords` already in the .bib entry.
 #   Tags below were assigned by Claude from each paper's arXiv abstract;
 #   entries marked "check" were borderline calls.
+#
+# doi_labels: link text to use in place of "Published version" for a DOI
+#   that points to a preprint server rather than a journal.
 #
 # title_overrides: replacement titles for entries whose .bib title is
 #   malformed.  Remove an override once the .bib entry is fixed.
@@ -32,6 +35,26 @@ tags:
   munoz2026adaptive:         [hyperbolic]
   jensen2026optimized:       [time-integration]
   biswas2026asymptotic:      [hyperbolic, time-integration]   # check: runge-kutta not added
-  ramirez2026compartmental:  []                               # epidemiology; no matching filter
+  ramirez2026compartmental:  [epidemiology]
+  # Added Nov 2026 for papers that had no filter tag (assigned from titles).
+  ketcheson2023computing:    [time-integration, runge-kutta]  # B-series
+  biswas2023design:          [time-integration, runge-kutta]
+  biswas2024algebraic:       [time-integration, runge-kutta]
+  munoz2023comparative:      [hyperbolic]
+  quezada2021maximum:        [time-integration, runge-kutta]
+  nusslein2021positivity:    [time-integration, runge-kutta]
+  ranocha2020relaxation:     [time-integration, runge-kutta]
+  2020_relaxation:           [time-integration]
+  2020_nodepy:               [time-integration, runge-kutta]
+  2020_RK-opt:               [time-integration, runge-kutta]
+  2020_broad:                [time-integration]
+  2020_conservative:         [time-integration]
+  ranocha2021rate:           [time-integration]
+  gottlieb2016time:          [time-integration]
+  avram2021review:           [epidemiology]
+  ketcheson2021optimal:      [epidemiology]
+
+doi_labels:
+  10.1101/2020.05.11.20097972: medRxiv version   # ketcheson2020estimating
 
 title_overrides: {}

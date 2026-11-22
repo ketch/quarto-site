@@ -31,7 +31,7 @@ Despite this problem being [reported by numerous users](https://www.google.com/s
 
 with the one found at
 
-[http://www.zotero.org/styles/bibtex](http://www.zotero.org/styles/bibtex)
+[https://www.zotero.org/styles/bibtex](https://www.zotero.org/styles/bibtex)
 
 Then re-open Mendeley.  That's it.  Of course, I reccomend just moving your bibtex.csl rather than deleting it, in case anything goes wrong.
 

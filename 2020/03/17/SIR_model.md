@@ -171,5 +171,5 @@ The results are in perfect agreement with what we predicted.  In the [original n
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ketch/covid-blog-posts/master)
 
-[Click here to go to the next post](http://www.davidketcheson.info/2020/03/19/SIR_Estimating_parameters.html), in which
+[Click here to go to the next post](https://www.davidketcheson.info/2020/03/19/SIR_Estimating_parameters.html), in which
 we look at real-world data to estimate the values of $\beta$ and $\gamma$.

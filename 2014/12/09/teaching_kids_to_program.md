@@ -115,7 +115,7 @@ learn to code.  Last year it exposed 15 million kids to programming.  The idea
 is that each kid spend at least one hour learning about programming.  A number of
 teachers at the KAUST schools have chosen to participate.  If you want to start
 teaching your own kids to program -- or if you want to learn! -- the [Hour of
-Code website](http://hourofcode.com/us)
+Code website](https://hourofcode.com/us)
 has modules for all levels.  For instance, in my daughter's 3rd-grade class
 the kids worked through a set of lessons using a graphical interface (moving
 code around with a mouse, rather than typing) in order to make Elsa and Anna (from 

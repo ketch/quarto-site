@@ -10,7 +10,7 @@ categories:
 
 
 I'm training for a marathon and I use
-[MapMyFitness](http://www.mapmyfitness.com/) (MMF) on my iPhone to track my
+[MapMyFitness](https://www.mapmyfitness.com/) (MMF) on my iPhone to track my
 mileage and pace for each workout.  MMF has a [public
 API](https://developer.underarmour.com/) and Jason Sanford has written a [Python
 front end for it](https://github.com/JasonSanford/mapmyfitness-python).  Which
@@ -338,7 +338,7 @@ for w in workout_list:
 
 The resulting map was a bit too much for Jekyll to handle, since it
 gets embedded as a huge amount of text.  Go check it out in 
-[the actual notebook](http://nbviewer.ipython.org/url/www.davidketcheson.info/notebooks/mmf_pandas.ipynb).
+[the actual notebook](https://nbviewer.ipython.org/url/www.davidketcheson.info/notebooks/mmf_pandas.ipynb).
 The map is zoomable, thanks to mpld3.  You can see
 a lot of the roads at KAUST, as well as the running paths around the Gardens and
 through Thuwal park on the Island (see the squiggly line on the top left).  The

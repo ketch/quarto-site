@@ -16,9 +16,9 @@ Investigated stability regions for high order deferred correction schemes; see [
 Finally, after about a year of searching, found a way to redirect all output from distutils
 to a file.  This will avoid the massive amount of warnings that are currently printed to the
 screen when installing PyClaw.  See the patch [here](https://github.com/clawpack/clawpack/pull/35),
-based on [this StackOverflow answer](http://stackoverflow.com/a/11632982/786902).
+based on [this StackOverflow answer](https://stackoverflow.com/a/11632982/786902).
 
 
 I also put together an [IPython notebook on shallow water solitary waves over periodic
-bathymetry](http://nbviewer.ipython.org/urls/dl.dropboxusercontent.com/u/656693/shallow_water_diffraction.ipynb).
+bathymetry](https://nbviewer.ipython.org/urls/dl.dropboxusercontent.com/u/656693/shallow_water_diffraction.ipynb).
 It will be in the Github repo soon.

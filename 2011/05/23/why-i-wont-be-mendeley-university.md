@@ -5,7 +5,7 @@ categories:
 - bibliographic-reference-management
 - mendeley
 ---
-[Mendeley](http://mendeley.com), my tool of choice for bibliographic reference management and sharing, just announced their [\"University Advisor\" program.](http://www.mendeley.com/advisors/) Basically, they\'re asking academics to advocate for them on campus in exchange for free premium accounts.\
+[Mendeley](https://mendeley.com), my tool of choice for bibliographic reference management and sharing, just announced their [\"University Advisor\" program.](https://www.mendeley.com/advisors/) Basically, they\'re asking academics to advocate for them on campus in exchange for free premium accounts.\
 \
 I already advocate for Mendeley unofficially, because I think it is useful and its usefulness will grow in proportion to the number of people who adopt it. But I\'d rather not be officially associated with Mendeley, mostly because it\'s not yet a sufficiently polished product.\
 \

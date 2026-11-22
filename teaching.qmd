@@ -18,8 +18,8 @@ for a course on numerical methods at KAUST (AMCS 252).
 Some of the notebooks are fairly polished while others are quite 
 basic.
 
- - [Notebooks from Spring 2013](http://github.com/ketch/finite-difference-course/)
- - [Notebooks from Spring 2014](http://github.com/ketch/AMCS252/)
+ - [Notebooks from Spring 2013](https://github.com/ketch/finite-difference-course/)
+ - [Notebooks from Spring 2014](https://github.com/ketch/AMCS252/)
 
 I'm in the process of revising several of these for inclusion in an
 upcoming course (Fall 2014).  Stay tuned!
@@ -31,15 +31,15 @@ basics of hyperbolic PDE theory and numerical discretization, and leading
 up to the PyClaw package for solving advanced hyperbolic systems.  Traffic
 flow and fluid dynamics are used as the primary examples.
 
- - [HyperPython notebooks](http://github.com/ketch/HyperPython/)
+ - [HyperPython notebooks](https://github.com/ketch/HyperPython/)
 
 ## Short course: Teaching Numerics with Notebooks
 
-These notebooks were prepared by myself and [Aron Ahmadia](http://aron.ahamadia.net)
+These notebooks were prepared by myself and Aron Ahmadia
 for a tutorial we gave at SciPy 2014.  They're aimed at university professors
 and others who wish to teach numerical methods with Python.
 
- - [Tutorial notebooks](http://github.com/ketch/tnmwin)
+ - [Tutorial notebooks](https://github.com/ketch/tnmwin)
  - Videos of the tutorial from SciPy 2014: [Part I](https://www.youtube.com/watch?v=L-caFdJMR9E),
    [Part II](https://www.youtube.com/watch?v=cm0oVqbxssU),
    [Part III](https://www.youtube.com/watch?v=rpGghGDEkZE)

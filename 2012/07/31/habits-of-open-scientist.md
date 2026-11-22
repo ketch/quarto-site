@@ -18,7 +18,7 @@ Historically, openness simply meant publishing one\'s methods and results in the
 
  
 
-Nowadays it is possible to practice a fundamentally more open kind of research \-- one in which we have immediate, free, indexed, universal access to scientific discoveries.  The new vision of open science is painted in lucid tones in Michael Nielsen\'s [Reinventing Discovery](http://scienceinthesands.blogspot.co.uk/2011/11/book-review-reinventing-discovery.html).  After reading Nielsen\'s book, I was hungry to begin practicing open science, but not exactly sure where to start.  Here are seven ways I\'m aware of.  Each will be the subject of a longer forthcoming post.
+Nowadays it is possible to practice a fundamentally more open kind of research \-- one in which we have immediate, free, indexed, universal access to scientific discoveries.  The new vision of open science is painted in lucid tones in Michael Nielsen\'s [Reinventing Discovery](https://scienceinthesands.blogspot.co.uk/2011/11/book-review-reinventing-discovery.html).  After reading Nielsen\'s book, I was hungry to begin practicing open science, but not exactly sure where to start.  Here are seven ways I\'m aware of.  Each will be the subject of a longer forthcoming post.
 
  
 
@@ -26,9 +26,9 @@ I believe that every scientist has a moral imperative to adopt the first two:
 
  
 
-1\. [**Freely accessible publications**](http://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-1-open.html).  At a minimum, make sure that everyone is allowed to read your research.
+1\. [**Freely accessible publications**](https://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-1-open.html).  At a minimum, make sure that everyone is allowed to read your research.
 
-2\. [**Reproducible research**](http://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-2.html).  Release your code and data so  that anyone who wants to can verify or build directly on your work.
+2\. [**Reproducible research**](https://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-2.html).  Release your code and data so  that anyone who wants to can verify or build directly on your work.
 
  
 
@@ -36,7 +36,7 @@ The remaining five are marks of a truly open scientist:
 
  
 
-3\. [**Pre-publication dissemination of research**](http://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-3-pre.html).  Just because peer-review and journals take time, that doesn\'t mean you need to embargo your audience.
+3\. [**Pre-publication dissemination of research**](https://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-3-pre.html).  Just because peer-review and journals take time, that doesn\'t mean you need to embargo your audience.
 
 4\. **Open collaboration through social media**.  Find the person who knows that one thing you need, through new scientific networking tools \-- and share your own expertise where it\'s needed most.
 

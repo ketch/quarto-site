@@ -71,7 +71,7 @@ I've tried to make these posts very simple, but there is a minimal amount of kno
 - Open a terminal, navigate your file system, and execute commands
 - Edit text files
 
-If you've taken a [Software Carpentry](http://software-carpentry.org/) course, you're more than prepared.
+If you've taken a [Software Carpentry](https://software-carpentry.org/) course, you're more than prepared.
 
 ## What these steps won't do
 I'm not going to tell you how to actually *design* better code.  That's much harder!  For that, you should read a book on programming style, like [The Pragmatic Programmer](https://pragprog.com/the-pragmatic-programmer) or [Code Complete](http://cc2e.com/).

@@ -13,7 +13,7 @@ categories:
 - mathematical-exposition
 - PDE
 ---
-In their [celebrated 1928 paper](http://dx.doi.org/10.1147/rd.112.0215),
+In their [celebrated 1928 paper](https://dx.doi.org/10.1147/rd.112.0215),
 Courant, Friedrichs, and Lewy proved a geometric condition that must be
 satisfied by a convergent **partial** differential equation discretization --
 the famous CFL condition.  Briefly, the CFL theorem says that the numerical
@@ -22,7 +22,7 @@ the true PDE solution.  The proof is geometric and is conveyed through numerous
 diagrams.
 
 Exactly fifty years later, in 1978, Rolf Jeltsch and Olavi Nevanlinna
-[published a theorem](http://dx.doi.org/10.1007/BF01932030) [JN] that deals with
+[published a theorem](https://dx.doi.org/10.1007/BF01932030) [JN] that deals with
 bounding the modulus of a polynomial $\psi(z)$ over a disk of the form 
 $$D_r = {z \in \{\mathbb C} : |z-r|\le r\}.$$  Their theorem says that if
 $\psi(z) = 1 + z + a_2 z^2 + \cdots + a_s z^s$ and $|\psi(z)|\le 1$ for all $z$
@@ -34,7 +34,7 @@ out that **they are equivalent statements!**  That is, the CFL theorem can be
 proved using the JN disk theorem.  And the JN disk theorem can be proved using
 the CFL condition (and no algebraic techniques).  This was explained in [a
 beautiful paper of Sanz-Serna and
-Spijker](http://dx.doi.org/10.1007/BF01389633) [SS] in 1986, and the result
+Spijker](https://dx.doi.org/10.1007/BF01389633) [SS] in 1986, and the result
 deserves to be much more well known.
 
 ### First order upwinding

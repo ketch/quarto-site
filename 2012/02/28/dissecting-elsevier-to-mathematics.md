@@ -7,9 +7,9 @@ categories:
 - refereeing
 - scientific-publishing
 ---
-Elsevier seems to have officially declared defeat in the face of [the mathematical community\'s growing boycott](http://thecostofknowledge.com/) to which [I am party](http://scienceinthesands.blogspot.com/2012/02/cost-of-knowledge-i-signed.html).  So, what now?  Let\'s look at Elsevier\'s surrender in more detail.  The boycott was based on three points, which I address below in reverse order.\
+Elsevier seems to have officially declared defeat in the face of [the mathematical community\'s growing boycott](http://thecostofknowledge.com/) to which [I am party](https://scienceinthesands.blogspot.com/2012/02/cost-of-knowledge-i-signed.html).  So, what now?  Let\'s look at Elsevier\'s surrender in more detail.  The boycott was based on three points, which I address below in reverse order.\
 \
-**3. Removal of support for the Research Works Act.** This is a huge victory; since Elsevier\'s announcement, [the bill has been withdrawn](http://infojustice.org/archives/8477).  However, they have not changed their overall position on this front:
+**3. Removal of support for the Research Works Act.** This is a huge victory; since Elsevier\'s announcement, [the bill has been withdrawn](https://infojustice.org/archives/8477).  However, they have not changed their overall position on this front:
 
 > *\...we will continue to join with those many other nonprofit and commercial publishers and scholarly societies that oppose repeated efforts to extend mandates through legislation.*
 
@@ -21,7 +21,7 @@ Elsevier seems to have officially declared defeat in the face of [the mathematic
 
 > *Our target is for all of our core mathematics titles to be priced at or below US\$11 per article (equivalent to 50-60 cents per normal typeset page) by next year, placing us below most University presses, some societies and other commercial competitors.  Where journals are more expensive than this, we will lower our prices, as we already have in recent years for journals such as the Journal of Algebra and Topology and its Applications, among others.*
 
-The largest mathematics publishers (ranked by number of journals), and average price per article, according to data from [journalprices.com](http://journalprices.com/)\*:
+The largest mathematics publishers (ranked by number of journals), and average price per article, according to data from [journalprices.com](https://journalprices.com/)\*:
 
 1.  Springer \$33
 2.  **Elsevier \$21**
@@ -43,7 +43,7 @@ Looking at the list above I wonder why we are going after Elsevier and not Sprin
 > *\...we have made the archives of 14 core mathematics journals open, from four years after publication, back to 1995\...\
 > *
 
- This means that the contents are available for free after 4 years (not after 1 year, which is the case for most other Elsevier open archives).  The letter fails to mention what the 14 \"core mathematics\" journals are, so I\'ll list them here (as found on [this page](http://www.elsevier.com/wps/find/authorsview.authors/open_archives)):
+ This means that the contents are available for free after 4 years (not after 1 year, which is the case for most other Elsevier open archives).  The letter fails to mention what the 14 \"core mathematics\" journals are, so I\'ll list them here (as found on [this page](https://www.elsevier.com/wps/find/authorsview.authors/open_archives)):
 
 1.  Advances in Mathematics
 2.  Annals of Pure and Applied Logic

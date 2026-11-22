@@ -44,7 +44,7 @@ is needed.
 Fortunately, the matplotlib developers have been grappling with these issues
 for a long time and have a nice packaged solution, in the form of a Python
 decorator `@image_comparison`, whose usage within matplotlib is 
-[explained here](http://matplotlib.org/devel/testing.html).
+[explained here](https://matplotlib.org/devel/testing.html).
 The decorator automatically deals with saving the test image and comparing it
 to the reference image; all you do is add the decorator before your test
 function.

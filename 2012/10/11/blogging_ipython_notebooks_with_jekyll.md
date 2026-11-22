@@ -7,14 +7,14 @@ categories:
 ---
 
 > **Update as of December 2014: Don't bother using what's below; go to 
-[Christop Corley's blog](http://cscorley.github.io/2014/02/21/blogging-with-ipython-and-jekyll/)
+[Christop Corley's blog](https://cscorley.github.io/2014/02/21/blogging-with-ipython-and-jekyll/)
 for a much better setup!**
 
-I've been playing around with [iPython notebooks](http://ipython.org/ipython-doc/dev/interactive/htmlnotebook.html)
-for a while and planning to use them instead of [SAGE](http://www.sagemath.org/) 
+I've been playing around with [iPython notebooks](https://ipython.org/ipython-doc/dev/interactive/htmlnotebook.html)
+for a while and planning to use them instead of [SAGE](https://www.sagemath.org/) 
 worksheets for my numerical analysis course next spring.  As a warmup,
 I wrote an iPython notebook explaining a bit about internal stability of Runge-Kutta 
-methods and showing some new research results using [NodePy](http://numerics.kaust.edu.sa/nodepy/).
+methods and showing some new research results using [NodePy](https://numerics.kaust.edu.sa/nodepy/).
 
 I also wanted to post the notebook on my blog here; the ability to more easily
 include math and code in blog posts was one of my main motivations for moving
@@ -23,7 +23,7 @@ by Fernando Perez](http://blog.fperez.org/2012/09/blogging-with-ipython-notebook
 That was quite painless and worked flawlessly, using `nbconvert.py` to convert the
 .ipynb file directly to HTML, with graphics embedded.  The only issue was that I didn't love
 the look of the output quite as much as I love how Carl Boettiger's Markdown + Jekyll
-posts with code and math look (see an example [here](http://www.carlboettiger.info/2012/09/14/analytic-solution-to-multiple-uncertainty.html)).  Besides, Markdown is so much nicer
+posts with code and math look (see an example [here](https://www.carlboettiger.info/2012/09/14/analytic-solution-to-multiple-uncertainty.html)).  Besides, Markdown is so much nicer
 than HTML, and `nbconvert.py` has a Markdown output option.
 
 So I tried the markdown option:
@@ -37,7 +37,7 @@ few options, I decided for now to put plots for such posts in a subfolder
 `jekyll_images/` of my public Dropbox folder.  Then it was a simple matter
 of search/replace all the paths to the images.  At that point, it looked
 great; you can see the [source](https://github.com/ketch/nodepy/blob/master/examples/Internal_stability.ipynb)
-and the [result](http://davidketcheson.info/2012/10/11/Internal_stability.html).
+and the [result](https://davidketcheson.info/2012/10/11/Internal_stability.html).
 
 The only issue was that I didn't want to manually do all that work every time.
 I considered creating a new Converter class in `nbconvert` to handle it,

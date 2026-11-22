@@ -12,4 +12,4 @@ categories:
 Read it.\
 Sign it.\
 Do it.\
-[http://sciencecodemanifesto.org](http://sciencecodemanifesto.org/).
+[sciencecodemanifesto.org (archived)](https://web.archive.org/web/20141218091613/http://sciencecodemanifesto.org/).

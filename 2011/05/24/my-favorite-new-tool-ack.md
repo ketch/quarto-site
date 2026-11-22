@@ -17,7 +17,7 @@ or perhaps\
 \
 \>\> grep -r words \*\
 \
-If so, do yourself a favor and install **[ack](http://betterthangrep.com/)** right now. You\'ll be glad you did.\
+If so, do yourself a favor and install **[ack](https://betterthangrep.com/)** right now. You\'ll be glad you did.\
 \
 Note: ack tries to intelligently search only filetypes that it believes to be text. Unfortunately, its built-in list of extensions for such files is incomplete. For instance, it does not include .rst (ReStructured Text) files. To add more extensions, just create a file \".ackrc\" in your home directory and put the following line in it:\
 \

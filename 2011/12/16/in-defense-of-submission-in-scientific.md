@@ -20,7 +20,7 @@ The reason Einstein\'s ideas gained rapid acceptance is that anyone \-- *even a 
 
 Perhaps our children will one day launch an \"Open Submission\" campaign, crying that grad students and scientists from third world countries must no longer be barred from publishing just because they can\'t pay.  Let\'s make sure they don\'t have to.  **Open submission**, always taken for granted until now, must be one of the **fundamental tenets** of scientific publishing. **Say no to author-pay journals.  Don\'t submit work to them, don\'t referee for them, and don\'t serve as editors for them.**
 
-There is a better road to open access.  Put all your papers on the [arXiv](http://arxiv.org/).  Publish only in journals that allow you to post a final version on your website (or institutional server).
+There is a better road to open access.  Put all your papers on the [arXiv](https://arxiv.org/).  Publish only in journals that allow you to post a final version on your website (or institutional server).
 
  
 
@@ -29,6 +29,6 @@ There is a better road to open access.  Put all your papers on the [arXiv](http
 The many potential evils of the author-pay model are explained in more detail in two articles published in the Notices of the AMS:
 
 [http://www.ams.org/notices/201109/rtx110901294p.pdf\
-](http://www.ams.org/notices/201109/rtx110901294p.pdf)
+](https://www.ams.org/notices/201109/rtx110901294p.pdf)
 
-<http://www.ams.org/notices/200803/tx080300381p.pdf>
+<https://www.ams.org/notices/200803/tx080300381p.pdf>

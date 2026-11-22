@@ -31,7 +31,7 @@ Discussed time stepping for aeroacoustics with Antony Jameson at Stanford.  Also
 Time integration ideas that could be useful for aeronautics simulations:
 
 - Optimization of stability regions
-- Multirate time stepping.  Some work has been done in [Nonuniform time-step Runge–Kutta discontinuous Galerkin method for Computational Aeroacoustics](http://dx.doi.org/10.1016/j.jcp.2010.05.028).
-- Large time step methods.  See [A class of large time step Godunov schemes for hyperbolic conservation laws and applications](http://dx.doi.org/10.1016/j.jcp.2011.06.008).
+- Multirate time stepping.  Some work has been done in [Nonuniform time-step Runge–Kutta discontinuous Galerkin method for Computational Aeroacoustics](https://dx.doi.org/10.1016/j.jcp.2010.05.028).
+- Large time step methods.  See [A class of large time step Godunov schemes for hyperbolic conservation laws and applications](https://dx.doi.org/10.1016/j.jcp.2011.06.008).
 
 Large time step methods might work very well as the coarse propagator for parareal-type algorithms.

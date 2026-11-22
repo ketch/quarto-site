@@ -8,7 +8,7 @@ categories:
 
 In the spirit of David Letterman's top 10 lists, here are my top 10 signs you might be 
 a low quality scientific journal, inspired by an e-mail I received today from
-[Computing in Mathematics, Natural Sciences, Engineering and Medicine](http://www.ampublisher.com/Canadian-Journal-Computing.html).
+[Computing in Mathematics, Natural Sciences, Engineering and Medicine](https://www.ampublisher.com/Canadian-Journal-Computing.html).
 
 1. You are incorporated in Canada, and have "Canadian" in your title, but none of
      your editors lives in Canada.
@@ -17,7 +17,7 @@ a low quality scientific journal, inspired by an e-mail I received today from
     and dermatology all in one journal.
 
 8. Most of your abstracts include misspellings of common English words, like ["stander" for
-    standard](http://www.ampublisher.com/June%202010/CMNSEM%20Jun%202010.html).
+    standard](https://www.ampublisher.com/June%202010/CMNSEM%20Jun%202010.html).
 
 7. Most of your article titles could be used as exercises for grade school students
     learning to fix improper verb conjugations and subject-noun agreement.
@@ -39,4 +39,4 @@ On a serious note: a few of these, taken by themselves, might not necessarily be
 I must say that AM Publishers' author charges (95 USD) are the lowest I've ever seen.
 
 For a related, more serious analysis, see 
-[Beall’s List of Predatory Open-Access Publishers](http://scholarlyoa.com/publishers/).
+[Beall’s List of Predatory Open-Access Publishers](https://scholarlyoa.com/publishers/).

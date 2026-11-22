@@ -11,7 +11,7 @@ course on numerical analysis for differential equations.  I've been teaching the
 using Python for 5 years now.  This year, for the first time, *I didn't spend
 any time helping students install Python, numpy, matplotlib, or scipy*.  In fact, I even
 had them use Clawpack -- and they didn't need to install it.  Why?  Because they
-all used [SageMathCloud](http://cloud.sagemath.com) for the course.
+all used [SageMathCloud](https://cloud.sagemath.com) for the course.
 
 ## A little history
 
@@ -23,7 +23,7 @@ in the notebook.  At first these were a set of Sage worksheets, and I ran a loca
 Sage server within the KAUST network.  When the VM that held the server died a horrible
 and irreversible death, I decided to switch to the IPython notebook format that had
 become increasingly popular.  It wasn't too hard to [convert all my Sage worksheets
-to IPython notebooks](http://www.davidketcheson.info/2013/01/16/sage_to_ipython.html).  But my students had to either do all their work in the
+to IPython notebooks](https://www.davidketcheson.info/2013/01/16/sage_to_ipython.html).  But my students had to either do all their work in the
 computer lab or figure out how to install the necessary Python packages on their
 own machines.  This was a bit of a time sink for me, although it has gotten easier
 each year thanks to packages like [Anaconda](https://store.continuum.io/cshop/anaconda/) and [Canopy](https://www.enthought.com/products/canopy/).  This also meant
@@ -36,7 +36,7 @@ In the last year, two new cloud services emerged, both offering free accounts
 with the ability to run IPython notebooks:
 
 - [Wakari](http://wakari.io)
-- [Sage Math Cloud](http://cloud.sagemath.com)
+- [Sage Math Cloud](https://cloud.sagemath.com)
 
 I realized that by using one of these services, I could avoid dealing with installation
 issues and ensure that everyone worked in an identical environment.  Though I
@@ -77,12 +77,12 @@ to my and others' comments about latency).
 
 <img src="https://dl.dropboxusercontent.com/u/656693/smc_screenshot.png" alt="SMC" align="center">
 
-I used SMC again to [teach a 1-day tutorial](https://github.com/ketch/HyperPython/blob/master/README.md) at [a workshop](http://jkk.sze.hu/en_GB/program) this month.  Other than
+I used SMC again to [teach a 1-day tutorial](https://github.com/ketch/HyperPython/blob/master/README.md) at [a workshop](https://jkk.sze.hu/en_GB/program) this month.  Other than
 a couple of minor hiccups, it again worked very well.  I plan to continue
 using it for teaching in the future.  One feature I haven't used yet (but intend
 to) is the ability to "collaborate" on a project so that multiple users can edit it
 at the same time.  I understand that 
-[many other great features are in the works](http://sagemath.blogspot.com/2014/04/the-sagemathcloud-roadmap.html).
+[many other great features are in the works](https://sagemath.blogspot.com/2014/04/the-sagemathcloud-roadmap.html).
 
 I would strongly recommend SMC to other teachers of computationally-oriented
 courses, even if you're not using

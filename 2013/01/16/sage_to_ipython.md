@@ -9,10 +9,10 @@ categories:
 
 # Converting a SAGE worksheet to an IPython notebook
 
-Download link: [http://github.com/ketch/sage2ipython/]()
+Download link: [https://github.com/ketch/sage2ipython/]()
 
 I use Python to teach numerical methods here at KAUST, and I'm in the process of
-switching from using [SAGE](http://www.sagemath.org) worksheets to [IPython](http://ipython.org)
+switching from using [SAGE](https://www.sagemath.org) worksheets to [IPython](https://ipython.org)
 notebooks (more on the reasons in a later post).  I've invested a lot of time over the 
 past three years in developing a set of SAGE worksheets and it would be a substantial 
 amount of tedious work to manually copy-paste their contents into IPython notebooks.
@@ -31,7 +31,7 @@ a cell.  Debugging it was slightly
 painful because if you have the tiniest syntax error, then the IPython notebook server just 
 tells you something is wrong and displays nothing.
 
-You can download the converter from the [Github repository](http://github.com/ketch/sage2ipython/).
+You can download the converter from the [Github repository](https://github.com/ketch/sage2ipython/).
 It has been tested with SAGE version 4.2.1 and IPython version 0.13.1.  Note that it
 has several limitations (see the list below).  But it has served my needs well.
 

@@ -11,7 +11,7 @@ categories:
 Welcome to step 1 in [your training as a scientific Python code ninja](/2015/05/10/rock_solid_code.html): version control.  This is not going to be an in-depth course, so if you're already using distributed version control (like Git or Mercurial), feel free to skip ahead to [step 2](/2015/05/12/code_in_the_open.html).
 
 
-## [Life before version control](http://phdcomics.com/comics.php?f=1531)
+## [Life before version control](https://phdcomics.com/comics.php?f=1531)
 
 Programs change.  That script I wrote last week to process my data needs to be adapted to a new file format or to produce a different kind of analysis.  So I copy it to a new file and make some changes.  I add a few lines and comment out others.  The next week, I copy everything to a new directory so I can apply the code to a new project.  A couple of months later, I realize that I have a mess of seven different directories, each with a dozen almost-identically-named files, and I am no longer sure which is the latest or what file does what.  I spend a lot of time searching through and comparing the various files and directories to find what I need.
 
@@ -29,7 +29,7 @@ If you're on a Mac- or Linux-based system, you probably already have git.  To ch
 
     git
     
-If you don't have it, get it here: http://git-scm.com/downloads.  Then take a moment to [set up git](https://help.github.com/articles/set-up-git/#setting-up-git).  You'll only have to do that once on a given computer.
+If you don't have it, get it here: https://git-scm.com/downloads.  Then take a moment to [set up git](https://help.github.com/articles/set-up-git/#setting-up-git).  You'll only have to do that once on a given computer.
 
 Then do the following (replacing the directory and file names with the directory and files pertaining to your project):
 
@@ -53,9 +53,9 @@ and
 
     git log
     
-To get a much better idea, take 15 minutes and go read the [first software carpentry lesson on version control](http://www.software-carpentry.org/v5/novice/git/01-backup.html).
+To get a much better idea, take 15 minutes and go read the [first software carpentry lesson on version control](https://www.software-carpentry.org/v5/novice/git/01-backup.html).
 
-You can get by for awhile with just the few git commands listed above.  Eventually, you will want to go beyond what is described in the Software Carpentry lesson.  When you do, it's worth reading an extended introduction [like this one](http://git-scm.com/book/en/v2).
+You can get by for awhile with just the few git commands listed above.  Eventually, you will want to go beyond what is described in the Software Carpentry lesson.  When you do, it's worth reading an extended introduction [like this one](https://git-scm.com/book/en/v2).
 
 [Continue to step two](/2015/05/12/code_in_the_open.html).
 

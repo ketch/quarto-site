@@ -48,9 +48,9 @@ choose a standard license, so that other people don't need to agonize over all
 the fine print.  The most common licenses for open source scientific software
 are 
 
-- [BSD](http://choosealicense.com/licenses/bsd-2-clause/),
-- [MIT](http://choosealicense.com/licenses/mit/), and
-- [GPL](http://choosealicense.com/licenses/gpl-2.0/).  
+- [BSD](https://choosealicense.com/licenses/bsd-2-clause/),
+- [MIT](https://choosealicense.com/licenses/mit/), and
+- [GPL](https://choosealicense.com/licenses/gpl-2.0/).  
 
 All of these allow others to use, redistribute, and
 modify your code.  The GPL license imposes one restriction that is absent from
@@ -58,8 +58,8 @@ the others: other code that uses yours must also be GPL.  Some view this as a
 great way to encourage more free, open-source code.  Others view it as an
 impediment to your code being used.  My suggestion is to use a BSD license, but
 if you want to investigate in more detail, try [Choose A
-License](http://choosealicense.com/) or go read [this
-paper](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3406002/).
+License](https://choosealicense.com/) or go read [this
+paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3406002/).
 
 Here's what to do:
 

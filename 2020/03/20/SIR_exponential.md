@@ -7,14 +7,14 @@ categories:
 - COVID-19
 ---
 
-This is my fourth post on modeling the Coronavirus epidemic.  I recommend starting with [the first post](http://www.davidketcheson.info/2020/03/17/SIR_model.html) and reading them in order.
+This is my fourth post on modeling the Coronavirus epidemic.  I recommend starting with [the first post](https://www.davidketcheson.info/2020/03/17/SIR_model.html) and reading them in order.
 
 So far, we've [learned about the SIR
-model](http://www.davidketcheson.info/2020/03/17/SIR_model.html) and [used
+model](https://www.davidketcheson.info/2020/03/17/SIR_model.html) and [used
 available
-data](http://www.davidketcheson.info/2020/03/19/SIR_Estimating_parameters.html)
+data](https://www.davidketcheson.info/2020/03/19/SIR_Estimating_parameters.html)
 combined with the model to [predict the
-epidemic](http://www.davidketcheson.info/2020/03/19/SIR_predictions.html).
+epidemic](https://www.davidketcheson.info/2020/03/19/SIR_predictions.html).
 We're now going to detour into some additional mathematical ideas that will
 help us get further understanding.  At the end of this post, we'll try to judge
 how effective the mitigation strategies have been in some countries.
@@ -156,4 +156,4 @@ has been cut to approximately $0.02$; this would correspond to a value of $q$
 transmits the disease to only 1/4 as many people as they naturally would.  But
 again it is probably too early to estimate this number with confidence.
 
-[In the next post in the series, you can experiment with the model yourself](http://www.davidketcheson.info/2020/03/22/SIR_interactive.html).
+[In the next post in the series, you can experiment with the model yourself](https://www.davidketcheson.info/2020/03/22/SIR_interactive.html).

@@ -18,12 +18,12 @@ optimization toolbox (fmincon).  So my RK-opt package for optimising
 Runge-Kutta methods is written all in MATLAB.
 
 The trouble is that working in Python has spoiled me for other languages.
-Python has the excellent [Sphinx](http://sphinx-doc.org/) package for writing
+Python has the excellent [Sphinx](https://sphinx-doc.org/) package for writing
 **beautiful documentation**.  Python has the
-[nosetests](http://nose.readthedocs.org/) harness for easily writing and
+[nosetests](https://nose.readthedocs.org/) harness for easily writing and
 running **tests**.  And Python has [a simple syntax for including **optional function
 arguments** with default
-values](http://www.diveintopython.net/power_of_introspection/optional_arguments.html).
+values](https://www.diveintopython.net/power_of_introspection/optional_arguments.html).
 
 MATLAB doesn't support any of these things so elegantly\*.
 
@@ -36,14 +36,14 @@ MATLAB.
 
 ### Documenting MATLAB projects using Sphinx
 In principle, Sphinx can be used to write documentation for packages written in
-any language.  However, its [autodoc](http://sphinx-doc.org/ext/autodoc.html)
+any language.  However, its [autodoc](https://sphinx-doc.org/ext/autodoc.html)
 functionality, which automatically extracts Python docstrings, doesn't work
 with MATLAB.  For RK-Opt, I hacked together a simple workaround in [this
 74-line Python file](https://github.com/ketch/RK-opt/blob/master/doc/m2rst.py).
 It goes through a given directory, extracts the MATLAB docstring for each
 function, and compiles them into an .rst file for Sphinx processing.  You can
 see an [example of the results
-here](http://numerics.kaust.edu.sa/RK-opt/RK-coeff-opt.html).
+here](https://numerics.kaust.edu.sa/RK-opt/RK-coeff-opt.html).
 
 **Update**: *as I'm writing this, I've discovered a new [MATLAB extension for
 Sphinx's
@@ -56,9 +56,9 @@ I've become convinced that writing at least one or two tests is worthwhile for
 even small, experimental packages.  In Python, it's simple to include test in
 the docs and run them with doctest, or write test suites and run them with
 nosetest.  For MATLAB, I would have recommended the third-party [xunit
-framework](http://www.mathworks.com/matlabcentral/fileexchange/22846-matlab-xunit-test-framework).
+framework](https://www.mathworks.com/matlabcentral/fileexchange/22846-matlab-xunit-test-framework).
 But it seems that this year [Mathworks finally added this functionality to
-MATLAB](http://www.mathworks.com/help/matlab/matlab-unit-test-framework.html).
+MATLAB](https://www.mathworks.com/help/matlab/matlab-unit-test-framework.html).
 Even so, you might want to use xunit because [it's possible to run doctests
 with it](https://github.com/tgs/matlab-xunit-doctest) but not with MATLAB's new
 built-in framework.  Also, you can get XML output from xunit, which a number of
@@ -81,7 +81,7 @@ This is a reasonable solution in very small functions, but it breaks if you
 want to add new arguments that don't come at the end, and if you want to
 specify the very last value then you have to specify them all.  A better
 general solution is the [inputParser
-object](http://www.mathworks.com/help/matlab/ref/inputparserclass.html).
+object](https://www.mathworks.com/help/matlab/ref/inputparserclass.html).
 It's much less natural than Python's syntax, but the result for the user is the
 same: arbitrary subsets of the optional arguments can be specified; default
 values will be used for the rest.  As a bonus, you can check the types of the
@@ -92,7 +92,7 @@ If you know of better ways to do any of these things, please let me know in the 
 
 Of course, it's entirely possible to develop large, well-documented,
 well-tested, user-friendly packages in MATLAB --
-[Chebfun](http://www.chebfun.org/) is one example.  It's just that
+[Chebfun](https://www.chebfun.org/) is one example.  It's just that
 this is the exception and not the rule in the MATLAB community.  Hopefully
 better integration with testing and documentation tools will improve this
 situation.

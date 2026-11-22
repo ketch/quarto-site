@@ -6,7 +6,7 @@ categories:
 - epidemiology
 - COVID-19
 ---
-Welcome to the third post in my series on modeling the Coronavirus pandemic.  In the [first](http://www.davidketcheson.info/2020/03/17/SIR_model.html) and [second](http://www.davidketcheson.info/2020/03/19/SIR_Estimating_parameters.html) posts, we introduced the SIR model and used the available data to estimate the model parameters, in the absence of any mitigation (i.e. with no social distancing, quarantine, etc.).  In this post we'll put model and parameters together to see what they predict for the current pandemic.  We'll do this first assuming no mitigation, and then we'll make a very rough attempt to understand how mitigation may impact the predictions.
+Welcome to the third post in my series on modeling the Coronavirus pandemic.  In the [first](https://www.davidketcheson.info/2020/03/17/SIR_model.html) and [second](https://www.davidketcheson.info/2020/03/19/SIR_Estimating_parameters.html) posts, we introduced the SIR model and used the available data to estimate the model parameters, in the absence of any mitigation (i.e. with no social distancing, quarantine, etc.).  In this post we'll put model and parameters together to see what they predict for the current pandemic.  We'll do this first assuming no mitigation, and then we'll make a very rough attempt to understand how mitigation may impact the predictions.
 
 Remember, I am not an epidemiologist and I make no guarantees as to the accuracy of these predictions.  I don't recommend that you make precise plans based on the details of these predictions.  My goal is merely to show that with a bit of mathematics and common sense, we can have a reasonable idea of what the future holds.
 
@@ -132,4 +132,4 @@ There are a number of potentially important factors that we have ignored here, i
   - Possible **seasonal effects** on the spread of Coronavirus.  Currently there seems to be no way to know if COVID-19 will be seasonal like the flu.
   - Development of a **vaccine**.  As we have seen, significantly reducing the number of susceptible individuals can rapidly halt the spread of a disease, even if not every individual is vaccinated.  So if a vaccine appears and can be mass produced before the fall, it could susbstantially shorten the duration of the epidemic and reduce its impact.  On the other hand, it seems that a vaccine arriving after a year would be too late to have much impact.
 
-[In then next post, we take a deeper look at exponential growth and its implications for the epidemic](http://www.davidketcheson.info/2020/03/20/SIR_exponential.html).
+[In then next post, we take a deeper look at exponential growth and its implications for the epidemic](https://www.davidketcheson.info/2020/03/20/SIR_exponential.html).

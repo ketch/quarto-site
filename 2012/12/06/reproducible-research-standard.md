@@ -26,9 +26,9 @@ The idea is that all of these components are part of your research and someone
 wanting to understand your research may need access to all of them.  The RRS
 consists of the following licenses:
 
- - [Creative Commons Attribution (BY)](http://creativecommons.org/licenses/by/3.0/) for **media** (text, figures, movies)
- - [Modified BSD](http://en.wikipedia.org/wiki/BSD_licenses%233-clause_license_.28.22New_BSD_License.22_or_.22Modified_BSD_License.22.29) for **code**
- - [Science Commons Database Protocol](http://sciencecommons.org/resources/faq/database-protocol) for **data**
+ - [Creative Commons Attribution (BY)](https://creativecommons.org/licenses/by/3.0/) for **media** (text, figures, movies)
+ - [Modified BSD](https://en.wikipedia.org/wiki/BSD_licenses%233-clause_license_.28.22New_BSD_License.22_or_.22Modified_BSD_License.22.29) for **code**
+ - [Science Commons Database Protocol](https://sciencecommons.org/resources/faq/database-protocol) for **data**
  
  For the most part, this is easy enough to implement: the current academic
  research system frankly doesn't care what you do with your code, data or
@@ -39,16 +39,16 @@ consists of the following licenses:
  copyright -- preventing you from releasing those media under CC-BY.
  
 Nevertheless, I've attempted to follow the full RRS with each of the two papers
-I've had accepted since then.  [The first](http://arxiv.org/abs/1111.3499)
+I've had accepted since then.  [The first](https://arxiv.org/abs/1111.3499)
 (still in press) was accepted to the SIAM Journal on Scientific Computing
 (SISC).  The code is licensed under modified BSD as part of the
 [SharpClaw](https://github.com/clawpack/sharpclaw) package (now rolled into
 [PyClaw](https://github.com/clawpack/pyclaw)). After reading [one author's
 experience retaining copyright to an article published by
-SIAM](http://adamdsmith.wordpress.com/2009/07/07/copyright-copywrong/), I
+SIAM](https://adamdsmith.wordpress.com/2009/07/07/copyright-copywrong/), I
 decided to try the same approach of modifying the copyright transfer agreement
 by [striking out the transfer of
-copyright](http://adamdsmith.wordpress.com/2009/07/07/copyright-copywrong/#jp-carousel-138).
+copyright](https://adamdsmith.wordpress.com/2009/07/07/copyright-copywrong/#jp-carousel-138).
 I suspected that the instance just linked to went "below the radar", and I
 wanted to be completely above-board, so I pointed out to SIAM that I had
 modified the agreement.  What made this particularly interesting is that one of
@@ -59,7 +59,7 @@ Eventually, SIAM objected  "on the grounds that non-exclusive right to publish
 doesn't prohibit
 others from publishing for profit, which may be to [the authors'] disadvantage as
 well."  They agreed instead to an addendum generated via
-http://scholars.sciencecommons.org/ that retains for the authors the right to
+https://scholars.sciencecommons.org/ that retains for the authors the right to
 post the final article on any public server, as long as publication in SISC is
 stated.  Since this gave me what I wanted in practical terms, I agreed and
 signed the copyright transfer + addendum.  I've been told that an ad hoc
@@ -68,11 +68,11 @@ copyright questions like this.
  
 I came away from this feeling like we had made progress, but I still wanted to
 see if I could implement the full RRS with respect to the next paper.  My [next
-accepted paper](http://arxiv.org/pdf/1201.3035v3.pdf) (also still in press) 
+accepted paper](https://arxiv.org/pdf/1201.3035v3.pdf) (also still in press) 
 was a submission to [Communications in Applied Mathematics and
-Computational Science](http://msp.org/camcos/), published by the extremely progressive
+Computational Science](https://msp.org/camcos/), published by the extremely progressive
 not-for-profit [Math­em­at­ic­al Sci­ences
-Pub­lish­ers](http://msp.org/about/).  This is a truly remarkable journal that
+Pub­lish­ers](https://msp.org/about/).  This is a truly remarkable journal that
 will be the subject of another blog post in the near future, but what's
 important in this context is that the journal doesn't require authors to
 transfer copyright!  They only require a [license to

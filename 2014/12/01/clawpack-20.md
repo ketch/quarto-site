@@ -11,17 +11,17 @@ categories:
 
 Twenty years ago, version 1.0 of the Conservation LAWs PACKage (CLAWPACK, now
 [Clawpack](http://clawpack.org) was first released by
-[Randy LeVeque](http://faculty.washington.edu/rjl/).  It seems fitting to take
+[Randy LeVeque](https://faculty.washington.edu/rjl/).  It seems fitting to take
 the occasion to look back on the intervening years.  What follows are my
 thoughts on some of the great things that have resulted.
 
 ![](/assets/img/clawpack_bday.jpg)
 
 As far as I can tell, 
-[this item in the NA-Digest](http://www.netlib.org/na-digest-html/94/v94n44.html#5)
+[this item in the NA-Digest](https://www.netlib.org/na-digest-html/94/v94n44.html#5)
 is the first public announcement of its existence.
 It was also announced more verbosely the same year in
-[this conference paper](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=70F5140D445F7B89AF162827E10443A7?doi=10.1.1.48.3424&rep=rep1&type=pdf), 
+[this conference paper](https://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=70F5140D445F7B89AF162827E10443A7?doi=10.1.1.48.3424&rep=rep1&type=pdf), 
 from the proceedings of the 5th HYP conference.
 Reading that conference paper now, I am struck by how it incorporated many of
 the ideals of scientific software development that we now discuss as if they
@@ -56,39 +56,39 @@ robust general-purpose tool.
 Of course, much has happened in the intervening twenty years.  The original library
 handled 1- and 2-dimensional problems on regular cartesian grids.  In the next few years,
 subsequent versions added algorithms for
-[3D](http://faculty.washington.edu/rjl/pubs/wp3d/index.html), mapped grids, and
-[adaptively refined meshes](http://faculty.washington.edu/rjl/pubs/amrclaw/index.html).
+[3D](https://faculty.washington.edu/rjl/pubs/wp3d/index.html), mapped grids, and
+[adaptively refined meshes](https://faculty.washington.edu/rjl/pubs/amrclaw/index.html).
 
 Additional algorithmic innovations are too numerous to try to list, but one
-that has had a lot of impact is [the f-wave technique](http://epubs.siam.org/doi/abs/10.1137/S106482750139738X).
+that has had a lot of impact is [the f-wave technique](https://epubs.siam.org/doi/abs/10.1137/S106482750139738X).
 
 The problems to which Clawpack has been applied are certainly **much** too numerous to list.
 But you can start to get an idea by looking at citations of major Clawpack papers like
-[this](http://scholar.google.com/scholar?cites=17725852758276924945&as_sdt=2005&sciodt=0,5&hl=en),
-[this](http://scholar.google.com/scholar?cites=7413565796955546825&as_sdt=2005&sciodt=0,5&hl=en),
-[this](http://scholar.google.com/scholar?cites=13042879341964900053&as_sdt=2005&sciodt=0,5&hl=en),
-[this](http://scholar.google.com/scholar?cites=13610946858631858859&as_sdt=2005&sciodt=0,5&hl=en),
-and [this](http://scholar.google.com/scholar?cites=7380133178147045066&as_sdt=2005&sciodt=0,5&hl=en).
+[this](https://scholar.google.com/scholar?cites=17725852758276924945&as_sdt=2005&sciodt=0,5&hl=en),
+[this](https://scholar.google.com/scholar?cites=7413565796955546825&as_sdt=2005&sciodt=0,5&hl=en),
+[this](https://scholar.google.com/scholar?cites=13042879341964900053&as_sdt=2005&sciodt=0,5&hl=en),
+[this](https://scholar.google.com/scholar?cites=13610946858631858859&as_sdt=2005&sciodt=0,5&hl=en),
+and [this](https://scholar.google.com/scholar?cites=7380133178147045066&as_sdt=2005&sciodt=0,5&hl=en).
 Perhaps the heaviest use in recent years has involved geophysical flows such as tsunamis and
 storm surges, in GeoClaw.
 
 ## The Clawpack family of codes
 
 Clawpack has spawned numerous offshoots and extensions, including (but not limited to)
-[AMRClaw](http://www.clawpack.org/amrclaw.html), 
+[AMRClaw](https://www.clawpack.org/amrclaw.html), 
 [BearClaw](http://mitran-lab.amath.unc.edu:8084/redmine/projects/bearclaw/wiki), 
-[ZPLClaw](http://cedb.asce.org/cgi/WWWdisplay.cgi?121287), 
-[SharpClaw](http://www.clawpack.org/doc/pyclaw/solvers.html?highlight=sharpclaw#pyclaw.sharpclaw.solver.SharpClawSolver), 
+[ZPLClaw](https://cedb.asce.org/cgi/WWWdisplay.cgi?121287), 
+[SharpClaw](https://www.clawpack.org/doc/pyclaw/solvers.html?highlight=sharpclaw#pyclaw.sharpclaw.solver.SharpClawSolver), 
 [CUDAClaw](https://scholarworks.aub.edu.lb/handle/10938/9322),
-[ForestClaw](http://math.boisestate.edu/~calhoun/ForestClaw/), 
+[ForestClaw](https://math.boisestate.edu/~calhoun/ForestClaw/), 
 [ManyClaw](https://github.com/manyclaw/manyclaw),
-[PyClaw](http://www.clawpack.org/pyclaw/index.html),
-and [GeoClaw](http://www.clawpack.org/geoclaw.html).
+[PyClaw](https://www.clawpack.org/pyclaw/index.html),
+and [GeoClaw](https://www.clawpack.org/geoclaw.html).
 Some of these have become part of the Clawpack-5 suite while others
 have forked and gone in other directions.
 
 Nowadays, the term Clawpack refers to a collection of interrelated packages 
-that are maintained and developed at [github.com/clawpack](http://github.com/clawpack).
+that are maintained and developed at [github.com/clawpack](https://github.com/clawpack).
 They include:
 
 - The original ("Classic") Clawpack;
@@ -105,7 +105,7 @@ applications.
 As far as I know, the original release was a one-person effort.  But like
 most open-source projects, Clawpack quickly became a broader collaboration.
 I won't attempt to credit everyone here; you can see some of the major contributors
-[here](http://www.clawpack.org/about.html#authors), and many more by looking
+[here](https://www.clawpack.org/about.html#authors), and many more by looking
 at the contributors pages on Github.
 
 ![](/assets/img/HPC3-2012-group-photo.jpg)
@@ -175,7 +175,7 @@ users have occasionally connected Clawpack to powerful visualization tools, but
 their custom code never got back to the main codebase.  The limited capabilities
 of matplotlib in 3D seem to finally be providing sufficient impetus to force us
 to integrate with a sophisticated visualization library.  I have been working lately
-on integration with [yt](http://yt-project.org).
+on integration with [yt](https://yt-project.org).
 
 
 ## The next 20 years?

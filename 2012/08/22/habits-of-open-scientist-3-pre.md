@@ -8,7 +8,7 @@ categories:
 - publications
 - scientific-publishing
 ---
-Note: this post is part of [a series on habits of the open scientist](http://scienceinthesands.blogspot.co.uk/2012/07/7-habits-of-open-scientist.html).  Here I discuss the third habit, **pre-publication dissemination of research**.  The previous post was on **[reproducible research](http://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-2.html).**
+Note: this post is part of [a series on habits of the open scientist](https://scienceinthesands.blogspot.co.uk/2012/07/7-habits-of-open-scientist.html).  Here I discuss the third habit, **pre-publication dissemination of research**.  The previous post was on **[reproducible research](https://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-2.html).**
 
 **A personal story**
 
@@ -24,12 +24,12 @@ Many readers may not wish to see my work until it has been refereed.  But for t
 
 **The open scientist distributes his publishable research openly before the formal refereeing and publishing process, by placing completed manuscripts on a preprint server like the arXiv.**
 
-If you\'re brave, you can also [share your grant proposals](http://jabberwocky.weecology.org/2012/08/10/a-list-of-publicly-available-grant-proposals-in-the-biological-sciences/) openly.
+If you\'re brave, you can also [share your grant proposals](https://jabberwocky.weecology.org/2012/08/10/a-list-of-publicly-available-grant-proposals-in-the-biological-sciences/) openly.
 
 **Concerns**
 
-The first time you do this, you may feel worried that someone else will \'steal\' your preprint and publish it before you.  But posting it on the arXiv makes it public and stamps it with a date, so such theft would be obvious to everyone.  You may be worried that others will steal your ideas and immediately begin working on your next planned research question.  But if you\'re like me, the number of related research questions to pursue is essentially endless and you\'d be fortunate if your efforts attract others to work on closely related topics (for the truly self-interested, note that it will increase your citation count).  Finally, in some fields or subfields, there is cultural resistance to making preprints public; you can see my take on the issue in [this prior blog post](http://scienceinthesands.blogspot.co.uk/2012/01/what-is-this-thing-we-call-arxiv-really.html).  But there are [signs that it is gaining wider acceptance](http://www.nature.com/news/geneticists-eye-the-potential-of-arxiv-1.11091).
+The first time you do this, you may feel worried that someone else will \'steal\' your preprint and publish it before you.  But posting it on the arXiv makes it public and stamps it with a date, so such theft would be obvious to everyone.  You may be worried that others will steal your ideas and immediately begin working on your next planned research question.  But if you\'re like me, the number of related research questions to pursue is essentially endless and you\'d be fortunate if your efforts attract others to work on closely related topics (for the truly self-interested, note that it will increase your citation count).  Finally, in some fields or subfields, there is cultural resistance to making preprints public; you can see my take on the issue in [this prior blog post](https://scienceinthesands.blogspot.co.uk/2012/01/what-is-this-thing-we-call-arxiv-really.html).  But there are [signs that it is gaining wider acceptance](https://www.nature.com/news/geneticists-eye-the-potential-of-arxiv-1.11091).
 
-If everyone began to practice this, it would effectively transform the role of journals.  They would no longer be the primary distribution apparatus; their role would be that of [filtering the already-published literature](http://blogs.lse.ac.uk/impactofsocialsciences/2012/07/10/publish-then-filter-research/).  This would make a lot more science available a lot sooner, without sacrificing the usefulness of peer review. 
+If everyone began to practice this, it would effectively transform the role of journals.  They would no longer be the primary distribution apparatus; their role would be that of [filtering the already-published literature](https://blogs.lse.ac.uk/impactofsocialsciences/2012/07/10/publish-then-filter-research/).  This would make a lot more science available a lot sooner, without sacrificing the usefulness of peer review. 
 
 Next up: Habit #4 \-- **Open notebook science**.

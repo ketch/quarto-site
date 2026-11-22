@@ -12,7 +12,7 @@ solver code myself.
 
 I downloaded the code from
 
-[http://www.mathematik.uni-marburg.de/\~schmitt/peer/eppeer.zip][]
+[https://www.mathematik.uni-marburg.de/\~schmitt/peer/eppeer.zip][]
 
 unzipped, and ran
 
@@ -70,7 +70,7 @@ extrapolation.
 These results are actually plotted in [the user guide][], at the end of
 Section 4.
 
-  [http://www.mathematik.uni-marburg.de/\~schmitt/peer/eppeer.zip]: http://www.mathematik.uni-marburg.de/~schmitt/peer/eppeer.zip
+  [https://www.mathematik.uni-marburg.de/\~schmitt/peer/eppeer.zip]: http://www.mathematik.uni-marburg.de/~schmitt/peer/eppeer.zip
     "Go to wiki page"
   [the user guide]: http://www.mathematik.uni-marburg.de/~schmitt/peer/man_epp.pdf
 

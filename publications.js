@@ -23,7 +23,7 @@
     for (const el of entries) {
       const topicOK = topic === "all" || el.classList.contains(topic);
       const queryOK = !query ||
-        text(el, "name").includes(query) || text(el, "authors").includes(query);
+        text(el, ".pub-title").includes(query) || text(el, ".pub-authors").includes(query);
       const visible = topicOK && queryOK;
       el.hidden = !visible;
       if (visible) shown++;

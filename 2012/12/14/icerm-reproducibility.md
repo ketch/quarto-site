@@ -8,11 +8,11 @@ categories:
 
 I spent the last five days at ICERM (the new Math institute at Brown University)
 attending the workshop 
-[Reproducibility in Computational and Experimental Mathematics](http://icerm.brown.edu/tw12-5-rcem).
+[Reproducibility in Computational and Experimental Mathematics](https://icerm.brown.edu/tw12-5-rcem).
 The workshop was focused on discussing how mathematicians can ensure that their
 computations are reproducible, in order to ensure correctness and facilitate their
 use by others.  It's a topic dear to my heart and one that I've
-[blogged about before](http://www.davidketcheson.info/tags.html#reproducible-research).
+[blogged about before](https://www.davidketcheson.info/tags.html#reproducible-research).
 
 My hat is off to
 the organizers for managing to assemble a highly diverse group of
@@ -26,14 +26,14 @@ you could do with computation -- like discovering new formulas for pi.
 Going into the workshop, I felt that I already knew a lot about 
 reproducibility and had relatively good habits in this regard.
 So what did I learn?  I picked up a new tool, Andrew Davison's
-[Sumatra](http://packages.python.org/Sumatra/introduction.html),
+[Sumatra](https://packages.python.org/Sumatra/introduction.html),
 which I had heard of before but now have begun to use in earnest (more
 on that in a future post).  I was impressed with Lorena Barba's
-[Reproducibility PI Manifesto](http://dx.doi.org/10.6084/m9.figshare.104539)
+[Reproducibility PI Manifesto](https://dx.doi.org/10.6084/m9.figshare.104539)
 and learned a new trick from her: put your figures up on Figshare before
 submitting a paper in order to retain copyright on the figures.  I 
 marveled at Greg Wilson's goal of reaching 20% of all scientists with his
-[Software Carpentry](http://software-carpentry.org/) courses, and I determined
+[Software Carpentry](https://software-carpentry.org/) courses, and I determined
 to host such a course at KAUST in the near future.
 
 I also learned that the reproducibility movement in computational science
@@ -51,5 +51,5 @@ On the final day, in a spurt of crazy massive Google Doc collaboration
 (have you ever edited a documented live with 30 others at once?)
 we drafted a report that I'll link to here once it appears.
 
-If you want to know more, take a look at the great [thought pieces](http://wiki.stodden.net/ICERM_Reproducibility_in_Computational_and_Experimental_Mathematics:_Readings_and_References#Thought_Pieces_Submitted_for_the_ICERM_Workshop)
-submitted and the rest of the material on the [wiki](http://wiki.stodden.net/Main_Page).
+If you want to know more, take a look at the great [thought pieces](https://wiki.stodden.net/ICERM_Reproducibility_in_Computational_and_Experimental_Mathematics:_Readings_and_References#Thought_Pieces_Submitted_for_the_ICERM_Workshop)
+submitted and the rest of the material on the [wiki](https://wiki.stodden.net/Main_Page).

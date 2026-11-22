@@ -122,7 +122,7 @@ $$
 
 Here's a real example from my research.  It comes from homogenization of
 the wave equation in a spatially varying medium 
-(see Equation (5.17) of [this paper](http://faculty.washington.edu/rjl/pubs/solitary/40815.pdf) for 
+(see Equation (5.17) of [this paper](https://faculty.washington.edu/rjl/pubs/solitary/40815.pdf) for 
 more details).  It's the wave equation plus some second-derivative terms:
 $$
 u_t = v_x + v_{xx} \\

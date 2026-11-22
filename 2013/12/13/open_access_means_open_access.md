@@ -5,7 +5,7 @@ date: '2013-12-13'
 ---
 
 In October, [Science Magazine conducted a survey regarding open
-access](http://news.sciencemag.org/sites/default/files/media/Open%20Access%20SurveySummary_11082013_0.pdf).
+access](https://news.sciencemag.org/sites/default/files/media/Open%20Access%20SurveySummary_11082013_0.pdf).
 Among the questions:
 
 - *How important is it for scientific papers to be freely accessible to the public?*
@@ -33,7 +33,7 @@ The most common answer (66%) was **"Immediate access through a repository, such
 as PubMedCentral or Arxiv, or on an author’s web site"**.
 
 This is quick and painless.  [It is allowed by an overwhelming majority of
-publishers](http://www.sherpa.ac.uk/romeo/statistics.php?la=en&fIDnum=|&mode=simple).
+publishers](https://www.sherpa.ac.uk/romeo/statistics.php?la=en&fIDnum=|&mode=simple).
 It requires no mandates from governments or universities.  It requires no extra
 funding.  Anyone can do it, and every scientist who cares a whit about open
 access already has done it.  

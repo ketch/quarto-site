@@ -8,7 +8,7 @@ categories:
 - academic-spring
 ---
 
-It has been almost a year since [Tim Gowers' blog post](http://gowers.wordpress.com/2012/01/21/elsevier-my-part-in-its-downfall/) about boycotting Elsevier triggered the Cost of Knowledge movement.  [The boycott has been signed by more than 13,000 people](http://thecostofknowledge.com/).  But the vast majority of academics -- including most of my own friends and collaborators -- continue to support Elsevier by gifting to it much of their research output and their labor, enabling [Elsevier to operate at greater profits than Starbucks, Amazon, or Nike](http://tylerneylon.com/files/Neylon_Open_Sci_Sum_Talk.pdf).
+It has been almost a year since [Tim Gowers' blog post](https://gowers.wordpress.com/2012/01/21/elsevier-my-part-in-its-downfall/) about boycotting Elsevier triggered the Cost of Knowledge movement.  [The boycott has been signed by more than 13,000 people](http://thecostofknowledge.com/).  But the vast majority of academics -- including most of my own friends and collaborators -- continue to support Elsevier by gifting to it much of their research output and their labor, enabling [Elsevier to operate at greater profits than Starbucks, Amazon, or Nike](https://tylerneylon.com/files/Neylon_Open_Sci_Sum_Talk.pdf).
 
 One of the most common arguments I've heard for this continued support goes as follows:
 

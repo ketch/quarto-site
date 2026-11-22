@@ -15,7 +15,7 @@ As a scientist, one is defined by the kind of problems one works on, the confere
 
 Only *you* know precisely which journals you choose to read, yet they\'re an essential part of your scientific identity. They determine the kind of new advances you\'re likely to be aware of and where your research may turn in the future.
 
-I\'ve [made my Mendeley library public](http://www.mendeley.com/groups/1194891/david-ketcheson-s-library/), so anyone can see in great detail not only what journals I read but which articles I read. But most of you are probably not interested in quite that level of detail, so here\'s a list of the journals I follow closely. I collect their RSS feeds (with Google Reader) and read at least the title of every article they publish. I\'ve grouped them into 3 main categories, but otherwise they\'re in no particular order. Those listed in **bold** are journals where I have published; they also tend to be the journals most heavily represented in my Mendeley library.
+I\'ve [made my Mendeley library public](https://www.mendeley.com/groups/1194891/david-ketcheson-s-library/), so anyone can see in great detail not only what journals I read but which articles I read. But most of you are probably not interested in quite that level of detail, so here\'s a list of the journals I follow closely. I collect their RSS feeds (with Google Reader) and read at least the title of every article they publish. I\'ve grouped them into 3 main categories, but otherwise they\'re in no particular order. Those listed in **bold** are journals where I have published; they also tend to be the journals most heavily represented in my Mendeley library.
 
 Numerical Analysis and scientific computing:
 

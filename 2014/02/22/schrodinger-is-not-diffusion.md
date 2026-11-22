@@ -7,7 +7,7 @@ categories:
 - notebook
 ---
 
-Recently, a stackexchange answer claimed that [the Schrodinger equation is effectively a reaction-diffusion equation](http://scicomp.stackexchange.com/a/10878/123).  I'll set aside semantic arguments about the meaning of "effectively", and give a more obvious example to explain why I think this statement is misleading.
+Recently, a stackexchange answer claimed that [the Schrodinger equation is effectively a reaction-diffusion equation](https://scicomp.stackexchange.com/a/10878/123).  I'll set aside semantic arguments about the meaning of "effectively", and give a more obvious example to explain why I think this statement is misleading.
 
 Consider the wave equation
 
@@ -30,4 +30,4 @@ Wrong.  We've disguised the true nature of this equation by applying our intuiti
 
 Of course, in both cases you can use numerical methods that are appropriate for
 reaction-diffusion problems in order to solve a wave equation.  
-[Here is a quick ipython notebook implementation of the obvious method for the system above](http://nbviewer.ipython.org/github/ketch/exposition/blob/master/Wave%20equation%20as%20reaction-diffusion.ipynb).
+[Here is a quick ipython notebook implementation of the obvious method for the system above](https://nbviewer.ipython.org/github/ketch/exposition/blob/master/Wave%20equation%20as%20reaction-diffusion.ipynb).

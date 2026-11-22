@@ -8,11 +8,11 @@ categories:
 ---
 
 The US federal government [has proposed to eliminate a number of smaller
-graduate fellowship programs](http://energy.gov/sites/prod/files/2013/04/f0/Volume4.pdf)
+graduate fellowship programs](https://energy.gov/sites/prod/files/2013/04/f0/Volume4.pdf)
 and lump them together with the [NSF graduate
-fellowship](http://www.nsfgrfp.org/).  Unfortunately, this includes the Dept.
+fellowship](https://www.nsfgrfp.org/).  Unfortunately, this includes the Dept.
 of Energy's illustrious
-[Computational Science Graduate Fellowship (CSGF) program](http://www.krellinst.org/csgf/), 
+[Computational Science Graduate Fellowship (CSGF) program](https://www.krellinst.org/csgf/), 
 of which I'm an alumnus.
 I think the CSGF program is an irreplaceable
 asset that is nurturing the *third pillar* of science across disciplines in a way that
@@ -22,8 +22,8 @@ Here are just a few of the definite, tangible impacts the CSGF program had on me
 off the top of my head:
 
 * Because of the program of study requirements, I took a course in optimization,
-  without which I would never have written [this paper](http://dx.doi.org/10.1090/S0025-5718-09-02209-1), parts of [this paper](http://arxiv.org/abs/1105.5798), and probably
-  [this paper](http://dx.doi.org/10.2140/camcos.2012.7.247).
+  without which I would never have written [this paper](https://dx.doi.org/10.1090/S0025-5718-09-02209-1), parts of [this paper](https://arxiv.org/abs/1105.5798), and probably
+  [this paper](https://dx.doi.org/10.2140/camcos.2012.7.247).
 * I met David Keyes (a member of the steering committee) and came to KAUST!
   I almost certainly would not be here if it weren't for the CSGF program.
 * I met Carl Boettiger and learned about using Jekyll for open notebook science,

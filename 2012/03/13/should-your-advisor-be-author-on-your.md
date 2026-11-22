@@ -6,7 +6,7 @@ categories:
 - scientific-publishing
 ---
 Authorship seems to be a complicated business in science.  What is required to qualify for authorship?  The first time I gave my thesis advisor a draft with his name on it, he politely told me that he liked it very much but it wasn\'t necessary to include him as an author since the research and writing had been done by me (this even despite the fact that the original idea for the project was his).  In the end, he became more closely involved in some of the work and the revision of the paper, and we agreed that he should be an author.  But that experience reinforced for me the high threshold for authorship that is usually expected in mathematics.\
-I was surprised to find that the \"accepted\" answer to [this question](http://academia.stackexchange.com/questions/644/supervisors-and-authorship) on academia.stackexchange.com\
+I was surprised to find that the \"accepted\" answer to [this question](https://academia.stackexchange.com/questions/644/supervisors-and-authorship) on academia.stackexchange.com\
 
 > What are the requirements for a supervisor to be included as an author on a paper, as opposed to just appearing in the acknowledgements?
 
@@ -27,7 +27,7 @@ And furthermore\
 
 > The list of authors should be limited to those researchers who have made a substantial and identifiable intellectual contribution to the research upon which a publication is based.
 
-At [mathoverflow](http://mathoverflow.net/questions/57337/when-should-a-supervisor-be-a-co-author), more interesting answers are given, including this highly-voted point of view:\
+At [mathoverflow](https://mathoverflow.net/questions/57337/when-should-a-supervisor-be-a-co-author), more interesting answers are given, including this highly-voted point of view:\
 
 > \...as a rule the supervisor should not be a co-author in the main paper taken from a student\'s thesis, even if he has contributed substantially to it\...
 

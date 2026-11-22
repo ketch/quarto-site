@@ -10,7 +10,7 @@ The other day I happened to notice that I had received well over 100 e-mails in 
 \
 I thought back to grad school days when I might or might not receive any e-mail on a given day.  When did it all get so crazy?  I decided it would be fun to find out.  A bit of searching turned up the Python package imaplib, which allowed me to download headers for all messages (ever!) from my Gmail account.  Then it was just a matter of extracting and reformatting the dates and plotting up a histogram with matplotlib.  Here\'s the result:\
 
-<a href="http://1.bp.blogspot.com/_BY1MXXROj8g/TU75BC5FS6I/AAAAAAAAAmM/VO4o7wQM648/s1600/David_email_hist2.png" data-imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="http://1.bp.blogspot.com/_BY1MXXROj8g/TU75BC5FS6I/AAAAAAAAAmM/VO4o7wQM648/s400/David_email_hist2.png" data-border="0" width="400" height="216" /></a>
+<a href="https://1.bp.blogspot.com/_BY1MXXROj8g/TU75BC5FS6I/AAAAAAAAAmM/VO4o7wQM648/s1600/David_email_hist2.png" data-imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="https://1.bp.blogspot.com/_BY1MXXROj8g/TU75BC5FS6I/AAAAAAAAAmM/VO4o7wQM648/s400/David_email_hist2.png" data-border="0" width="400" height="216" /></a>
 
 \
 \

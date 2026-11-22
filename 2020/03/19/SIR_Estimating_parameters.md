@@ -6,7 +6,7 @@ categories:
 - epidemiology
 - COVID-19
 ---
-Welcome back!  In the [first post](http://www.davidketcheson.info/2020/03/17/SIR_model.html) of this series, we learned about the SIR model, which consists of three differential equations describing the rate of change of susceptible (S), infected (I), and recovered (R) populations:
+Welcome back!  In the [first post](https://www.davidketcheson.info/2020/03/17/SIR_model.html) of this series, we learned about the SIR model, which consists of three differential equations describing the rate of change of susceptible (S), infected (I), and recovered (R) populations:
 
 \begin{align*}
 \frac{dS}{dt} & = -\beta I \frac{S}{N} \\
@@ -235,4 +235,4 @@ It should be emphasized that the value of $\beta$ here is what we expect **in th
 
 In the [Jupyter notebook for this post](https://github.com/ketch/covid-blog-posts/blob/master/02_Estimating_parameters.ipynb) there is an interactive setup where you can make your own fits to the data from a variety of regions.
 
-[Click here to go to the next post](http://www.davidketcheson.info/2020/03/19/SIR_predictions.html), in which we use what we've found to predict the future.
+[Click here to go to the next post](https://www.davidketcheson.info/2020/03/19/SIR_predictions.html), in which we use what we've found to predict the future.

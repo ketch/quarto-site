@@ -4,7 +4,7 @@ date: '2012-04-26'
 categories:
 - scientific-publishing
 ---
-In [this succinct memo](http://isites.harvard.edu/icb/icb.do?keyword=k77982&tabgroupid=icb.tabgroup143448), an advisory council at Harvard says that\
+In [this succinct memo](https://isites.harvard.edu/icb/icb.do?keyword=k77982&tabgroupid=icb.tabgroup143448), an advisory council at Harvard says that\
 
 > *major periodical subscriptions, especially to electronic journals published by historically key providers, cannot be sustained: continuing these subscriptions on their current footing is financially untenable.*
 

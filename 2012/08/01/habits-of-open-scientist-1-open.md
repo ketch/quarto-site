@@ -7,7 +7,7 @@ categories:
 - open-science
 - scientific-publishing
 ---
-Note: this post is part of [a series on habits of the open scientist](http://scienceinthesands.blogspot.co.uk/2012/07/7-habits-of-open-scientist.html).  Here I discuss the first habit, **open scientific publishing**.
+Note: this post is part of [a series on habits of the open scientist](https://scienceinthesands.blogspot.co.uk/2012/07/7-habits-of-open-scientist.html).  Here I discuss the first habit, **open scientific publishing**.
 
  
 
@@ -24,7 +24,7 @@ By default, scientific works fall subject to copyright law, which is intended to
 
  
 
-Stepping back from personal interest, I believe that academic scientists have a **moral imperative** to freely distribute their work, for two reasons.  First, in academia science is primarily funded by taxes.  Therefore, it has been \'purchased\' by the public and cannot rightly be withheld from them.  Second, and more importantly, science is intended to benefit humanity.  If it is to do so, it must be shared and communicated.  That is why it has been said that [\"science must push copyright aside.\"](http://www.nature.com/nature/debates/e-access/Articles/stallman.html)
+Stepping back from personal interest, I believe that academic scientists have a **moral imperative** to freely distribute their work, for two reasons.  First, in academia science is primarily funded by taxes.  Therefore, it has been \'purchased\' by the public and cannot rightly be withheld from them.  Second, and more importantly, science is intended to benefit humanity.  If it is to do so, it must be shared and communicated.  That is why it has been said that [\"science must push copyright aside.\"](https://www.nature.com/nature/debates/e-access/Articles/stallman.html)
 
  
 
@@ -42,11 +42,11 @@ Stepping back from personal interest, I believe that academic scientists have a 
 
 - **Gold open access**: The author pays the publishing journal a fee in order to have the article available for free on the publisher\'s website.  Author charges typically are in the range of hundreds to thousands of dollars. 
 
-I have [written elsewhere about the dangers of the gold open access model](http://scienceinthesands.blogspot.co.uk/2011/12/in-defense-of-submission-in-scientific.html).  Suffice it to say that the gold open access approach severely limits which journals I can submit to and consumes my research funds, whereas the green model does not.  [I post all my preprints on the arXiv](http://arxiv.org/find/math/1/au:+Ketcheson_D/0/1/0/all/0/1) and [on my professional website](http://numerics.kaust.edu.sa/publications.html) before submission.  Where allowed, I post final versions as well.
+I have [written elsewhere about the dangers of the gold open access model](https://scienceinthesands.blogspot.co.uk/2011/12/in-defense-of-submission-in-scientific.html).  Suffice it to say that the gold open access approach severely limits which journals I can submit to and consumes my research funds, whereas the green model does not.  [I post all my preprints on the arXiv](https://arxiv.org/find/math/1/au:+Ketcheson_D/0/1/0/all/0/1) and [on my professional website](https://numerics.kaust.edu.sa/publications.html) before submission.  Where allowed, I post final versions as well.
 
 \
 
-Many journals still have restrictive policies that prevent green open access.  If you believe this to be the case for journals that you publish in, it\'s worth checking to be sure.  You can easily find this information in the [Sherpa/Romeo database](http://www.sherpa.ac.uk/romeo/).  The number of publishers who still don\'t allow any kind of green open access are surprisingly few.  For instance, even the evil [Elsevier typically allows archiving of pre- and post-prints](http://www.sherpa.ac.uk/romeo/search.php?id=30&fIDnum=%7C&mode=simple&la=en&format=full).  
+Many journals still have restrictive policies that prevent green open access.  If you believe this to be the case for journals that you publish in, it\'s worth checking to be sure.  You can easily find this information in the [Sherpa/Romeo database](https://www.sherpa.ac.uk/romeo/).  The number of publishers who still don\'t allow any kind of green open access are surprisingly few.  For instance, even the evil [Elsevier typically allows archiving of pre- and post-prints](https://www.sherpa.ac.uk/romeo/search.php?id=30&fIDnum=%7C&mode=simple&la=en&format=full).  
 
 \
 
@@ -57,12 +57,12 @@ Many journals still have restrictive policies that prevent green open access.  
 **\
 **
 
-If you are brave, you can even [modify the journal\'s copyright transfer agreement](http://scholars.sciencecommons.org/), to allow you to retain copyright and release your work under [Creative Commons BY](http://creativecommons.org/licenses/by/2.0/).  This is also (surprisingly) often [accepted by publishers](http://adamdsmith.wordpress.com/2009/07/07/copyright-copywrong/).  I haven\'t done this yet, but I plan to do so with all of my future papers, including those currently under referee.
+If you are brave, you can even [modify the journal\'s copyright transfer agreement](https://scholars.sciencecommons.org/), to allow you to retain copyright and release your work under [Creative Commons BY](https://creativecommons.org/licenses/by/2.0/).  This is also (surprisingly) often [accepted by publishers](https://adamdsmith.wordpress.com/2009/07/07/copyright-copywrong/).  I haven\'t done this yet, but I plan to do so with all of my future papers, including those currently under referee.
 
 \
 
-This first habit of the open scientist is essential but no longer revolutionary.  The open access movement has really picked up speed in the past year, with many [petitions](http://access2research.org/Petition) and initiatives by [governments](http://www.guardian.co.uk/science/2012/jul/25/uk-government-open-access-development-research) and [funding agencies](http://www.wellcome.ac.uk/About-us/Policy/Policy-and-position-statements/WTD002766.htm) moving forward.
+This first habit of the open scientist is essential but no longer revolutionary.  The open access movement has really picked up speed in the past year, with many [petitions](http://access2research.org/Petition) and initiatives by [governments](https://www.guardian.co.uk/science/2012/jul/25/uk-government-open-access-development-research) and [funding agencies](https://www.wellcome.ac.uk/About-us/Policy/Policy-and-position-statements/WTD002766.htm) moving forward.
 
 \
 
-Next up: Habit #2 \-- **[Reproducible research: open code, open data](http://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-2.html).**
+Next up: Habit #2 \-- **[Reproducible research: open code, open data](https://scienceinthesands.blogspot.co.uk/2012/08/7-habits-of-open-scientist-2.html).**

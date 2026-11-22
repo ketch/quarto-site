@@ -31,7 +31,7 @@ I recently received the following invitation in an e-mail from mjmms@masaumnet.
 
 It struck me as strange that someone would consider me so important as to qualify to be a guest editor of his journal, yet needed me to send him my name.  The reason is obvious: this message was probably spammed to thousands (or more) of my colleagues.
 
-As readers of this blog may know, [publishers like this are one of my pet peeves](http://scienceinthesands.blogspot.com/2010/09/unscrupulous-scientific-publisher.html).  So I investigated a bit.  What I found was entertaining.  The publisher\'s homepage is www.masaumnet.com.  There one learns that \"MASAUM Network has a good team of well repute Professors\...\" but evidently cannot afford to hire someone with the ability to write a grammatically correct sentence in English.  As I expected, the publisher has an online-only, \"Open Access\" model that [really means author-pay](http://scienceinthesands.blogspot.com/2011/12/in-defense-of-submission-in-scientific.html).  The cost to publish an article is not terribly high (\$200), although in a bizarre twist the price depends on the number of pages (shouldn\'t it depend on the number of MB?)  Even more entertaining is the fact that their instructions for authors state
+As readers of this blog may know, [publishers like this are one of my pet peeves](https://scienceinthesands.blogspot.com/2010/09/unscrupulous-scientific-publisher.html).  So I investigated a bit.  What I found was entertaining.  The publisher\'s homepage is www.masaumnet.com.  There one learns that \"MASAUM Network has a good team of well repute Professors\...\" but evidently cannot afford to hire someone with the ability to write a grammatically correct sentence in English.  As I expected, the publisher has an online-only, \"Open Access\" model that [really means author-pay](https://scienceinthesands.blogspot.com/2011/12/in-defense-of-submission-in-scientific.html).  The cost to publish an article is not terribly high (\$200), although in a bizarre twist the price depends on the number of pages (shouldn\'t it depend on the number of MB?)  Even more entertaining is the fact that their instructions for authors state
 
 > *Paper submissions are accepted only in Doc format.  Other formats will not be accepted.*
 
@@ -42,7 +42,7 @@ Today, I received the following highly alarming message:
 > *Dear Colleague\
 > \
 > I am glad to inform you that information about you has been added at\
-> *<a href="http://www.masaumnet.com/ebmjmss.html" style="color: #1155cc;" target="_blank"><em>www.masaumnet.com/ebmjmss.html</em></a>*.\
+> *<a href="https://www.masaumnet.com/ebmjmss.html" style="color: #1155cc;" target="_blank"><em>www.masaumnet.com/ebmjmss.html</em></a>*.\
 > \
 > Please check and confirm information displayed about you.\
 > \

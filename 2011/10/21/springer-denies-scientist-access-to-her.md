@@ -26,7 +26,7 @@ The following letter from Dianne O\'leary, Professor of Computer Science at the 
 > \
 > On September 9, I wrote to Springer asking for a pdf file of one of my\
 > papers:\
-> *<a href="http://dx.doi.org/10.1023/A:1016614603137" style="color: #1c51a8;" target="_blank"><em>http://dx.doi.org/10.1023/A:1016614603137</em></a>*\
+> *<a href="https://dx.doi.org/10.1023/A:1016614603137" style="color: #1c51a8;" target="_blank"><em>https://dx.doi.org/10.1023/A:1016614603137</em></a>*\
 > Wang and O\'Leary, Adaptive use of iterative methods in\
 > predictor-corrector interior point methods for linear programming\
 > Numerical Algorithms, 25 (2000) 387-406.\
@@ -49,7 +49,7 @@ The following letter from Dianne O\'leary, Professor of Computer Science at the 
 > Dianne O\'Leary*
 
 \
-One more reason to be careful about the journals you submit to.  [SIAM](http://www.siam.org/journals/pdf/copyrite.pdf), for instance, allows the author not only unlimited use for personal purposes, but also to post the final version of the article on his/her institutional webpage.\
+One more reason to be careful about the journals you submit to.  [SIAM](https://www.siam.org/journals/pdf/copyrite.pdf), for instance, allows the author not only unlimited use for personal purposes, but also to post the final version of the article on his/her institutional webpage.\
 By the way, Prof. O\'Leary now has over 200 copies of her article \-- so there\'s no need to indundate her inbox with more.  And apparently someone from Springer has now (on Oct. 19) given in and provided her official access to her article.\
 \
 **Update from Prof. O\'leary on Nov. 1:**\
@@ -89,9 +89,9 @@ By the way, Prof. O\'Leary now has over 200 copies of her article \-- so there\'
   \
   As Steve Vavasis noted last week, authors who care about making their\
   articles more available need to look into mechanisms such as the SPARC\
-  copyright addendum: <a href="http://www.arl.org/sparc/author/addendum.shtml" style="color: #1c51a8;" target="_blank">http://www.arl.org/sparc/author/addendum.shtml</a>\
+  copyright addendum: <a href="https://www.arl.org/sparc/author/addendum.shtml" style="color: #1c51a8;" target="_blank">https://www.arl.org/sparc/author/addendum.shtml</a>\
   \
   See also the SHERPA/RoMEO site that provides the copyright policy for\
-  many journals: <a href="http://www.sherpa.ac.uk/romeo" style="color: #1c51a8;" target="_blank">http://www.sherpa.ac.uk/romeo</a>*
+  many journals: <a href="https://www.sherpa.ac.uk/romeo" style="color: #1c51a8;" target="_blank">https://www.sherpa.ac.uk/romeo</a>*
 
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

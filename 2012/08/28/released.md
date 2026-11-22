@@ -16,4 +16,4 @@ Although I\'m rather proud of it, it fills a very small niche in the world and I
 
 One of the thorniest issues in NodePy previously was that floating-point representations of method coefficients were sometimes insufficient, especially when studying very high order methods.  I\'ve now updated NodePy to use Sympy Rationals (and radicals, etc.) wherever possible, allowing exact analysis of many properties.
 
-That and [much more](http://numerics.kaust.edu.sa/nodepy/changes.html#changes) awaits in [NodePy version 0.4](http://numerics.kaust.edu.sa/nodepy/), now available via pip.
+That and [much more](https://numerics.kaust.edu.sa/nodepy/changes.html#changes) awaits in [NodePy version 0.4](https://numerics.kaust.edu.sa/nodepy/), now available via pip.

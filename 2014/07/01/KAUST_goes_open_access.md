@@ -26,7 +26,7 @@ Gold OA).  Authors continue to publish in the same manner -- and the same
 journals -- as before.
 
 KAUST's OA policy is based closely on the text [recommended by the Harvard Open
-Access Project (HOAP)](http://cyber.law.harvard.edu/hoap/Good_practices_for_university_open-access_policies).
+Access Project (HOAP)](https://cyber.law.harvard.edu/hoap/Good_practices_for_university_open-access_policies).
 HOAP was an extremely valuable resource for us in developing a policy and 
 convincing the faculty, administration, and legal team to approve it.
 

@@ -20,6 +20,7 @@ Anything unexpected raises an error.
 """
 import codecs
 import contextlib
+import html
 import io
 import re
 import shutil
@@ -38,9 +39,22 @@ PAPER_IMAGES = Path.home() / "Library/CloudStorage/Box-Box/My Papers/paper_image
 TAGS_FILE = HERE / "publication_tags.yml"
 DEST = HERE / "publications.qmd"
 
-FILTER_TAGS = ["time-integration", "periodic-media", "hyperbolic", "ssp", "runge-kutta"]
+FILTER_TAGS = ["time-integration", "periodic-media", "hyperbolic", "ssp", "runge-kutta",
+               "epidemiology"]
 FILTER_LABELS = ["Time integration", "Waves in periodic media", "Hyperbolic PDEs",
-                 "Strong stability preservation", "Runge-Kutta methods"]
+                 "Strong stability preservation", "Runge-Kutta methods", "Epidemiology"]
+# Each keyword becomes one CSS class, with spaces turned into hyphens
+# ("time integration" -> "time-integration").  Keywords listed here also add
+# the filter tags shown, for .bib spellings that differ from the tag names.
+KEYWORD_FILTERS = {
+    "hyperbolic pdes": ["hyperbolic"],
+    "runge-kutta methods": ["runge-kutta"],
+    "optimized explicit runge-kutta": ["runge-kutta"],
+    "runge-kutta time-integration": ["runge-kutta", "time-integration"],
+    "runge-kutta time-integration multi-rate": ["runge-kutta", "time-integration"],
+    "strong stability preservation": ["ssp"],
+    "strong stability preserving": ["ssp"],
+}
 TEXT_FIELDS = ["title", "journal", "booktitle", "school", "annote", "institution"]
 SELF_LINK_RE = re.compile(r'(src|href)="https?://(?:www\.)?davidketcheson\.info/([^"]+)"')
 LOCAL_IMG_RE = re.compile(r'src="/(assets/paper_images/[^"]+)"')
@@ -83,6 +97,61 @@ def decode_latex(s: str, where: str) -> str:
     return out
 
 
+ENTRY_RE = re.compile(r'<div id="pub" class="pub filterable ([^"]*)">\n(.*?)\n</div>\n', re.S)
+# Hosts whose links in the generated list were checked (Nov 2026) to give the
+# same response over https as over http; their http:// links become https://.
+HTTPS_HOSTS = ["arxiv.org", "bitbucket.org", "doi.wiley.com", "dx.doi.org", "github.com",
+               "imajna.oxfordjournals.org", "linkinghub.elsevier.com",
+               "numerics.kaust.edu.sa", "www.amazon.com", "www.oulu.fi"]
+HTTPS_RE = re.compile(r'(href|src)="http://(' + "|".join(map(re.escape, HTTPS_HOSTS)) + r')/')
+TAG_CLASSES = {"name": "pub-title", "authors": "pub-authors",
+               "journal": "pub-journal", "links": "pub-links"}
+
+
+def clean_html(body: str) -> str:
+    """Turn the generator's HTML into valid HTML that looks the same.
+
+    - Drops the duplicate id="pub" on every entry.
+    - Replaces the made-up <name>, <authors>, <journal>, <links> elements
+      with <span class="pub-...">.  (Unknown elements are inline, as spans are.)
+    - Replaces the obsolete align="right" on images (styles.css floats them)
+      and gives each image the paper title as alt text.
+    - Removes the leading and trailing "|" from the links line.
+    - Changes http:// to https:// for the hosts in HTTPS_HOSTS.
+    """
+    n_entries = body.count('<div id="pub"')
+
+    def entry(m):
+        classes = " ".join(m.group(1).split())
+        html_ = m.group(2)
+        title = re.search(r"<name>(.*?)</name>", html_, re.S)
+        if not title:
+            raise ValueError(f"Publication entry without a title:\n{html_}")
+        alt = html.escape(html.unescape(" ".join(title.group(1).split())), quote=True)
+        html_, n_img = re.subn(r'<img src="([^"]+)" align="right" />',
+                               rf'<img src="\1" alt="{alt}" />', html_)
+        if n_img != html_.count("<img"):
+            raise ValueError(f"Unexpected <img> markup:\n{html_}")
+
+        def links(lm):
+            parts = [s.strip() for s in lm.group(1).split("|")]
+            return "<links>" + " | ".join(s for s in parts if s) + "</links>"
+        html_ = re.sub(r"<links>(.*?)</links>", links, html_, flags=re.S)
+        for tag, cls in TAG_CLASSES.items():
+            html_ = re.sub(rf"<{tag}>\s*(.*?)\s*</{tag}>",
+                           rf'<span class="{cls}">\1</span>', html_, flags=re.S)
+        return f'<div class="pub filterable {classes}">\n{html_}\n</div>\n'
+
+    body = HTTPS_RE.sub(r'\1="https://\2/', body)
+    body, n = ENTRY_RE.subn(entry, body)
+    if n != n_entries:
+        raise ValueError(f"Cleaned {n} of {n_entries} publication entries")
+    leftover = re.search(r"</?(name|authors|journal|links)>|id=\"pub\"|align=", body)
+    if leftover:
+        raise ValueError(f"Unconverted markup left: {leftover.group(0)!r}")
+    return body
+
+
 def load_generator():
     sys.path.insert(0, str(GENERATOR_DIR))
     import bibtex2htmldiv as gen
@@ -121,11 +190,25 @@ def main(bibfile: Path):
             if field in p:
                 p[field] = decode_latex(p[field], f"{key}.{field}")
         p["author"] = [decode_latex(a, f"{key}.author") for a in p["author"]]
+        if "`" in p["title"]:  # Markdown code marks, e.g. `NodePy`; shown raw in HTML
+            p["title"] = p["title"].replace("`", "")
         if p["reference_type"] == "article" and p.get("journal", "").lower().startswith("arxiv"):
             p["reference_type"] = "unpublished"
             n_preprint += 1
-        if tags.get(key):
-            p["keywords"] = ", ".join(filter(None, [p.get("keywords", "")] + tags[key]))
+        # For a preprint, an arXiv DOI would give a "Published version" link
+        # that is the same paper as the "arXiv version" link.
+        if p["reference_type"] == "unpublished" and \
+                p.get("doi", "").lower().startswith("10.48550/arxiv"):
+            if "arxivid" not in p:
+                raise ValueError(f"{key}: arXiv DOI but no arxivid field")
+            del p["doi"]
+        keywords = [k.strip().lower() for k in re.split(r"[,;]", p.get("keywords", ""))
+                    if k.strip()] + (tags.get(key) or [])
+        classes = []
+        for k in keywords:
+            classes.append(re.sub(r"\s+", "-", k))
+            classes += KEYWORD_FILTERS.get(k, [])
+        p["keywords"] = ", ".join(dict.fromkeys(classes))
 
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp) / "bib.html"
@@ -154,6 +237,14 @@ def main(bibfile: Path):
     # Make each paper image a link to the same place as the paper's title.
     # Entries whose title has no link keep an unlinked image.
     body, n_linked = IMG_TITLE_RE.subn(r'<a href="\2">\1</a>\n', body)
+
+    body = clean_html(body)
+    for doi, label in (extra.get("doi_labels") or {}).items():
+        link = f'<a href="https://doi.org/{doi}">Published version</a>'
+        if body.count(link) != 1:
+            raise ValueError(f"doi_labels: expected one 'Published version' link to {doi}, "
+                             f"found {body.count(link)}")
+        body = body.replace(link, f'<a href="https://doi.org/{doi}">{html.escape(label)}</a>')
 
     images = LOCAL_IMG_RE.findall(body)
     for rel in images:
