@@ -105,11 +105,8 @@ viewof t3 = timeSlider()
 figure(triangular(30, 60), t3)
 ```
 
-This time the solution more than doubles in length before it decays.  Each
-arrow still shrinks, the green one quickly and the blue one slowly.  But
-because the eigenvectors are nearly parallel, the two arrows are long and
-point in nearly opposite directions, so at the start they almost cancel.  Once
-the green arrow has shrunk, what is left is the long blue one.
+As before, each component is shrinking over time, but now the overall solution
+more than doubles in length before it decays!
 
 A matrix whose eigenvectors are perpendicular is called *normal*.  The first two
 examples are normal; the third is not.  If a normal matrix has negative
