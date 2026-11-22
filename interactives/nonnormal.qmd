@@ -63,10 +63,9 @@ $$
 u'(t) = \begin{bmatrix} -5.5 & 4.5 \\ 4.5 & -5.5 \end{bmatrix} u(t) .
 $$
 
-The two equations are coupled.  But the matrix has the same eigenvalues, $-1$ and $-10$, and its
-eigenvectors point along the diagonals $(1, 1)$ and $(-1, 1)$.  These are still
-perpendicular.  As before, the blue and green arrows are the parts of $u(t)$
-along the two eigenvectors.
+The two equations are coupled.  But the matrix has the same eigenvalues, $-1$
+and $-10$, so each eigencomponent must decay.  The solution is visualized
+below, with the eigenvectors again indicated in green and blue.
 
 ```{ojs}
 //| echo: false
