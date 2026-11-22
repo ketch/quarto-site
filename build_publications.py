@@ -16,10 +16,13 @@ and after:
     index.qmd includes.
   - Paper images (<citekey>.png in PAPER_IMAGES) are copied into
     assets/paper_images/.
+  - Each listed paper gets a supplementary page papers/<citekey>/, linked
+    from its entry; see paper_pages.py.
 
 The search box and filter buttons are implemented in publications.js.
 Anything unexpected raises an error.
 """
+import ast
 import codecs
 import contextlib
 import html
@@ -32,6 +35,8 @@ from pathlib import Path
 
 import latexcodec  # noqa: F401  (registers the "ulatex" codec)
 import yaml
+
+import paper_pages
 
 HERE = Path(__file__).resolve().parent
 JEKYLL_ROOT = Path.home() / "Research/Projects/labnotebook"  # the old Jekyll site
@@ -182,6 +187,11 @@ def recent_preprints(body: str) -> str:
             '```{=html}\n<ul class="recent-preprints">\n' + lis + "\n</ul>\n```\n")
 
 
+def gen_links() -> dict:
+    """The extra links per paper from the Jekyll site's paperlinks.txt (also read by the generator)."""
+    return ast.literal_eval((JEKYLL_ROOT / "assets/paperlinks.txt").read_text())
+
+
 def load_generator():
     sys.path.insert(0, str(GENERATOR_DIR))
     import bibtex2htmldiv as gen
@@ -211,6 +221,12 @@ def main(bibfile: Path):
         if bad:
             raise ValueError(f"Unknown tags for {key}: {bad}")
 
+    by_pid = {p["pid"]: p for p in pubs}
+    for key, text in (extra.get("abstract_overrides") or {}).items():
+        if key not in by_pid:
+            raise KeyError(f"{TAGS_FILE.name} abstract_overrides has a key not in {bibfile.name}: {key}")
+        by_pid[key]["abstract"] = text
+
     n_preprint = 0
     for p in pubs:
         key = p["pid"]
@@ -239,6 +255,24 @@ def main(bibfile: Path):
             classes.append(re.sub(r"\s+", "-", k))
             classes += KEYWORD_FILTERS.get(k, [])
         p["keywords"] = ", ".join(dict.fromkeys(classes))
+        p["authors_list"] = list(p["author"])  # writebib turns p["author"] into a string
+
+    keys = paper_pages.listed_keys(gen, pubs)
+    by_key = {p["pid"]: p for p in pubs}
+    repos = {k: v["Reproducibility repository"] for k, v in gen_links().items()
+             if k in by_key and "Reproducibility repository" in v}
+    for k, url in (extra.get("repos") or {}).items():
+        if k not in by_key:
+            raise KeyError(f"{TAGS_FILE.name} repos has a key not in {bibfile.name}: {k}")
+        if url is None:
+            if k not in repos:
+                raise KeyError(f"{TAGS_FILE.name} repos: {k} is null but has no repository to hide")
+            del repos[k]
+            continue
+        if k in repos and repos[k] != url:
+            raise ValueError(f"{k}: repository {url} in {TAGS_FILE.name} but {repos[k]} in paperlinks.txt")
+        repos[k] = url
+    abstracts = paper_pages.update_abstract_cache(pubs, keys)
 
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp) / "bib.html"
@@ -276,6 +310,10 @@ def main(bibfile: Path):
                              f"found {body.count(link)}")
         body = body.replace(link, f'<a href="https://doi.org/{doi}">{html.escape(label)}</a>')
 
+    entries = paper_pages.split_entries(body, keys, by_key)
+    counts = paper_pages.write_pages(entries, by_key, abstracts, repos)
+    body = paper_pages.add_page_links(body, keys)
+
     images = LOCAL_IMG_RE.findall(body)
     for rel in images:
         dest = HERE / rel
@@ -293,6 +331,12 @@ def main(bibfile: Path):
     print(f"Wrote {DEST.name}: {n} publications ({n_preprint} arXiv articles listed as "
           f"preprints), {len(images)} with images ({n_linked} linked to the paper), "
           f"{len(no_img)} without")
+    print(f"Paper pages in {paper_pages.PAGES_DIR.name}/: {len(entries)} ({counts['new']} new); "
+          f"abstracts from .bib {counts['bib']}, from arXiv {counts['arxiv']}, "
+          f"from Crossref {counts['crossref']}, "
+          f"none {len(counts['none'])}; repositories {counts['repo']}")
+    if counts["none"]:
+        print("  no abstract: " + " ".join(counts["none"]))
 
 
 if __name__ == "__main__":

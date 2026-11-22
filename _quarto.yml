@@ -58,7 +58,7 @@ website:
       # Quarto shows a sidebar only on pages it lists, so the posts must be
       # listed here for the sidebar to appear on them.  Collapsed by default.
       - section: "All posts"
-        contents: "20*/**/*.{md,qmd}"
+        contents: "/20*/**/*.{md,qmd}"
 
 format:
   html:

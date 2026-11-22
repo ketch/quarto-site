@@ -4,7 +4,7 @@ subtitle: Mathematics and computation from the shores of the Red Sea
 toc: false
 listing:
   id: recent-posts-listing
-  contents: "20*/**/*.{md,qmd}"
+  contents: "/20*/**/*.{md,qmd}"
   sort: "date desc"
   type: default
   max-items: 4

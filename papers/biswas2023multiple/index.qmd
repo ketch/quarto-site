@@ -1,0 +1,8 @@
+{{< include _info.qmd >}}
+
+<!--
+Supplementary material for this paper goes below (animations, interactive
+figures, ...).  The title, authors, abstract and links above come from
+build_publications.py; edit biswas2023multiple in the .bib file or publication_tags.yml
+to change them.
+-->

@@ -9,6 +9,14 @@
 # doi_labels: link text to use in place of "Published version" for a DOI
 #   that points to a preprint server rather than a journal.
 #
+# abstract_overrides: abstracts to use in place of the .bib (or arXiv)
+#   abstract on the paper's supplementary page, for entries whose abstract is
+#   malformed.  Remove an override once the .bib entry is fixed.
+#
+# repos: reproducibility repositories, for papers not listed with one in the
+#   Jekyll site's paperlinks.txt.  null hides a paperlinks.txt repository
+#   (e.g. a dead link) from the paper's supplementary page.
+#
 # title_overrides: replacement titles for entries whose .bib title is
 #   malformed.  Remove an override once the .bib entry is fixed.
 
@@ -58,3 +66,54 @@ doi_labels:
   10.1101/2020.05.11.20097972: medRxiv version   # ketcheson2020estimating
 
 title_overrides: {}
+
+abstract_overrides:
+  # .bib and arXiv abstracts both contain a stray "\cite{pyclaw}"; removed here.
+  2012_pyclaw-sisc: Development of scientific software involves tradeoffs between ease of use, generality, and performance. We describe the design of a general hyperbolic PDE solver that can be operated with the convenience of MATLAB yet achieves efficiency near that of hand-coded Fortran and scales to the largest supercomputers. This is achieved by using Python for most of the code while employing automatically-wrapped Fortran kernels for computationally intensive routines, and using Python bindings to interface with a parallel computing library and other numerical packages. The software described here is PyClaw, a Python-based structured grid solver for general systems of hyperbolic PDEs. PyClaw provides a powerful and intuitive interface to the algorithms of the existing Fortran codes Clawpack and SharpClaw, simplifying code development and use while providing massive parallelism and scalable solvers via the PETSc library. The package is further augmented by use of PyWENO for generation of efficient high-order weighted essentially non-oscillatory reconstruction code. The simplicity, capability, and performance of this approach are demonstrated through application to example problems in shallow water flow, compressible flow and elasticity.
+
+repos:
+  # Found Nov 2026 in each paper's arXiv source (text or bibliography) unless noted.
+  2012_ketchesonleveque_periodic:  https://github.com/ketch/layeredmediashocks       # paper links bitbucket.org/ketch/layeredmediashocks (now 404); same-named repo on GitHub
+  2014_hork:                       https://github.com/ketch/high_order_RK_RR
+  2015_diffractons:                https://github.com/ketch/diffractons_RR
+  2016_ssp_lmm_vss:                https://github.com/numerical-mathematics/ssp-lmm-vss_RR
+  2018_perturbations:              https://doi.org/10.5281/zenodo.1146916   # cited in the paper (GitHub URL ketch/optimal_splittings_RR is commented out)
+  2019_characteristics:            https://github.com/ketch/characteristics_rr
+  2019_energyRRK:                  https://github.com/ketch/RRK_rr   # matched by repo description only; not linked in the arXiv source
+  2019_energystability:            https://github.com/ranocha/EnergyStabilityExplicitRungeKuttaNonlinearNonautonomous
+  2019_entropyRRK:                 https://github.com/ranocha/ConvexRelaxationRungeKutta
+  2019_shoaling:                   https://github.com/rjleveque/shoaling_paper_figures   # cited as "Code to accompany this paper"
+  2020_broad:                      https://github.com/ranocha/Dispersive-wave-schemes-notebooks
+  2020_relaxation:                 https://github.com/ranocha/Relaxation-LMM-notebooks
+  2021_solitary:                   https://github.com/manuel-quezada/water_wave_diffractons_RR
+  2025_Euler_homogenization:       https://github.com/ketch/Euler_1D_homogenization_RR
+  2025_hyperbolization:            https://github.com/ketch/hyperbolization-RR
+  2025_sw1d_homogenization:        https://github.com/ketch/shallow_water_bathymetry_effective_medium_RR
+  2025_sw2d_homogenization:        https://github.com/ketch/Shallow_water_2D_homogenization_RR
+  alamri2024very:                  https://github.com/yousefalamri55/High_Order_DIRK_Methods_Coeffs   # method coefficients
+  barrios2025pseudo:               https://github.com/Sondar74/PEP_Reproducibility2024
+  biswas2023multiple:              https://github.com/abhibsws/Multiple_Relaxation_RK_Methods
+  biswas2024accurate:              https://github.com/abhibsws/Multiple_Relaxation_NLS
+  biswas2025explicit:              https://github.com/abhibsws/High_WSO_ERK_Methods
+  biswas2025hyperbolic:            https://github.com/ketch/2025_NLSH_reproducibility   # matched by repo description (exact title); not linked in the arXiv source
+  biswas2025traveling:             https://github.com/abhibsws/2024_kdvh_RR
+  biswas2026asymptotic:            https://github.com/abhibsws/AP_Exp_Int_KdVH_RR
+  bleecke2025asymptotic:           https://github.com/sbleecke/2025_bbmh
+  busaleh2024homogenized:          https://github.com/laila-16/Homogenization_of_Isentropic_Gas_Equations
+  izgin2025order:                  https://github.com/IzginThomas/NSARK
+  jensen2026optimized:             https://github.com/tylerj32/optimized_lmms_for_stiff_problems_repository
+  ketcheson2021optimal:            https://github.com/ketch/SIR-control-code
+  ketcheson2023computing:          https://github.com/ketch/bseries-package-notebooks   # also archived as doi.org/10.5281/zenodo.5716612
+  munoz2023comparative:            https://doi.org/10.5281/zenodo.8335057
+  munoz2026adaptive:               https://github.com/carlosmunozmoncayo/adaptive_explicit_HSGN   # also archived as doi.org/10.5281/zenodo.20623408
+  munoz2026hyperbolic:             https://github.com/carlosmunozmoncayo/NLSH_ND
+  nusslein2021positivity:          https://github.com/ketch/Positive_RK_Reproducibility
+  quezada2021maximum:              https://github.com/manuel-quezada/BP_Lim_for_imp_RK_Methods
+  rajvanshi2026efficient:          https://github.com/manu0x/Conservative-Schrodinger-Poisson-ImEx
+  ramirez2026compartmental:        https://github.com/danielarenee/infection-modeling-with-mutation
+  ranocha2020relaxation:           https://github.com/ranocha/Hamiltonian-RRK-notebooks
+  ranocha2021optimized:            https://github.com/ranocha/Optimized-RK-CFD   # cited as the coefficients/code repository
+  ranocha2021rate:                 https://github.com/ranocha/Dispersive-wave-error-growth-notebooks
+  ranocha2025high:                 https://github.com/ranocha/2025_nls
+  ranocha2026conserving:           https://github.com/ranocha/2025_BBM_KdV_NLS
+  2012_pyclaw-sisc:                null   # bitbucket.org/ahmadia/pyclaw-sisc-rr (in paperlinks.txt) is 404; no copy found

@@ -31,7 +31,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Manvendra Pratap Rajvanshi  and David I Ketcheson</span>,
 <span class="pub-journal">arXiv preprint arXiv:2604.05940</span> (2026)<br>
-<span class="pub-links"><a href="https://arxiv.org/abs/2604.05940">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/rajvanshi2026efficient/">Supplementary page</a> | <a href="https://arxiv.org/abs/2604.05940">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -41,7 +41,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Carlos Muñoz-Moncayo  and David I Ketcheson</span>,
 <span class="pub-journal">arXiv preprint arXiv:2606.12162</span> (2026)<br>
-<span class="pub-links"><a href="https://arxiv.org/abs/2606.12162">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/munoz2026adaptive/">Supplementary page</a> | <a href="https://arxiv.org/abs/2606.12162">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -51,7 +51,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Abhijit Biswas, Sebastiano Boscarino, David I Ketcheson,  and Giovanni Russo</span>,
 <span class="pub-journal">arXiv preprint arXiv:2609.22864</span> (2026)<br>
-<span class="pub-links"><a href="https://arxiv.org/abs/2609.22864">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/biswas2026asymptotic/">Supplementary page</a> | <a href="https://arxiv.org/abs/2609.22864">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -61,7 +61,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Daniela R Ramírez-Gutiérrez, Lajos Lóczi, Carlos Muñoz-Moncayo,  and David I Ketcheson</span>,
 <span class="pub-journal">arXiv preprint arXiv:2610.01111</span> (2026)<br>
-<span class="pub-links"><a href="https://arxiv.org/abs/2610.01111">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ramirez2026compartmental/">Supplementary page</a> | <a href="https://arxiv.org/abs/2610.01111">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -71,7 +71,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Carlos Muñoz-Moncayo, Abhijit Biswas, David I Ketcheson,  and Manvendra Rajvanshi</span>,
 <span class="pub-journal">arXiv preprint arXiv:2611.03642</span> (2026)<br>
-<span class="pub-links"><a href="https://arxiv.org/abs/2611.03642">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/munoz2026hyperbolic/">Supplementary page</a> | <a href="https://arxiv.org/abs/2611.03642">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -81,7 +81,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Hendrik Ranocha  and David I Ketcheson</span>,
 <span class="pub-journal">arXiv preprint arXiv:2510.14335</span> (2025)<br>
-<span class="pub-links"><a href="https://arxiv.org/abs/2510.14335">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ranocha2025high/">Supplementary page</a> | <a href="https://arxiv.org/abs/2510.14335">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -91,7 +91,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Yiannis Hadjimichael, David I. Ketcheson,  and Lajos Lóczi</span>,
  (2021)<br>
-<span class="pub-links"><a href="https://arxiv.org/abs/2105.07403">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/hadjimichael2021positivity/">Supplementary page</a> | <a href="https://arxiv.org/abs/2105.07403">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -102,7 +102,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Tyler Jensen, David I Ketcheson,  and Lajos Lóczi</span>,
 <span class="pub-journal">Numerical Algorithms</span> (2026)<br>
-<span class="pub-links"><a href="https://doi.org/10.48550/arXiv.2610.22685">Published version</a> | <a href="https://arxiv.org/abs/2610.22685">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/jensen2026optimized/">Supplementary page</a> | <a href="https://doi.org/10.48550/arXiv.2610.22685">Published version</a> | <a href="https://arxiv.org/abs/2610.22685">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -111,7 +111,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Hendrik Ranocha  and David I. Ketcheson</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 48(4):A2314--A2341 (2026)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/25M183314X">Published version</a> | <a href="https://arxiv.org/abs/2512.16352">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ranocha2026conserving/">Supplementary page</a> | <a href="https://doi.org/10.1137/25M183314X">Published version</a> | <a href="https://arxiv.org/abs/2512.16352">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -121,7 +121,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Laila S Busaleh  and David I Ketcheson</span>,
 <span class="pub-journal">Communications in Mathematical Sciences</span> (2026)<br>
-<span class="pub-links"><a href="https://doi.org/10.4310/cms.260326190256">Published version</a> | <a href="https://arxiv.org/abs/2410.05176">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/busaleh2024homogenized/">Supplementary page</a> | <a href="https://doi.org/10.4310/cms.260326190256">Published version</a> | <a href="https://arxiv.org/abs/2410.05176">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -131,7 +131,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Abhijit Biswas, Laila S Busaleh, David I Ketcheson, Carlos Muñoz-Moncayo,  and Manvendra Rajvanshi</span>,
 <span class="pub-journal">Studies in Applied Mathematics</span>, 155(4):e70129 (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.1111/sapm.70129">Published version</a> | <a href="https://arxiv.org/abs/2505.21424">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/biswas2025hyperbolic/">Supplementary page</a> | <a href="https://doi.org/10.1111/sapm.70129">Published version</a> | <a href="https://arxiv.org/abs/2505.21424">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -141,7 +141,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Sebastian Bleecke, Abhijit Biswas, David I Ketcheson, Hendrik Ranocha,  and Jochen Schutz</span>,
 <span class="pub-journal">Communications on Applied Mathematics and Computation</span> (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.48550/arXiv.2511.10044">Published version</a> | <a href="https://arxiv.org/abs/2511.10044">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/bleecke2025asymptotic/">Supplementary page</a> | <a href="https://doi.org/10.48550/arXiv.2511.10044">Published version</a> | <a href="https://arxiv.org/abs/2511.10044">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -150,7 +150,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Abhijit Biswas, David I Ketcheson, Steven Roberts, Benjamin Seibold,  and David Shirokoff</span>,
 <span class="pub-journal">SIAM Journal on Numerical Analysis</span>, 63(4):1398-1426 (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/23M1606812">Published version</a> | <a href="https://arxiv.org/abs/2310.02817">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/biswas2025explicit/">Supplementary page</a> | <a href="https://doi.org/10.1137/23M1606812">Published version</a> | <a href="https://arxiv.org/abs/2310.02817">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -160,7 +160,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I Ketcheson  and Abhijit Biswas</span>,
 <span class="pub-journal">Nonlinearity</span>, 38(5):055002 (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.1088/1361-6544/adc6e8">Published version</a> | <a href="https://arxiv.org/abs/2405.16841">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2025_hyperbolization/">Supplementary page</a> | <a href="https://doi.org/10.1088/1361-6544/adc6e8">Published version</a> | <a href="https://arxiv.org/abs/2405.16841">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -170,7 +170,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Gabriel A León, David I Ketcheson,  and Hendrik Ranocha</span>,
 <span class="pub-journal">ESAIM: Mathematical Modelling and Numerical Analysis</span>, 59(2):729--748 (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.1051/m2an/2025002">Published version</a> | <a href="https://arxiv.org/abs/2407.15365">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/barrios2025pseudo/">Supplementary page</a> | <a href="https://doi.org/10.1051/m2an/2025002">Published version</a> | <a href="https://arxiv.org/abs/2407.15365">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -180,7 +180,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I Ketcheson  and Giovanni Russo</span>,
 <span class="pub-journal">Journal of Nonlinear Waves</span>, 1 (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.1017/jnw.2025.1">Published version</a> | <a href="https://arxiv.org/abs/2409.00076">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2025_sw2d_homogenization/">Supplementary page</a> | <a href="https://doi.org/10.1017/jnw.2025.1">Published version</a> | <a href="https://arxiv.org/abs/2409.00076">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -190,7 +190,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I Ketcheson  and Giovanni Russo</span>,
 <span class="pub-journal">Multiscale Modeling & Simulation</span>, 24(1):187--213 (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/24M1712527">Published version</a> | <a href="https://arxiv.org/abs/2412.11086">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2025_Euler_homogenization/">Supplementary page</a> | <a href="https://doi.org/10.1137/24M1712527">Published version</a> | <a href="https://arxiv.org/abs/2412.11086">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -200,7 +200,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Abhijit Biswas, David I Ketcheson, Hendrik Ranocha,  and Jochen Schütz</span>,
 <span class="pub-journal">J. Sci. Comput.</span>, 103(3):90 (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-025-02898-x">Published version</a> | <a href="https://arxiv.org/abs/2412.17117">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/biswas2025traveling/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-025-02898-x">Published version</a> | <a href="https://arxiv.org/abs/2412.17117">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -209,7 +209,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Thomas Izgin, David I Ketcheson,  and Andreas Meister</span>,
 <span class="pub-journal">Communications in Applied Mathematics and Computational Science</span>, 20(1):29--66 (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.2140/camcos.2025.20.29">Published version</a> | <a href="https://arxiv.org/abs/2305.14297">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/izgin2025order/">Supplementary page</a> | <a href="https://doi.org/10.2140/camcos.2025.20.29">Published version</a> | <a href="https://arxiv.org/abs/2305.14297">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -219,7 +219,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I Ketcheson, Lajos Lóczi,  and Giovanni Russo</span>,
 <span class="pub-journal">Multiscale Modeling & Simulation</span>, 23(1):397--430 (2025)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/23M1614869">Published version</a> | <a href="https://arxiv.org/abs/2311.02603">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2025_sw1d_homogenization/">Supplementary page</a> | <a href="https://doi.org/10.1137/23M1614869">Published version</a> | <a href="https://arxiv.org/abs/2311.02603">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -228,7 +228,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Abhijit Biswas, David Ketcheson, Benjamin Seibold,  and David Shirokoff</span>,
 <span class="pub-journal">SIAM Journal on Numerical Analysis</span>, 62(1):48--72 (2024)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/22M1483943">Published version</a> | <a href="https://arxiv.org/abs/2204.03603">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/biswas2024algebraic/">Supplementary page</a> | <a href="https://doi.org/10.1137/22M1483943">Published version</a> | <a href="https://arxiv.org/abs/2204.03603">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -238,7 +238,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Yousef Alamri  and David I Ketcheson</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 100(3):84 (2024)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-024-02627-w">Published version</a> | <a href="https://arxiv.org/abs/2211.14574">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/alamri2024very/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-024-02627-w">Published version</a> | <a href="https://arxiv.org/abs/2211.14574">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -248,7 +248,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Abhijit Biswas  and David I Ketcheson</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 46(6):A3827--A3848 (2024)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/23M1598118">Published version</a> | <a href="https://arxiv.org/abs/2309.02324">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/biswas2024accurate/">Supplementary page</a> | <a href="https://doi.org/10.1137/23M1598118">Published version</a> | <a href="https://arxiv.org/abs/2309.02324">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -258,7 +258,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I Ketcheson  and Hendrik Ranocha</span>,
 <span class="pub-journal">ACM Transactions on Mathematical Software</span>, 49(2):1--23 (2023)<br>
-<span class="pub-links"><a href="https://doi.org/10.1145/3573384">Published version</a> | <a href="https://arxiv.org/abs/2111.11680">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ketcheson2023computing/">Supplementary page</a> | <a href="https://doi.org/10.1145/3573384">Published version</a> | <a href="https://arxiv.org/abs/2111.11680">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -268,7 +268,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Abhijit Biswas, David I Ketcheson, Benjamin Seibold,  and David Shirokoff</span>,
 <span class="pub-journal">Communications in Applied Mathematics and Computational Science</span>, 18(1):1--28 (2023)<br>
-<span class="pub-links"><a href="https://doi.org/10.2140/camcos.2023.18.1">Published version</a> | <a href="https://arxiv.org/abs/2204.11264">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/biswas2023design/">Supplementary page</a> | <a href="https://doi.org/10.2140/camcos.2023.18.1">Published version</a> | <a href="https://arxiv.org/abs/2204.11264">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -278,7 +278,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Abhijit Biswas  and David I Ketcheson</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 97(1):4 (2023)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-023-02312-4">Published version</a> | <a href="https://arxiv.org/abs/2302.05235">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/biswas2023multiple/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-023-02312-4">Published version</a> | <a href="https://arxiv.org/abs/2302.05235">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -287,7 +287,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Carlos Muñoz Moncayo, Manuel Luna,  and David I Ketcheson</span>,
 <span class="pub-journal">Communications in Applied Mathematics and Computational Science</span>, 18(1):107--134 (2023)<br>
-<span class="pub-links"><a href="https://doi.org/10.2140/camcos.2023.18.107">Published version</a> | <a href="https://arxiv.org/abs/2209.12235">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/munoz2023comparative/">Supplementary page</a> | <a href="https://doi.org/10.2140/camcos.2023.18.107">Published version</a> | <a href="https://arxiv.org/abs/2209.12235">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -297,7 +297,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Dmitri Kuzmin, Manuel Luna, David I Ketcheson,  and Johanna Grüll</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 91(21) (2022)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-022-01784-0">Published version</a> | <a href="https://arxiv.org/abs/2009.01133">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/kuzmin2020bound/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-022-01784-0">Published version</a> | <a href="https://arxiv.org/abs/2009.01133">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -307,7 +307,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Manuel Quezada Luna  and David I. Ketcheson</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 92(102) (2022)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-022-01922-8">Published version</a> | <a href="https://arxiv.org/abs/2109.08272">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/quezada2021maximum/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-022-01922-8">Published version</a> | <a href="https://arxiv.org/abs/2109.08272">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -317,7 +317,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson  and Manuel Quezada Luna</span>,
 <span class="pub-journal">International Journal for Numerical Methods in Fluids</span>, 94(6):655--677 (2022)<br>
-<span class="pub-links"><a href="https://doi.org/10.1002/fld.5070">Published version</a> | <a href="https://arxiv.org/abs/2103.09664">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ketcheson2022numerical/">Supplementary page</a> | <a href="https://doi.org/10.1002/fld.5070">Published version</a> | <a href="https://arxiv.org/abs/2103.09664">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -327,7 +327,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Hendrik Ranocha, Lisandro Dalcin, Matteo Parsani,  and David I. Ketcheson</span>,
 <span class="pub-journal">Communications on Applied Mathematics and Computation</span>, 4(4):1191--1228 (2022)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s42967-021-00159-w">Published version</a> | <a href="https://arxiv.org/abs/2104.06836">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ranocha2021optimized/">Supplementary page</a> | <a href="https://doi.org/10.1007/s42967-021-00159-w">Published version</a> | <a href="https://arxiv.org/abs/2104.06836">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -337,7 +337,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Carlos M. Duarte, David I. Ketcheson, Víctor M. Eguíluz, Susana Agustí, Juan Fernández-Gracia, Tahira Jamil, Elisa Laiolo, Takashi Gojobori,  and Intikhab Alam</span>,
 <span class="pub-journal">Scientific Reports</span>, 12(6457) (2022)<br>
-<span class="pub-links"><a href="https://doi.org/10.1038/s41598-022-10097-z">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/Duarte2021.03.27.437300/">Supplementary page</a> | <a href="https://doi.org/10.1038/s41598-022-10097-z">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -347,7 +347,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Hendrik Ranocha, Dimitrios Mitsotakis,  and David I Ketcheson</span>,
 <span class="pub-journal">Communications in Computational Physics</span>, 29(4):979--1029 (2021)<br>
-<span class="pub-links"><a href="https://doi.org/10.4208/CICP.OA-2020-0119">Published version</a> | <a href="https://arxiv.org/abs/2006.14802">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2020_broad/">Supplementary page</a> | <a href="https://doi.org/10.4208/CICP.OA-2020-0119">Published version</a> | <a href="https://arxiv.org/abs/2006.14802">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -357,7 +357,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Dimitrios Mitsotakis, Hendrik Ranocha, David I Ketcheson,  and Endre Süli</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 43(2):B508--B537 (2021)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/20M1364606">Published version</a> | <a href="https://arxiv.org/abs/2009.09641">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2020_conservative/">Supplementary page</a> | <a href="https://doi.org/10.1137/20M1364606">Published version</a> | <a href="https://arxiv.org/abs/2009.09641">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -367,7 +367,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Florin Avram, Rim Adenane,  and David I. Ketcheson</span>,
 <span class="pub-journal">Mathematics</span>, 9(13):1513 (2021)<br>
-<span class="pub-links"><a href="https://doi.org/10.3390/math9131513">Published version</a> | <a href="https://arxiv.org/abs/2106.00384">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/avram2021review/">Supplementary page</a> | <a href="https://doi.org/10.3390/math9131513">Published version</a> | <a href="https://arxiv.org/abs/2106.00384">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -377,7 +377,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Hendrik Ranocha, Manuel Quezada Luna,  and David I. Ketcheson</span>,
 <span class="pub-journal">Partial Differential Equations and Applications</span>, 2(6):1--26 Accepted. (2021)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s42985-021-00126-3">Published version</a> | <a href="https://arxiv.org/abs/2102.07376">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ranocha2021rate/">Supplementary page</a> | <a href="https://doi.org/10.1007/s42985-021-00126-3">Published version</a> | <a href="https://arxiv.org/abs/2102.07376">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -387,7 +387,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I Ketcheson</span>,
 <span class="pub-journal">Journal of Mathematical Biology</span>, 83(1):1--21 (2021)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s00285-021-01628-9">Published version</a> | <a href="https://arxiv.org/abs/2004.08848">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ketcheson2021optimal/">Supplementary page</a> | <a href="https://doi.org/10.1007/s00285-021-01628-9">Published version</a> | <a href="https://arxiv.org/abs/2004.08848">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -397,7 +397,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Stephan Nüßlein, Hendrik Ranocha,  and David I Ketcheson</span>,
 <span class="pub-journal">Communications in Applied Mathematics and Computational Science</span>, 16(2):155-179 (2021)<br>
-<span class="pub-links"><a href="https://doi.org/10.2140/camcos.2021.16.155">Published version</a> | <a href="https://arxiv.org/abs/2005.06268">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/nusslein2021positivity/">Supplementary page</a> | <a href="https://doi.org/10.2140/camcos.2021.16.155">Published version</a> | <a href="https://arxiv.org/abs/2005.06268">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -407,7 +407,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Manuel Quezada de Luna  and David I Ketcheson</span>,
 <span class="pub-journal">Journal of Fluid Mechanics</span>, 917 (2021)<br>
-<span class="pub-links"><a href="https://doi.org/10.1017/jfm.2021.267">Published version</a> | <a href="https://arxiv.org/abs/1907.07094">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2021_solitary/">Supplementary page</a> | <a href="https://doi.org/10.1017/jfm.2021.267">Published version</a> | <a href="https://arxiv.org/abs/1907.07094">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -416,7 +416,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Paula Moraga, David I Ketcheson, Hernando C Ombao,  and Carlos M Duarte</span>,
 <span class="pub-journal">Wellcome Open Research</span>, 5(117):117 (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.12688/wellcomeopenres.15996.1">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2020_assessing/">Supplementary page</a> | <a href="https://doi.org/10.12688/wellcomeopenres.15996.1">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -426,7 +426,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I Ketcheson  and Manuel Luna</span>,
 <span class="pub-journal">Communications in Mathematical Sciences</span>, 18(4):1023--1040 (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.4310/CMS.2020.V18.N4.A6">Published version</a> | <a href="https://arxiv.org/abs/1909.04937">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2019_periodic/">Supplementary page</a> | <a href="https://doi.org/10.4310/CMS.2020.V18.N4.A6">Published version</a> | <a href="https://arxiv.org/abs/1909.04937">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -436,7 +436,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Hendrik Ranocha  and David I Ketcheson</span>,
 <span class="pub-journal">SIAM Journal On Numerical Analysis</span>, 58(6):3382--3405 (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/19M1290346">Published version</a> | <a href="https://arxiv.org/abs/1909.13215">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2019_energystability/">Supplementary page</a> | <a href="https://doi.org/10.1137/19M1290346">Published version</a> | <a href="https://arxiv.org/abs/1909.13215">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -446,7 +446,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Hendrik Ranocha, Lajos Lóczi,  and David I Ketcheson</span>,
 <span class="pub-journal">Numerische Mathematik</span>, 146 (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s00211-020-01158-4">Published version</a> | <a href="https://arxiv.org/abs/2003.03012">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2020_relaxation/">Supplementary page</a> | <a href="https://doi.org/10.1007/s00211-020-01158-4">Published version</a> | <a href="https://arxiv.org/abs/2003.03012">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -456,7 +456,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I Ketcheson, Mikael Mortensen, Matteo Parsani,  and Nathanael Schilling</span>,
 <span class="pub-journal">International Journal for Numerical Methods in Fluids</span>, 92(2):79--93 (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.1002/fld.4773">Published version</a> | <a href="https://arxiv.org/abs/1810.10197">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2019_DNStime/">Supplementary page</a> | <a href="https://doi.org/10.1002/fld.4773">Published version</a> | <a href="https://arxiv.org/abs/1810.10197">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -465,7 +465,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Hendrik Ranocha, Matteo Parsani, Umair Bin Waheed,  and Yiannis Hadjimichael</span>,
 <span class="pub-journal">Journal of Open Source Software</span>, 5(55):2515 (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.21105/joss.02515">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2020_nodepy/">Supplementary page</a> | <a href="https://doi.org/10.21105/joss.02515">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -475,7 +475,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Hendrik Ranocha  and David I Ketcheson</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 84 (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-020-01277-y">Published version</a> | <a href="https://arxiv.org/abs/2001.04826">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ranocha2020relaxation/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-020-01277-y">Published version</a> | <a href="https://arxiv.org/abs/2001.04826">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -485,7 +485,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Hendrik Ranocha, Mohammed Sayyari, Lisandro Dalcin, Matteo Parsani,  and David I Ketcheson</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 42(2):A612--A638 (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/19M1263480">Published version</a> | <a href="https://arxiv.org/abs/1905.09129">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2019_entropyRRK/">Supplementary page</a> | <a href="https://doi.org/10.1137/19M1263480">Published version</a> | <a href="https://arxiv.org/abs/1905.09129">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -494,7 +494,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Matteo Parsani, Zachary J. Grant, Aron J. Ahmadia,  and Hendrik Ranocha</span>,
 <span class="pub-journal">Journal of Open Source Software</span>, 5(54):2514 (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.21105/joss.02514">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2020_RK-opt/">Supplementary page</a> | <a href="https://doi.org/10.21105/joss.02514">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -504,7 +504,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Jithin George, David I. Ketcheson,  and Randall J. LeVeque</span>,
 <span class="pub-journal">Pure and Applied Geophysics</span> (2019)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s00024-019-02316-y">Published version</a> | <a href="https://arxiv.org/abs/1901.04148">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2019_shoaling/">Supplementary page</a> | <a href="https://doi.org/10.1007/s00024-019-02316-y">Published version</a> | <a href="https://arxiv.org/abs/1901.04148">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -514,7 +514,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Jithin D George, David I Ketcheson,  and Randall J LeVeque</span>,
 <span class="pub-journal">SIAM Journal on Applied Mathematics</span>, 79(6):2615--2638 (2019)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/19M1238630">Published version</a> | <a href="https://arxiv.org/abs/1901.04158">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2019_characteristics/">Supplementary page</a> | <a href="https://doi.org/10.1137/19M1238630">Published version</a> | <a href="https://arxiv.org/abs/1901.04158">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -524,7 +524,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson</span>,
 <span class="pub-journal">SIAM Journal on Numerical Analysis</span>, 57(6):2850-2870 (2019)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/19M1263662">Published version</a> | <a href="https://arxiv.org/abs/1905.09847">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2019_energyRRK/">Supplementary page</a> | <a href="https://doi.org/10.1137/19M1263662">Published version</a> | <a href="https://arxiv.org/abs/1905.09847">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -534,7 +534,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Longfei Gao, David I. Ketcheson,  and David E. Keyes</span>,
 <span class="pub-journal">Geophysical Journal International</span>, 212(2):1098--1110 (2018)<br>
-<span class="pub-links"><a href="https://doi.org/10.1093/gji/ggx470">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2018_staggered/">Supplementary page</a> | <a href="https://doi.org/10.1093/gji/ggx470">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -544,7 +544,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Inmaculada Higueras, David I. Ketcheson,  and Tihamér A. Kocsis</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 76(3):1337--1369 (2018)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-018-0664-3">Published version</a> | <a href="https://arxiv.org/abs/1505.04024">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2018_perturbations/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-018-0664-3">Published version</a> | <a href="https://arxiv.org/abs/1505.04024">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -554,7 +554,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Imre Fekete, David I Ketcheson,  and Lajos Lóczi</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 74(1):244--266 (2018)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-017-0432-9">Published version</a> | <a href="https://arxiv.org/abs/1610.00228">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2018_positivity/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-017-0432-9">Published version</a> | <a href="https://arxiv.org/abs/1610.00228">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -564,7 +564,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Yiannis Hadjimichael  and David I. Ketcheson</span>,
 <span class="pub-journal">Math. of Comp.</span>, 87(313):2295--2320 (2018)<br>
-<span class="pub-links"><a href="https://doi.org/10.1090/mcom/3296">Published version</a> | <a href="https://arxiv.org/abs/1601.03637">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2018_sspalmm/">Supplementary page</a> | <a href="https://doi.org/10.1090/mcom/3296">Published version</a> | <a href="https://arxiv.org/abs/1601.03637">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -574,7 +574,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Lajos Lóczi, Aliya Jangabylova,  and Adil Kusmanov</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 71(3):944--958 (2017)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-016-0331-5">Published version</a> | <a href="https://arxiv.org/abs/1605.02429">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2017_dense/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-016-0331-5">Published version</a> | <a href="https://arxiv.org/abs/1605.02429">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -584,7 +584,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Christopher Bresten, Sigal Gottlieb, Zachary Grant, Daniel Higgs, David I. Ketcheson,  and Adrian Németh</span>,
 <span class="pub-journal">Math. of Comp.</span>, 86 (2017)<br>
-<span class="pub-links"><a href="https://doi.org/10.1090/mcom/3115">Published version</a> | <a href="https://arxiv.org/abs/1307.8058">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2017_msrk/">Supplementary page</a> | <a href="https://doi.org/10.1090/mcom/3115">Published version</a> | <a href="https://arxiv.org/abs/1307.8058">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -593,7 +593,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Winfried Auzinger, Harald Hofstätter, David I. Ketcheson,  and Othmar Koch</span>,
 <span class="pub-journal">BIT Numerical Mathematics</span>, 57(1):55--74 (2017)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10543-016-0626-9">Published version</a> | <a href="https://arxiv.org/abs/1604.01179">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2016_splitting_methods/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10543-016-0626-9">Published version</a> | <a href="https://arxiv.org/abs/1604.01179">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -603,7 +603,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Kyle T Mandli, Aron J Ahmadia, Marsha Berger, Donna Calhoun, David L George, Yiannis Hadjimichael, David I Ketcheson, Grady I Lemoine,  and Randall J LeVeque</span>,
 <span class="pub-journal">PeerJ Computer Science</span>, 2 (2016)<br>
-<span class="pub-links"><a href="https://doi.org/10.7717/peerj-cs.68">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2016_clawpack/">Supplementary page</a> | <a href="https://doi.org/10.7717/peerj-cs.68">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -613,7 +613,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Yiannis Hadjimichael, David I. Ketcheson, Lajos Lóczi,  and Adrián Németh</span>,
 <span class="pub-journal">SIAM Journal On Numerical Analysis</span>, 54(5):2799-2832 (2016)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/15M101717X">Published version</a> | <a href="https://arxiv.org/abs/1504.04107">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2016_ssp_lmm_vss/">Supplementary page</a> | <a href="https://doi.org/10.1137/15M101717X">Published version</a> | <a href="https://arxiv.org/abs/1504.04107">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -623,7 +623,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson  and Manuel Quezada de Luna</span>,
 <span class="pub-journal">Multiscale Modeling & Simulation</span>, 13(1):440--458 (2015)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/130946526">Published version</a> | <a href="https://arxiv.org/abs/1312.4122">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2015_diffractons/">Supplementary page</a> | <a href="https://doi.org/10.1137/130946526">Published version</a> | <a href="https://arxiv.org/abs/1312.4122">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -633,7 +633,7 @@ include-after-body:
 </a>
 <span class="pub-authors">W. Hundsdorfer, D. I. Ketcheson,  and I. Savostianov</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 63(3):633--653 (2015)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-014-9906-1">Published version</a> | <a href="https://arxiv.org/abs/1310.7168">arXiv version</a> | <a href="/assets/papers/2014_partitioned_multirate_postprint.pdf">Free Postprint</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2014_partitioned_multirate/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-014-9906-1">Published version</a> | <a href="https://arxiv.org/abs/1310.7168">arXiv version</a> | <a href="/assets/papers/2014_partitioned_multirate_postprint.pdf">Free Postprint</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -643,7 +643,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Tihamer A. Kocsis,  and Lajos Lóczi</span>,
 <span class="pub-journal">IMA Journal of Numerical Analysis</span>, 35(3):1426-1455 (2015)<br>
-<span class="pub-links"><a href="https://doi.org/10.1093/imanum/dru039">Published version</a> | <a href="https://arxiv.org/abs/1312.0216">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2015_exponential_stability_regions/">Supplementary page</a> | <a href="https://doi.org/10.1093/imanum/dru039">Published version</a> | <a href="https://arxiv.org/abs/1312.0216">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -653,7 +653,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson  and Umair bin Waheed</span>,
 <span class="pub-journal">CAMCoS</span>, 9(2):175-200 (2014)<br>
-<span class="pub-links"><a href="/assets/papers/2014_hork.pdf">Free PDF</a> | <a href="https://doi.org/10.2140/camcos.2014.9.175">Published version</a> | <a href="https://arxiv.org/abs/1305.6165">arXiv version</a> | <a href="https://github.com/ketch/high_order_RK_RR/">Code</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2014_hork/">Supplementary page</a> | <a href="/assets/papers/2014_hork.pdf">Free PDF</a> | <a href="https://doi.org/10.2140/camcos.2014.9.175">Published version</a> | <a href="https://arxiv.org/abs/1305.6165">arXiv version</a> | <a href="https://github.com/ketch/high_order_RK_RR/">Code</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -663,7 +663,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Lajos Lóczi,  and Matteo Parsani</span>,
 <span class="pub-journal">SIAM Journal on Numerical Analysis</span>, 52(5):2227--2249 (2014)<br>
-<span class="pub-links"><a href="/assets/papers/2014_internal_stability.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/130936245">Published version</a> | <a href="https://arxiv.org/abs/1309.1317">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2014_internal_stability/">Supplementary page</a> | <a href="/assets/papers/2014_internal_stability.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/130936245">Published version</a> | <a href="https://arxiv.org/abs/1309.1317">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -673,7 +673,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Manuel Quezada de Luna  and David I. Ketcheson</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 58(3):672-689 (2014)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-013-9747-3">Published version</a> | <a href="https://arxiv.org/abs/1209.5164">arXiv version</a> | <a href="/assets/papers/2014_cylindrical_solitary_waves_postprint.pdf">Free Postprint</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2014_cylindrical_solitary_waves/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-013-9747-3">Published version</a> | <a href="https://arxiv.org/abs/1209.5164">arXiv version</a> | <a href="/assets/papers/2014_cylindrical_solitary_waves_postprint.pdf">Free Postprint</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -683,7 +683,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Ethan J. Kubatko, Benjamin A. Yeager,  and David I. Ketcheson</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 60(2):313-344 (2014)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-013-9796-7">Published version</a> | <a href="/assets/papers/dg_ssp_stability.pdf">Post-print</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2014_ssp_rkdg/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-013-9796-7">Published version</a> | <a href="/assets/papers/dg_ssp_stability.pdf">Post-print</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -693,7 +693,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Lajos Lóczi  and David I. Ketcheson</span>,
 <span class="pub-journal">LMS Journal of Computation and Mathematics</span>, 17(1):159--205 (2014)<br>
-<span class="pub-links"><a href="https://doi.org/10.1112/S1461157013000326">Published version</a> | <a href="https://arxiv.org/abs/1303.6651">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2014_rational_absmon/">Supplementary page</a> | <a href="https://doi.org/10.1112/S1461157013000326">Published version</a> | <a href="https://arxiv.org/abs/1303.6651">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -703,7 +703,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Manuel Quezada de Luna  and David I. Ketcheson</span>,
 <span class="pub-journal">SIAM Journal on Applied Mathematics</span>, 74(6):1852-1869 (2014)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/130937962">Published version</a> | <a href="https://arxiv.org/abs/1309.6666">arXiv version</a> | <a href="https://github.com/ketch/effective_dispersion_RR">Reproducibility repository</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/quezada_dispersion/">Supplementary page</a> | <a href="https://doi.org/10.1137/130937962">Published version</a> | <a href="https://arxiv.org/abs/1309.6666">arXiv version</a> | <a href="https://github.com/ketch/effective_dispersion_RR">Reproducibility repository</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -713,7 +713,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Matteo Parsani, David I. Ketcheson,  and Willem Deconinck</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 35(2):A957-A986 (2013)<br>
-<span class="pub-links"><a href="/assets/papers/2013_sd_erk.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/120885899">Published version</a> | <a href="https://arxiv.org/abs/1207.5830">arXiv version</a> | <a href="https://github.com/ketch/optimized-erk-sd-rr">Reproducibility repository</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2013_sd_erk/">Supplementary page</a> | <a href="/assets/papers/2013_sd_erk.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/120885899">Published version</a> | <a href="https://arxiv.org/abs/1207.5830">arXiv version</a> | <a href="https://github.com/ketch/optimized-erk-sd-rr">Reproducibility repository</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -723,7 +723,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Matteo Parsani,  and Randall J. LeVeque</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 35(1):A351--A377 (2013)<br>
-<span class="pub-links"><a href="/assets/papers/sharpclaw.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110830320">Published version</a> | <a href="https://arxiv.org/abs/1111.3499">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2013_sharpclaw/">Supplementary page</a> | <a href="/assets/papers/sharpclaw.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110830320">Published version</a> | <a href="https://arxiv.org/abs/1111.3499">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -733,7 +733,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Colin B. Macdonald,  and Steven J. Ruuth</span>,
 <span class="pub-journal">SIAM Journal On Numerical Analysis</span>, 51(5):2887-2910 (2013)<br>
-<span class="pub-links"><a href="/assets/papers/2013_sperk.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/130906258">Published version</a> | <a href="https://arxiv.org/abs/1301.4006">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2013_sperk/">Supplementary page</a> | <a href="/assets/papers/2013_sperk.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/130906258">Published version</a> | <a href="https://arxiv.org/abs/1301.4006">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -743,7 +743,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Yiannis Hadjimichael, Colin B. Macdonald, David I. Ketcheson,  and J. H. Verner</span>,
 <span class="pub-journal">SIAM Journal on Numerical Analysis</span>, 51(4):2149--2165 (2013)<br>
-<span class="pub-links"><a href="/assets/papers/2013_effective_order_ssp.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/120884201">Published version</a> | <a href="https://arxiv.org/abs/1207.2902">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2013_effective_order_ssp/">Supplementary page</a> | <a href="/assets/papers/2013_effective_order_ssp.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/120884201">Published version</a> | <a href="https://arxiv.org/abs/1207.2902">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -753,7 +753,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Kyle T. Mandli, Aron J. Ahmadia, Amal Alghamdi, Manuel Quezada de Luna, Matteo Parsani, Matthew G. Knepley,  and Matthew Emmett</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 34(4):C210--C231 (2012)<br>
-<span class="pub-links"><a href="/assets/papers/2012_pyclaw-sisc.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110856976">Published version</a> | <a href="https://arxiv.org/abs/1111.6583">arXiv version</a> | <a href="https://bitbucket.org/ahmadia/pyclaw-sisc-rr">Reproducibility repository</a> | <a href="https://numerics.kaust.edu.sa/papers/pyclaw-sisc/pyclaw-sisc.html">Figures with interactive code</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2012_pyclaw-sisc/">Supplementary page</a> | <a href="/assets/papers/2012_pyclaw-sisc.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110856976">Published version</a> | <a href="https://arxiv.org/abs/1111.6583">arXiv version</a> | <a href="https://bitbucket.org/ahmadia/pyclaw-sisc-rr">Reproducibility repository</a> | <a href="https://numerics.kaust.edu.sa/papers/pyclaw-sisc/pyclaw-sisc.html">Figures with interactive code</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -763,7 +763,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson  and Aron J. Ahmadia</span>,
 <span class="pub-journal">Communications in Applied Mathematics and Computational Science</span>, 7(2):247--271 (2012)<br>
-<span class="pub-links"><a href="/assets/papers/2012_optimal_stability_polynomials.pdf">Free PDF</a> | <a href="https://doi.org/10.2140/camcos.2012.7.247">Published version</a> | <a href="https://arxiv.org/abs/1201.3035">arXiv version</a> | <a href="https://github.com/ketch/RK-opt">code</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2012_optimal_stability_polynomials/">Supplementary page</a> | <a href="/assets/papers/2012_optimal_stability_polynomials.pdf">Free PDF</a> | <a href="https://doi.org/10.2140/camcos.2012.7.247">Published version</a> | <a href="https://arxiv.org/abs/1201.3035">arXiv version</a> | <a href="https://github.com/ketch/RK-opt">code</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -773,7 +773,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson  and Randall J. LeVeque</span>,
 <span class="pub-journal">Communications in Mathematical Sciences</span>, 10(3):859--874 (2012)<br>
-<span class="pub-links"><a href="/assets/papers/2012_ketchesonleveque_periodic.pdf">Free PDF</a> | <a href="https://doi.org/10.4310/CMS.2012.v10.n3.a7">Published version</a> | <a href="https://arxiv.org/abs/1105.2892">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2012_ketchesonleveque_periodic/">Supplementary page</a> | <a href="/assets/papers/2012_ketchesonleveque_periodic.pdf">Free PDF</a> | <a href="https://doi.org/10.4310/CMS.2012.v10.n3.a7">Published version</a> | <a href="https://arxiv.org/abs/1105.2892">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -783,7 +783,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Sigal Gottlieb,  and Colin B. Macdonald</span>,
 <span class="pub-journal">SIAM Journal on Numerical Analysis</span>, 49(6):2618-2639 (2011)<br>
-<span class="pub-links"><a href="/assets/papers/2011_tsrk.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/10080960X">Published version</a> | <a href="https://arxiv.org/abs/1106.3626">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2011_tsrk/">Supplementary page</a> | <a href="/assets/papers/2011_tsrk.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/10080960X">Published version</a> | <a href="https://arxiv.org/abs/1106.3626">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -793,7 +793,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson</span>,
 <span class="pub-journal">SIAM Journal on Numerical Analysis</span>, 49(4):1649 (2011)<br>
-<span class="pub-links"><a href="https://doi.org/10.1137/100818674">Published version</a> | <a href="https://arxiv.org/abs/1105.5798">arXiv version</a> | <a href="https://github.com/ketch/downwind_IRK_RR">Reproducibility repository</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2011_dwssp/">Supplementary page</a> | <a href="https://doi.org/10.1137/100818674">Published version</a> | <a href="https://arxiv.org/abs/1105.5798">arXiv version</a> | <a href="https://github.com/ketch/downwind_IRK_RR">Reproducibility repository</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -802,7 +802,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson</span>,
 <span class="pub-journal">Journal of Computational Physics</span>, 229(5):1763--1773 (2010)<br>
-<span class="pub-links"><a href="https://doi.org/10.1016/j.jcp.2009.11.006">Published version</a> | <a href="/assets/papers/2010_LSRK_postprint.pdf">Post-print</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2010_LSRK/">Supplementary page</a> | <a href="https://doi.org/10.1016/j.jcp.2009.11.006">Published version</a> | <a href="/assets/papers/2010_LSRK_postprint.pdf">Post-print</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -811,7 +811,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson</span>,
 <span class="pub-journal">Mathematics of Computation</span>, 78(267):1497--1513 (2009)<br>
-<span class="pub-links"><a href="/assets/papers/2009_monotonicity-glms.pdf">Free PDF</a> | <a href="https://doi.org/10.1090/S0025-5718-09-02209-1">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2009_monotonicity-glms/">Supplementary page</a> | <a href="/assets/papers/2009_monotonicity-glms.pdf">Free PDF</a> | <a href="https://doi.org/10.1090/S0025-5718-09-02209-1">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -821,7 +821,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson, Colin B. Macdonald,  and Sigal Gottlieb</span>,
 <span class="pub-journal">Applied Numerical Mathematics</span>, 59(2):373--392 (2009)<br>
-<span class="pub-links"><a href="https://doi.org/10.1016/j.apnum.2008.03.034">Published version</a> | <a href="/assets/papers/implicit_ssp_postprint.pdf">Post-print</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2009_implicit_ssp/">Supplementary page</a> | <a href="https://doi.org/10.1016/j.apnum.2008.03.034">Published version</a> | <a href="/assets/papers/implicit_ssp_postprint.pdf">Post-print</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -831,7 +831,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Sigal Gottlieb, David I. Ketcheson,  and Chi-Wang Shu</span>,
 <span class="pub-journal">Journal of Scientific Computing</span>, 38(3):251--289 (2009)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/s10915-008-9239-z">Published version</a> | <a href="/assets/papers/sspreview.pdf">Post-print</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2009_ssp_review/">Supplementary page</a> | <a href="https://doi.org/10.1007/s10915-008-9239-z">Published version</a> | <a href="/assets/papers/sspreview.pdf">Post-print</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -841,7 +841,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 30(4):2113--2136 (2008)<br>
-<span class="pub-links"><a href="/assets/papers/2008_explicit_ssp.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/07070485X">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2008_explicit_ssp/">Supplementary page</a> | <a href="/assets/papers/2008_explicit_ssp.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/07070485X">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -850,7 +850,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Jeffrey A. Favorite, Keith C. Bledsoe,  and David I. Ketcheson</span>,
 <span class="pub-journal">Nuclear Science and Engineering</span> (2008)<br>
-<span class="pub-links"><a href="https://doi.org/10.13182/nse163-73">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/Favorite2008/">Supplementary page</a> | <a href="https://doi.org/10.13182/nse163-73">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -859,7 +859,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Jeffrey A. Favorite  and David I. Ketcheson</span>,
 <span class="pub-journal">Transactions of the American Nuclear Society</span>, 95 (2006)<br>
-<span class="pub-links"><a href="/assets/papers/2007_Favorite_marq.pdf">Free PDF</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2007_Favorite_marq/">Supplementary page</a> | <a href="/assets/papers/2007_Favorite_marq.pdf">Free PDF</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -869,7 +869,7 @@ include-after-body:
 </a>
 <span class="pub-authors">David I. Ketcheson  and Allen C. Robinson</span>,
 <span class="pub-journal">International Journal for Numerical Methods in Fluids</span>, 48(3):271--303 (2005)<br>
-<span class="pub-links"><a href="https://doi.org/10.1002/fld.837">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2005_ketcheson_robinson/">Supplementary page</a> | <a href="https://doi.org/10.1002/fld.837">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -879,7 +879,7 @@ include-after-body:
 </a>
 <span class="pub-authors">Sigal Gottlieb, David I. Ketcheson,  and Chi-Wang Shu</span>,
  (2011)<br>
-<span class="pub-links"><a href="https://doi.org/10.1142/7498">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/SSPbook/">Supplementary page</a> | <a href="https://doi.org/10.1142/7498">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -888,7 +888,8 @@ include-after-body:
 <a href="https://openreview.net/pdf?id=Uuu6HWe6dF"><span class="pub-title">Integral PINNS for hyperbolic conservation laws</span><br>
 </a>
 <span class="pub-authors">Manvendra P Rajvanshi  and David I Ketcheson</span>,
-in ICLR 2024 Workshop on AI4DifferentialEquations In Science. (2024)<div style="clear:both"></div>
+in ICLR 2024 Workshop on AI4DifferentialEquations In Science. (2024)<br>
+<span class="pub-links"><a href="/papers/rajvanshi2024integral/">Supplementary page</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -898,7 +899,7 @@ in ICLR 2024 Workshop on AI4DifferentialEquations In Science. (2024)<div style="
 </a>
 <span class="pub-authors">David I. Ketcheson, Benjamin Seibold, David Shirokoff,  and Dong Zhou</span>,
 in Spectral and High Order Methods for Partial Differential Equations ICOSAHOM 2018. (2018)<br>
-<span class="pub-links"><a href="https://doi.org/10.1007/978-3-030-39647-3_36">Published version</a> | <a href="https://arxiv.org/abs/1811.01285">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2018_wso/">Supplementary page</a> | <a href="https://doi.org/10.1007/978-3-030-39647-3_36">Published version</a> | <a href="https://arxiv.org/abs/1811.01285">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -908,7 +909,7 @@ in Spectral and High Order Methods for Partial Differential Equations ICOSAHOM 2
 </a>
 <span class="pub-authors">David I. Ketcheson</span>,
  Available from http://conference.scipy.org/proceedings/scipy2014/ketcheson.htmlin {P}roceedings of the 13th {P}ython in {S}cience {C}onference. (2014)<br>
-<span class="pub-links"><a href="https://doi.org/10.25080/majora-14bd3278-004">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2014scipy/">Supplementary page</a> | <a href="https://doi.org/10.25080/majora-14bd3278-004">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -917,7 +918,8 @@ in Spectral and High Order Methods for Partial Differential Equations ICOSAHOM 2
 <a href="https://www.oulu.fi/mekapaivat2012/meka2012_proceedings.pdf"><span class="pub-title">Optimized low-order explicit Runge-Kutta schemes for high- order spectral difference method</span><br>
 </a>
 <span class="pub-authors">Matteo Parsani  and David I Ketcheson</span>,
-in Proceedings of the 11th Finnish Mechanics Days. (2012)<div style="clear:both"></div>
+in Proceedings of the 11th Finnish Mechanics Days. (2012)<br>
+<span class="pub-links"><a href="/papers/Parsani_finnish/">Supplementary page</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -925,14 +927,16 @@ in Proceedings of the 11th Finnish Mechanics Days. (2012)<div style="clear:both"
 <img src="/assets/paper_images/parsani-eccomas.png" alt="Explicit Runge-Kutta schemes for the spectral difference method applied to wave propagation problems" />
 <span class="pub-title">Explicit Runge-Kutta schemes for the spectral difference method applied to wave propagation problems</span><br>
 <span class="pub-authors">Matteo Parsani, David I. Ketcheson,  and Willem Deconinck</span>,
-in Proceedings of the European Congress on Computational Methods in Applied Sciences and Engineering. (2012)<div style="clear:both"></div>
+in Proceedings of the European Congress on Computational Methods in Applied Sciences and Engineering. (2012)<br>
+<span class="pub-links"><a href="/papers/parsani-eccomas/">Supplementary page</a></span><div style="clear:both"></div>
 
 </div>
 
 <div class="pub filterable runge-kutta time-integration">
 <span class="pub-title">Design of optimal explicit linearly stable strong stability preserving Runge-Kutta schemes for the spectral difference method</span><br>
 <span class="pub-authors">Matteo Parsani  and David I. Ketcheson</span>,
- Extended abstract.in International Conference on Spectral and High Order Methods. (2012)<div style="clear:both"></div>
+ Extended abstract.in International Conference on Spectral and High Order Methods. (2012)<br>
+<span class="pub-links"><a href="/papers/Parsani2012/">Supplementary page</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -941,7 +945,8 @@ in Proceedings of the European Congress on Computational Methods in Applied Scie
 <a href="https://numerics.kaust.edu.sa/papers/petclaw2011/petclaw2011.html"><span class="pub-title">PetClaw: A Scalable Parallel Nonlinear Wave Propagation Solver for Python</span><br>
 </a>
 <span class="pub-authors">Amal Alghamdi, Aron J. Ahmadia, David I. Ketcheson, Matthew G. Knepley, Kyle T. Mandli,  and Lisandro Dalcin</span>,
-in Proceedings of SpringSim '11. (2011)<div style="clear:both"></div>
+in Proceedings of SpringSim '11. (2011)<br>
+<span class="pub-links"><a href="/papers/alghamdipetclaw/">Supplementary page</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -951,7 +956,7 @@ in Proceedings of SpringSim '11. (2011)<div style="clear:both"></div>
 </a>
 <span class="pub-authors">Kyle T. Mandli, Amal Alghamdi, Aron J. Ahmadia, David I. Ketcheson,  and W. Scullin</span>,
 in Proceedings of SciPy 2011. (2011)<br>
-<span class="pub-links"><a href="https://doi.org/10.25080/majora-ebaa42b7-00c">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/scipy2011pyclaw/">Supplementary page</a> | <a href="https://doi.org/10.25080/majora-ebaa42b7-00c">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -961,7 +966,7 @@ in Proceedings of SciPy 2011. (2011)<br>
 </a>
 <span class="pub-authors">David I. Ketcheson  and Randall J. LeVeque</span>,
 in Hyperbolic Problems: Theory, Numerics, Applications: Proceedings of the Eleventh International Conference on Hyperbolic Problems. (2008)<br>
-<span class="pub-links"><a href="/assets/papers/hyp2006_wenoclaw.pdf">Free PDF</a> | <a href="https://doi.org/10.1007/978-3-540-75712-2_60">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/wenoclaw/">Supplementary page</a> | <a href="/assets/papers/hyp2006_wenoclaw.pdf">Free PDF</a> | <a href="https://doi.org/10.1007/978-3-540-75712-2_60">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -970,14 +975,15 @@ in Hyperbolic Problems: Theory, Numerics, Applications: Proceedings of the Eleve
 </a>
 <span class="pub-authors">DH McNamara, MB Rose, PJ Brown, DI Ketcheson, JE Maxwell, KM Smith,  and RC Wooley</span>,
 in IAU Colloq. 193: Variable Stars in the Local Group. (2004)<br>
-<span class="pub-links"><a href="https://doi.org/10.1017/s025292110001126x">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/mcnamara2004luminosities/">Supplementary page</a> | <a href="https://doi.org/10.1017/s025292110001126x">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
 <div class="pub filterable ">
 <span class="pub-title">CCD Photometry of Variables in the Field of QS Geminorum</span><br>
 <span class="pub-authors">David I. Ketcheson, PJ Brown,  and EG Hintz</span>,
-in Bulletin of the American Astronomical Society. (2002)<div style="clear:both"></div>
+in Bulletin of the American Astronomical Society. (2002)<br>
+<span class="pub-links"><a href="/papers/ketcheson2002ccd/">Supplementary page</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -987,7 +993,7 @@ in Bulletin of the American Astronomical Society. (2002)<div style="clear:both">
 </a>
 <span class="pub-authors">David I Ketcheson, Hernando Ombao, Paula Moraga, Tarig Ballal,  and Carlos M Duarte</span>,
  (2020)<br>
-<span class="pub-links"><a href="https://doi.org/10.1101/2020.05.11.20097972">medRxiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/ketcheson2020estimating/">Supplementary page</a> | <a href="https://doi.org/10.1101/2020.05.11.20097972">medRxiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -996,7 +1002,7 @@ in Bulletin of the American Astronomical Society. (2002)<div style="clear:both">
 </a>
 <span class="pub-authors">W. Auzinger, H. Hofstatter, David I. Ketcheson,  and O. Koch</span>,
  (2015)<br>
-<span class="pub-links"><a href="/assets/papers/2015_practical_splitting.pdf">Free PDF</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2015_practical_splitting/">Supplementary page</a> | <a href="/assets/papers/2015_practical_splitting.pdf">Free PDF</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -1006,7 +1012,7 @@ in Bulletin of the American Astronomical Society. (2002)<div style="clear:both">
 </a>
 <span class="pub-authors">David I Ketcheson, Lajos Lóczi,  and Matteo Parsani</span>,
  (2013)<br>
-<span class="pub-links"><a href="https://doi.org/10.48550/arXiv.1309.1317">Published version</a> | <a href="https://arxiv.org/abs/1309.1317">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/internal_stability_report/">Supplementary page</a> | <a href="https://doi.org/10.48550/arXiv.1309.1317">Published version</a> | <a href="https://arxiv.org/abs/1309.1317">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -1016,7 +1022,7 @@ in Bulletin of the American Astronomical Society. (2002)<div style="clear:both">
 </a>
 <span class="pub-authors">Allen C. Robinson, David I. Ketcheson, T.L. Ames,  and G.V. Farnsworth</span>,
  (2009)<br>
-<span class="pub-links"><a href="/assets/papers/2009_kinematics.pdf">Free PDF</a> | <a href="https://doi.org/10.2172/984939">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2009_kinematics/">Supplementary page</a> | <a href="/assets/papers/2009_kinematics.pdf">Free PDF</a> | <a href="https://doi.org/10.2172/984939">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -1026,7 +1032,7 @@ in Bulletin of the American Astronomical Society. (2002)<div style="clear:both">
 </a>
 <span class="pub-authors">David I. Ketcheson</span>,
  (2005)<br>
-<span class="pub-links"><a href="/assets/papers/2005_ketcheson_lanl_scattering.pdf">Free PDF</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2005_ketcheson_lanl_scattering/">Supplementary page</a> | <a href="/assets/papers/2005_ketcheson_lanl_scattering.pdf">Free PDF</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -1035,7 +1041,7 @@ in Bulletin of the American Astronomical Society. (2002)<div style="clear:both">
 </a>
 <span class="pub-authors">Mark A Christon, David I. Ketcheson,  and Allen C. Robinson</span>,
  (2003)<br>
-<span class="pub-links"><a href="https://doi.org/10.2172/918357">Published version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/Christon2003/">Supplementary page</a> | <a href="https://doi.org/10.2172/918357">Published version</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -1046,7 +1052,7 @@ in Bulletin of the American Astronomical Society. (2002)<div style="clear:both">
 </a>
 <span class="pub-authors">David I. Ketcheson</span>,
  University of Washington, (2009)<br>
-<span class="pub-links"><a href="/assets/papers/ketchesonphdthesis.pdf">Free PDF</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2009_phdthesis/">Supplementary page</a> | <a href="/assets/papers/ketchesonphdthesis.pdf">Free PDF</a></span><div style="clear:both"></div>
 
 </div>
 </div>
