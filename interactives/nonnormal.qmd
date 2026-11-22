@@ -141,7 +141,7 @@ function solve(b, psiDeg) {
   };
   const path = d3.range(0, tMax + 1e-9, 0.005).map(t => {
     const {u} = parts(t);
-    return {t, x: u[0], y: u[1], norm: Math.hypot(u[0], u[1]), slow: Math.exp(l1 * t)};
+    return {t, x: u[0], y: u[1], norm: Math.hypot(u[0], u[1])};
   });
   const L = 1.1 * Math.max(1, Math.abs(z1), Math.abs(z2), d3.max(path, d => Math.max(Math.abs(d.x), Math.abs(d.y))));
   return {r1, r2, u0, parts, path, L};
@@ -222,7 +222,6 @@ function figure(sys, tNow) {
     x: {domain: [0, tMax], label: "t"},
     y: {domain: [0, ymax], label: null, grid: true},
     marks: [
-      Plot.line(path, {x: "t", y: "slow", strokeDasharray: "6,4", strokeOpacity: 0.7}),
       Plot.line(path, {x: "t", y: "norm", strokeWidth: 2}),
       Plot.ruleX([tNow], {strokeOpacity: 0.3}),
       Plot.dot([{t: tNow, n: Math.hypot(u[0], u[1])}], {x: "t", y: "n", r: 5, fill: "currentColor"})
@@ -233,12 +232,8 @@ function figure(sys, tNow) {
   const yLabel = html`<div style="position: absolute; top: 12px; right: 24px; font-size: 1rem;
     padding: .1rem .4rem; border: 1px solid currentColor; border-radius: 4px; opacity: .85">${tex`\|u(t)\|`}</div>`;
   return html`<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
-    <div style="flex: 1 1 0; min-width: 260px"><div style="position: relative">${phase}${phaseLabels}</div><div style="font-size: .85rem">The solution (filled dot),
-      starting on the unit circle (open dot).  The arrows are its parts along the two eigenvectors (dashed lines):
-      <span style="color: ${blue}">blue</span> decays like ${tex`e^{-t}`} and
-      <span style="color: ${green}">green</span> like ${tex`e^{-10t}`}.</div></div>
-    <div style="flex: 1 1 0; min-width: 260px"><div style="position: relative">${norms}${yLabel}</div><div style="font-size: .85rem">Solid:
-      the length of the solution.  Dashed: ${tex`e^{-t}`}.</div></div>
+    <div style="flex: 1 1 0; min-width: 260px"><div style="position: relative">${phase}${phaseLabels}</div></div>
+    <div style="flex: 1 1 0; min-width: 260px"><div style="position: relative">${norms}${yLabel}</div></div>
   </div>`;
 }
 ```
