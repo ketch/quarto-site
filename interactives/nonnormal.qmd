@@ -114,6 +114,18 @@ eigenvalues, the length of the solution always decreases monotonically.  But
 with a non-normal matrix, the solution can grow dramatically before eventually
 decaying.
 
+The same mechanism lies behind the transient growth of powers of non-normal
+matrices, which matters in the stability analysis of numerical methods, and
+behind transient amplification in fluid flows whose linearizations have only
+decaying modes.  A good reference is the book *Spectra and Pseudospectra* by
+Trefethen and Embree.
+
+This page is based on a
+[Jupyter notebook](https://github.com/ketch/ODE-counterexamples/blob/master/Vinograd-Dekker-Verwer.ipynb)
+that goes on to a more surprising example, due to Vinograd: if the matrix
+changes in time, the solution can grow without bound even though the
+eigenvalues stay fixed and negative.
+
 ## Experiment
 
 Here you can also change the upper-right entry $a_{12}$ of the last matrix and
@@ -149,18 +161,6 @@ Things to try:
   eigenvectors aren't perpendicular.
 - Start along one of the eigenvectors.  The solution doesn't grow.  Starting
   close to one gives very little growth.
-
-The same mechanism lies behind the transient growth of powers of non-normal
-matrices, which matters in the stability analysis of numerical methods, and
-behind transient amplification in fluid flows whose linearizations have only
-decaying modes.  A good reference is the book *Spectra and Pseudospectra* by
-Trefethen and Embree.
-
-This page is based on a
-[Jupyter notebook](https://github.com/ketch/ODE-counterexamples/blob/master/Vinograd-Dekker-Verwer.ipynb)
-that goes on to a more surprising example, due to Vinograd: if the matrix
-changes in time, the solution can grow without bound even though the
-eigenvalues stay fixed and negative.
 
 ```{ojs}
 //| echo: false
