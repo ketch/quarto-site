@@ -6,3 +6,55 @@ figures, ...).  The title, authors, abstract and links above come from
 build_publications.py; edit 2025_Euler_homogenization in the .bib file or publication_tags.yml
 to change them.
 -->
+
+## Animations
+
+### Formation of solitary waves
+
+A pressure pulse in a gas whose density varies periodically in space
+breaks up into a train of solitary waves instead of forming shocks.  The
+upper plot shows energy and the lower plot shows density; the plotting
+window moves along with the waves.  This is the behavior described in
+Section 1.1 and shown in Figure 1, though the background density here
+varies smoothly rather than in piecewise-constant layers.
+
+{{< video movies/euler_solitary_train_formation.mp4 >}}
+
+### Comparison of the models
+
+The setup of Section 2.5.1 and Figure 4: a moderate-amplitude pressure
+pulse, plotted in the material (Lagrangian) coordinate.  The solutions of
+the Euler equations and the $p$-system are indistinguishable, and the
+homogenized $p$-system agrees closely, with differences in wave position
+growing slowly over time.
+
+{{< video movies/compare_3.mp4 >}}
+
+The same experiment, showing only the $p$-system and the homogenized
+$p$-system:
+
+{{< video movies/psystem_comparison.mp4 >}}
+
+A larger pulse in a shorter, periodic domain, comparing the $p$-system and
+the homogenized $p$-system.  The pulse splits into left- and right-going
+parts that wrap around the domain and meet again.  The agreement is less
+close than for the smaller pulse above, and small-scale oscillations
+appear in the $p$-system solution.
+
+{{< video movies/psystem_homog.mp4 >}}
+
+### Shock tube problems
+
+These are the shock-tube-like problems of Section 4.1 (Figures 10 and 11):
+a smoothed step in pressure, from a higher value $p_\ell$ on the left to 1
+on the right, in a gas with periodically varying density.  The measurements
+in the paper suggest that shocks form for $p_\ell \ge 2$ and not, or only
+very weak ones, for smaller values.
+
+With $p_\ell = 1.8$:
+
+{{< video movies/shocktube_periodic_density.mp4 >}}
+
+With $p_\ell = 2.8$:
+
+{{< video movies/shocktube_periodic_density_2.8.mp4 >}}
