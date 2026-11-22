@@ -115,9 +115,12 @@ viewof tNow = {
   const {r1, r2, L, path, parts, u0} = sys;
   const {p1, u} = parts(tNow);
   const blue = "#1f77b4", green = "#2ca02c";
+  // The plots are drawn at this size and scaled by CSS to share the column:
+  // side by side when it is wide enough, stacked on narrow screens.
+  const size = 310;
   const circle = d3.range(0, 2 * Math.PI + 0.01, 0.02).map(s => [Math.cos(s), Math.sin(s)]);
   const phase = Plot.plot({
-    width: 360, height: 360, marginLeft: 40, marginBottom: 30,
+    width: size, height: size, marginLeft: 40, marginBottom: 30,
     x: {domain: [-L, L], label: null}, y: {domain: [-L, L], label: null},
     marks: [
       Plot.ruleX([0], {strokeOpacity: 0.2}), Plot.ruleY([0], {strokeOpacity: 0.2}),
@@ -137,9 +140,9 @@ viewof tNow = {
   const nNow = Math.hypot(u[0], u[1]);
   const ymax = 1.05 * Math.max(1, d3.max(path, d => d.norm));
   const norms = Plot.plot({
-    width: 360, height: 360, marginLeft: 40, marginBottom: 30,
+    width: size, height: size, marginLeft: 40, marginBottom: 30,
     x: {domain: [0, tMax], label: "t"},
-    y: {domain: [0, ymax], label: "‖u(t)‖", grid: true},
+    y: {domain: [0, ymax], label: null, grid: true},
     marks: [
       Plot.line(ref, {x: "t", y: "bound", strokeDasharray: "2,3", strokeOpacity: 0.7, clip: true}),
       Plot.line(ref, {x: "t", y: "normal", strokeDasharray: "6,4", strokeOpacity: 0.7}),
@@ -148,12 +151,16 @@ viewof tNow = {
       Plot.dot([{t: tNow, n: nNow}], {x: "t", y: "n", r: 5, fill: "currentColor"})
     ]
   });
-  return html`<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start">
-    <div>${phase}<div style="font-size: .85rem">The solution ${tex`u(t)`} (filled dot), the initial value ${tex`u(0)`} (open dot), and the components of ${tex`u(t)`}
+  for (const p of [phase, norms]) Object.assign(p.style, {width: "100%", height: "auto"});
+  // y-axis label as a box in the empty upper-right corner (the curves decay toward the bottom)
+  const yLabel = html`<div style="position: absolute; top: 12px; right: 24px; font-size: 1rem;
+    padding: .1rem .4rem; border: 1px solid currentColor; border-radius: 4px; opacity: .85">${tex`\|u(t)\|`}</div>`;
+  return html`<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+    <div style="flex: 1 1 0; min-width: 260px">${phase}<div style="font-size: .85rem">The solution ${tex`u(t)`} (filled dot), the initial value ${tex`u(0)`} (open dot), and the components of ${tex`u(t)`}
       along the eigenvectors (<span style="color: ${blue}">blue</span>: ${tex`z_1 e^{\lambda_1 t} r_1`};
       <span style="color: ${green}">green</span>: ${tex`z_2 e^{\lambda_2 t} r_2`}).
       The circle is ${tex`\|u\| = \|u(0)\|`}.</div></div>
-    <div>${norms}<div style="font-size: .85rem">Solid: ${tex`\|u(t)\|`}.
+    <div style="flex: 1 1 0; min-width: 260px"><div style="position: relative">${norms}${yLabel}</div><div style="font-size: .85rem">Solid: ${tex`\|u(t)\|`}.
       Dashed: ${tex`e^{\lambda_1 t}`}, the most that ${tex`\|u(t)\|`} could be if the eigenvectors were orthogonal.
       Dotted: the bound ${tex`\kappa(R) e^{\lambda_1 t}`}.</div></div>
   </div>`;
