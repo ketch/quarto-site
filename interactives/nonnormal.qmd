@@ -83,7 +83,7 @@ too.  Notice that the
 component $u_1(t)$ grows at first (from 0.5 to about 0.55).  Nevertheless, the
 length of the overall vector is monotonically decreasing.
 
-## A system with non-orthogonal eigenvectors
+## A system with non-perpendicular eigenvectors
 
 Finally, consider the system
 
@@ -123,7 +123,7 @@ because the eigenvectors are nearly parallel, the two arrows are long and
 point in nearly opposite directions, so at the start they almost cancel.  Once
 the green arrow has shrunk, what is left is the long blue one.
 
-A matrix whose eigenvectors are orthogonal is called *normal*.  The first two
+A matrix whose eigenvectors are perpendicular is called *normal*.  The first two
 examples are normal; the third is not.  If a normal matrix has negative
 eigenvalues, the length of the solution always decreases monotonically, so
 growth like this is only possible when the matrix is non-normal.
