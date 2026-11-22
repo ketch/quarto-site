@@ -1,7 +1,7 @@
 # Regenerate with: python3 interactives/nonnormal_thumbnail.py interactives/nonnormal.png
-# Thumbnail for the Interactives listing: the solution of u' = Au with nearly
-# parallel eigenvectors (15 degrees apart) and eigenvalues -1, -10, as on the
-# page, shortly after t = 0, with its two eigenvector components.
+# Thumbnail for the Interactives listing: the solution of u' = [[-1, 30], [0, -10]] u
+# from the page's default initial value, shortly after t = 0, with its two
+# eigenvector components.
 import sys
 
 import matplotlib
@@ -9,9 +9,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-a = np.radians(15) / 2
-r1 = np.array([np.cos(a), np.sin(a)])
-r2 = np.array([np.cos(a), -np.sin(a)])
+r1 = np.array([1., 0.])
+r2 = np.array([-30., 9.]) / np.hypot(30., 9.)
 u0 = np.array([np.cos(np.radians(60)), np.sin(np.radians(60))])
 z = np.linalg.solve(np.column_stack([r1, r2]), u0)
 t = np.linspace(0, 3, 1501)
