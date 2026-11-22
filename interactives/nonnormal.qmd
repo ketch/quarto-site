@@ -13,15 +13,15 @@ solution shrinks from the start?
 
 ## A diagonal system
 
-Start with two equations that don't interact:
+Consider the simple system of ODEs:
 
 $$
 u_1' = -u_1, \qquad u_2' = -10\, u_2 .
 $$
 
 Each component decays exponentially on its own: $u_1$ like $e^{-t}$ and $u_2$
-like $e^{-10t}$.  Since both components shrink, so does the length $\|u\|$ of
-the vector $u = (u_1, u_2)$.
+like $e^{-10t}$.  Here we visualize the components of $u$ (left) and the
+length $\|u\|$ (right) over time.
 
 ```{ojs}
 //| echo: false
@@ -37,6 +37,9 @@ viewof t1 = timeControl(invalidation)
 //| echo: false
 figure(solve(0, psi1), t1)
 ```
+
+Since both components shrink, so does the length $\|u\|$ of the vector
+$u = (u_1, u_2)$.
 
 In matrix form, this system is
 
@@ -203,6 +206,16 @@ function figure(sys, tNow) {
       Plot.dot([u], {x: d => d[0], y: d => d[1], r: 5, fill: "currentColor"})
     ]
   });
+  // Axis labels inside the phase plane, at the right end of the horizontal axis
+  // and the top of the vertical one; positions in percent so they follow CSS scaling.
+  const pct = (x, y) => [100 * phase.scale("x").apply(x) / size, 100 * phase.scale("y").apply(y) / size];
+  const [x1, y1] = pct(L, 0), [x2, y2] = pct(0, L);
+  const axisLabel = (x, y, shift, label) => html`<div style="position: absolute; left: ${x}%; top: ${y}%;
+    transform: ${shift}; font-size: 1rem; line-height: 1">${label}</div>`;
+  const phaseLabels = [
+    axisLabel(x1, y1, "translate(-100%, -120%)", tex`u_1`),
+    axisLabel(x2, y2, "translate(.4rem, 0)", tex`u_2`)
+  ];
   const ymax = 1.05 * Math.max(1, d3.max(path, d => d.norm));
   const norms = Plot.plot({
     width: size, height: size, marginLeft: 40, marginBottom: 30,
@@ -220,7 +233,7 @@ function figure(sys, tNow) {
   const yLabel = html`<div style="position: absolute; top: 12px; right: 24px; font-size: 1rem;
     padding: .1rem .4rem; border: 1px solid currentColor; border-radius: 4px; opacity: .85">${tex`\|u(t)\|`}</div>`;
   return html`<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
-    <div style="flex: 1 1 0; min-width: 260px">${phase}<div style="font-size: .85rem">The solution (filled dot),
+    <div style="flex: 1 1 0; min-width: 260px"><div style="position: relative">${phase}${phaseLabels}</div><div style="font-size: .85rem">The solution (filled dot),
       starting on the unit circle (open dot).  The arrows are its parts along the two eigenvectors (dashed lines):
       <span style="color: ${blue}">blue</span> decays like ${tex`e^{-t}`} and
       <span style="color: ${green}">green</span> like ${tex`e^{-10t}`}.</div></div>
