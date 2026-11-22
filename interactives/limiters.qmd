@@ -80,9 +80,8 @@ lib = {
     return pts;
   }
 
-  // Total variation: of the data, and of the piecewise-linear function
-  // (changes along the pieces plus the sizes of the jumps).
-  const tvData = y => d3.sum(y.slice(1), (v, i) => Math.abs(v - y[i]));
+  // Total variation of the piecewise-linear function (changes along the
+  // pieces plus the sizes of the jumps).
   const tvPieces = pts => d3.sum(pts.slice(1), (p, i) => Math.abs(p.y - pts[i].y));
 
   // Plot of the data and one piecewise-linear interpolant.
@@ -106,26 +105,7 @@ lib = {
     });
   }
 
-  return {x, datasets, phi, limiters, differences, slopes, pieces, tvData, tvPieces, plot};
-}
-```
-
-```{ojs}
-//| echo: false
-// Table of TV and range for several methods applied to one data set.
-function tvTable(y, methods) {
-  const fmt = v => v.toFixed(3);
-  const rows = methods.map(m => {
-    const pts = lib.pieces(y, lib.slopes(y, m));
-    return html`<tr><td>${m}</td><td>${fmt(lib.tvPieces(pts))}</td>
-            <td>${fmt(d3.min(pts, p => p.y))}</td><td>${fmt(d3.max(pts, p => p.y))}</td></tr>`;
-  });
-  return html`<table class="table table-sm" style="max-width: 32rem">
-    <thead><tr><th>Slopes</th><th>Total variation</th><th>Minimum</th><th>Maximum</th></tr></thead>
-    <tbody>
-      <tr><td><em>data</em></td><td>${fmt(lib.tvData(y))}</td><td>${fmt(d3.min(y))}</td><td>${fmt(d3.max(y))}</td></tr>
-      ${rows}
-    </tbody></table>`;
+  return {x, datasets, phi, limiters, differences, slopes, pieces, tvPieces, plot};
 }
 ```
 
@@ -188,14 +168,7 @@ Looking closely, you can see that each of these approximations adds little
 jumps (called "overshoots") in some region where the data itself was
 monotone.  Worse still, each of them generates negative values, whereas the
 original values were non-negative!  If our data represent concentrations or
-probabilities, then we have no way to make sense of negative values.  The
-table below shows the minimum value of each approximation, and its total
-variation, which we'll define [below](#total-variation).
-
-```{ojs}
-//| echo: false
-tvTable(lib.datasets.Smooth, lib.differences)
-```
+probabilities, then we have no way to make sense of negative values.
 
 Things look even worse if we take data samples from a function that is in
 fact discontinuous:
@@ -342,16 +315,12 @@ viewof tvdData = Inputs.radio(["Discontinuous", "Smooth"], {value: "Discontinuou
 }
 ```
 
-```{ojs}
-//| echo: false
-tvTable(lib.datasets[tvdData], lib.limiters)
-```
-
 Compare these with [the finite difference approximations above](#the-problem-overshoots).
 
 You'll notice that -- except for minmod -- all the limiters *do* produce some
 overshoot near the discontinuity; the total variation of each of their
-interpolants is larger than that of the data.  Superbee even increases the
+interpolants (shown in each panel) is larger than that of the data, which is
+the same as that of the minmod interpolant.  Superbee even increases the
 total variation for the smooth data we used at the start.
 
 What gives?  Well, these limiters are used within a larger algorithm for
@@ -403,17 +372,6 @@ threePoint = {
 }
 ```
 
-```{ojs}
-//| echo: false
-html`<table class="table table-sm" style="max-width: 32rem">
-  <thead><tr><th></th><th>Slope</th></tr></thead>
-  <tbody>
-    <tr><td><em>backward difference</em> ${tex`B`}</td><td>${threePoint.B.toFixed(3)}</td></tr>
-    <tr><td><em>forward difference</em> ${tex`F`}</td><td>${threePoint.F.toFixed(3)}</td></tr>
-    ${lib.limiters.map(m => html`<tr><td>${m}</td><td>${threePoint.sigma[m].toFixed(3)}</td></tr>`)}
-  </tbody></table>`
-```
-
 The shaded region in the plot above shows the slopes that lie between the
 backward difference and the forward difference.  For smooth data, both of
 these differences approximate the derivative to first order, so any slope in
@@ -449,11 +407,7 @@ exY = {
 ```{ojs}
 //| echo: false
 {
-  const s = lib.slopes(exY, exMethod);
-  const tv = lib.tvPieces(lib.pieces(exY, s));
-  return html`${lib.plot(exY, s, {yDomain: [-1, 4.8], height: 300, boxes: exBoxes})}
-    <p>Total variation of the data: ${lib.tvData(exY).toFixed(3)}.
-    Total variation of the interpolant: <strong>${tv.toFixed(3)}</strong>.</p>`;
+  return lib.plot(exY, lib.slopes(exY, exMethod), {yDomain: [-1, 4.8], height: 300, boxes: exBoxes});
 }
 ```
 
@@ -780,23 +734,6 @@ finalResult = weno.analyze(finalY)
 }
 ```
 
-```{ojs}
-//| echo: false
-{
-  const r = finalResult, f = v => v.toFixed(4);
-  const row = (label, v) => html`<tr><td>${label}</td>${v.map(t => html`<td>${f(t)}</td>`)}</tr>`;
-  return html`<table class="table table-sm" style="max-width: 36rem">
-    <thead><tr><th></th><th>left</th><th>center</th><th>right</th></tr></thead>
-    <tbody>
-      ${row(tex`\beta`, r.beta)}
-      ${row(tex`w_{j,-1/2}`, r.w["-1"])}
-      ${row(tex`w_{j,+1/2}`, r.w["1"])}
-    </tbody></table>
-    <p>WENO values: ${tex`\tilde y_{i-1/2}`} = ${f(r.q["-1"])}, ${tex`\tilde y_{i+1/2}`} = ${f(r.q["1"])}.
-    Quartic interpolant: ${f(weno.peval(r.quartic, -0.5))} and ${f(weno.peval(r.quartic, 0.5))}.</p>`;
-}
-```
-
 If you choose "Step", you'll see that for a perfect step function, WENO picks
 the flat interpolant, just like any TVD limiter would!
 
@@ -887,14 +824,6 @@ viewof advFrame = {
     ]
   });
 }
-```
-
-```{ojs}
-//| echo: false
-html`<table class="table table-sm" style="max-width: 24rem">
-  <thead><tr><th>Method</th><th>1-norm of the error after ${advection.cycles} cycles</th></tr></thead>
-  <tbody>${Object.entries(advection.schemes).map(([name, s]) =>
-    html`<tr><td>${name === "vanleer" ? "van Leer" : name}</td><td>${s.error.toFixed(4)}</td></tr>`)}</tbody></table>`
 ```
 
 By stepping through the animation, you can see how each limiter modifies the
