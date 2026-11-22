@@ -254,10 +254,11 @@ def main(bibfile: Path):
         if p["reference_type"] == "article" and p.get("journal", "").lower().startswith("arxiv"):
             p["reference_type"] = "unpublished"
             n_preprint += 1
-        # For a preprint, an arXiv DOI would give a "Published version" link
-        # that is the same paper as the "arXiv version" link.
-        if p["reference_type"] == "unpublished" and \
-                p.get("doi", "").lower().startswith("10.48550/arxiv"):
+        # An arXiv DOI would give a "Published version" link that is the same
+        # paper as the "arXiv version" link.  This applies to any entry type:
+        # preprints, technical reports, and accepted papers whose journal DOI
+        # isn't in the .bib yet.
+        if p.get("doi", "").lower().startswith("10.48550/arxiv"):
             if "arxivid" not in p:
                 raise ValueError(f"{key}: arXiv DOI but no arxivid field")
             del p["doi"]

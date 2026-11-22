@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/internal_stability_report.png" alt="Propagation of internal errors in explicit Runge–Kutta methods and internal stability of SSP and extrapolation methods" />
 <p class="paper-venue">(2013)</p>
-<p class="pub-links"><a href="https://doi.org/10.48550/arXiv.1309.1317">Published version</a> | <a href="https://arxiv.org/abs/1309.1317">arXiv version</a></p>
+<p class="pub-links"><a href="https://arxiv.org/abs/1309.1317">arXiv version</a></p>
 <div style="clear:both"></div>
 </div>
 ```
