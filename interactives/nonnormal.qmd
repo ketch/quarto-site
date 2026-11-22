@@ -30,7 +30,7 @@ viewof t1 = timeSlider()
 
 ```{ojs}
 //| echo: false
-figure(solve(0, 60), t1)
+figure(solve([1, 0], [0, 1], 60), t1)
 ```
 
 In the left plot, the blue and green arrows are the two components of $u(t)$,
