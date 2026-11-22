@@ -14,4 +14,4 @@ Surprisingly little is known about the answer to this question, but a first atte
 -Shocks that would be stable in a homogeneous medium are frequently not stable in a heterogeneous medium\
 -The asymptotic behavior of solutions in heterogeneous media is generally different; rather than consisting of N-waves, the solutions may be composed of solitary waves, for instance.\
 \
-To get an idea of what\'s going on, [take a look at some movies](https://bitbucket.org/ketch/layeredmediashocks/src/beaea8503a45/movies/) showing animations of the remarkable behavior of the solution.
+To get an idea of what\'s going on, [take a look at some movies](https://github.com/ketch/layeredmediashocks/tree/main/movies) showing animations of the remarkable behavior of the solution.
