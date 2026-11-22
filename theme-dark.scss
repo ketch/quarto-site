@@ -1,0 +1,92 @@
+/*-- scss:defaults --*/
+// "Midnight teal" dark theme with the article on a card, mirroring
+// theme-light.scss.  Layered on top of cosmo (see _quarto.yml).
+
+$mt-page:    #0a111c;  // page background behind the card
+$mt-bg:      #111b2b;  // article card
+$mt-surface: #1a2638;  // inline code, inputs
+$mt-deep:    #0b1320;  // navbar, footer, code blocks
+$mt-side:    #0c2b2a;  // sidebar background (dark teal)
+$mt-text:    #cbd5e1;
+$mt-muted:   #8b9ab0;
+$mt-heading: #f1f5f9;
+$mt-link:    #5eead4;
+$mt-hover:   #99f6e4;
+$mt-border:  #24324a;
+
+$body-bg: $mt-page;
+$body-color: $mt-text;
+$link-color: $mt-link;
+$link-hover-color: $mt-hover;
+$primary: $mt-link;
+$headings-color: $mt-heading;
+$text-muted: $mt-muted;
+$border-color: $mt-border;
+$navbar-bg: $mt-deep;
+$navbar-fg: $mt-text;
+$navbar-hl: $mt-link;
+$footer-bg: $mt-deep;
+$code-block-bg: $mt-deep;
+$code-color: $mt-text;
+$code-bg: $mt-surface;
+
+/*-- scss:rules --*/
+
+h1, h2, h3, h4, h5, h6, .title { color: $mt-heading; }
+a:hover { color: $mt-hover; }
+
+.navbar, header#quarto-header .navbar { border-bottom: 3px solid $mt-link; }
+.navbar .nav-link.active { box-shadow: inset 0 -3px 0 $mt-link; }
+
+main#quarto-document-content {
+  background: $mt-bg;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 4px 12px rgba(0, 0, 0, .3);
+}
+
+#quarto-sidebar, .sidebar.sidebar-navigation, #quarto-sidebar .sidebar-menu-container {
+  background: $mt-side !important;
+}
+.sidebar-link, .sidebar-item-text, .sidebar-title, .sidebar .menu-text, .sidebar .bi { color: #c4dcd9 !important; }
+.sidebar-link.active, .sidebar-link.active .menu-text { color: $mt-link !important; font-weight: 600; }
+
+#TOC a, nav#TOC .nav-link, #toc-title { color: $mt-muted !important; }
+#TOC a.active { color: $mt-link !important; border-left-color: $mt-link !important; }
+
+.quarto-title-meta-heading, .quarto-category, .breadcrumb, .breadcrumb a, .breadcrumb-item { color: $mt-muted !important; }
+.quarto-category { border-color: $mt-border !important; }
+
+div.sourceCode, pre.sourceCode, .cell-output pre {
+  background: $mt-deep !important;
+  border: 1px solid $mt-border !important;
+}
+div.sourceCode code, div.sourceCode code span { color: $mt-text; }
+pre code { background: transparent !important; }
+
+hr { border-color: $mt-border; opacity: 1; }
+blockquote { border-left-color: $mt-border; color: $mt-muted; }
+
+.nav-footer { border-top: 1px solid $mt-border; color: $mt-muted; }
+
+// Syntax-highlighting token colors.
+code span.kw, code span.cf, code span.im { color: #f0abfc !important; }
+code span.st, code span.ss, code span.ch, code span.sc { color: #86efac !important; }
+code span.dv, code span.fl, code span.bn, code span.cn { color: #fcd34d !important; }
+code span.co, code span.do, code span.an { color: #64748b !important; font-style: italic; }
+code span.fu { color: #7dd3fc !important; }
+code span.op, code span.va, code span.ot { color: $mt-text !important; }
+code span.bu, code span.dt { color: #fda4af !important; }
+
+// Most figures are matplotlib PNGs with transparent backgrounds and black
+// axis labels, which are unreadable on a dark page.  Put them on a light panel.
+main img.img-fluid, main .figure img, main p > img {
+  background: #f2f2f2;
+  padding: 6px;
+  border-radius: 4px;
+}
+// ...but not the sidebar photo or publication thumbnails.
+.sidebar-logo { background: none !important; padding: 0 !important; }
+
+// Publications page controls.
+#pub-search { background: $mt-surface; color: $mt-text; }
+.pub-filter { color: $mt-text; }
+.pub-filter.active { color: $mt-bg; }

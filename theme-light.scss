@@ -1,0 +1,58 @@
+/*-- scss:defaults --*/
+// "Teal sidebar" light theme with the article on a white card.
+// Layered on top of cosmo (see _quarto.yml).
+
+$tl-page:      #edf2f1;  // page background behind the card
+$tl-card:      #ffffff;  // article card
+$tl-text:      #26323f;
+$tl-muted:     #64748b;
+$tl-heading:   #10202b;
+$tl-link:      #0f766e;
+$tl-hover:     #0b5952;
+$tl-border:    #e5e7eb;
+$tl-code:      #f4f7f7;
+$tl-side:      #0f3d3a;  // sidebar background
+$tl-side-text: #d1e7e4;
+$tl-side-hl:   #7ee8d8;
+
+$body-bg: $tl-page;
+$body-color: $tl-text;
+$link-color: $tl-link;
+$link-hover-color: $tl-hover;
+$primary: $tl-link;
+$headings-color: $tl-heading;
+$text-muted: $tl-muted;
+$border-color: $tl-border;
+$navbar-bg: #ffffff;
+$navbar-fg: $tl-text;
+$navbar-hl: $tl-link;
+$footer-bg: $tl-page;
+$code-block-bg: $tl-code;
+
+/*-- scss:rules --*/
+
+h1, h2, h3, h4, h5, h6, .title { color: $tl-heading; }
+
+.navbar, header#quarto-header .navbar { border-bottom: 3px solid $tl-link; }
+.navbar .nav-link.active { box-shadow: inset 0 -3px 0 $tl-link; }
+
+main#quarto-document-content {
+  background: $tl-card;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, .08), 0 4px 12px rgba(16, 24, 40, .06);
+}
+
+#quarto-sidebar, .sidebar.sidebar-navigation, #quarto-sidebar .sidebar-menu-container {
+  background: $tl-side !important;
+}
+.sidebar-link, .sidebar-item-text, .sidebar-title, .sidebar .menu-text, .sidebar .bi { color: $tl-side-text !important; }
+.sidebar-link.active, .sidebar-link.active .menu-text { color: $tl-side-hl !important; font-weight: 600; }
+.sidebar-link:hover, .sidebar-link:hover .menu-text { color: #ffffff !important; }
+
+#TOC a, nav#TOC .nav-link, #toc-title { color: $tl-muted; }
+#TOC a.active { color: $tl-link !important; border-left-color: $tl-link !important; }
+
+div.sourceCode, pre.sourceCode, .cell-output pre {
+  background: $tl-code !important;
+  border: 1px solid $tl-border !important;
+}
+pre code { background: transparent !important; }

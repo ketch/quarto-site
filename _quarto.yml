@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: _site
+  # Quarto marks the wrong navbar item as current; see fix_nav_active.py.
+  post-render: fix_nav_active.py
   resources:
     - assets/
     - .htaccess
@@ -60,7 +62,11 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: [cosmo, theme-light.scss]
+      dark: [cosmo, theme-dark.scss]
+    # Start in the visitor's system light/dark setting; the navbar toggle overrides it.
+    respect-user-color-scheme: true
     css: styles.css
     html-math-method: mathjax
     toc: true

@@ -19,3 +19,17 @@
 #pub-list name { font-weight: 600; }
 #pub-list authors, #pub-list links { font-size: .92rem; }
 #pub-list journal { font-style: italic; }
+
+/* Article "card" layout, used by both theme-light.scss and theme-dark.scss
+   (they supply the colors and shadow). */
+main#quarto-document-content {
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+/* The colored sidebar needs no divider line next to it. */
+#quarto-sidebar { border-right: none !important; }
+@media (max-width: 767.98px) {
+  main#quarto-document-content { padding: 1rem; border-radius: 0; margin-top: 0; }
+}
