@@ -47,6 +47,14 @@ $$
 The eigenvalues are the diagonal entries, $-1$ and $-10$, and the
 eigenvectors point along the two axes (the dashed lines in the plot above).
 
+If $A$ is a matrix with negative eigenvalues, the solution of
+
+$$
+u'(t) = A u(t)
+$$
+
+must always decay to zero eventually.  But does it always decay monotonically?
+
 ## A coupled system with perpendicular eigenvectors
 
 Now consider
@@ -81,8 +89,7 @@ are perpendicular.  A matrix with perpendicular eigenvectors is called
 
 ## A non-normal system with the same eigenvalues
 
-Finally, put a nonzero number in the upper-right corner of the diagonal
-matrix:
+Finally, consider the system
 
 $$
 u'(t) = \begin{bmatrix} -1 & 30 \\ 0 & -10 \end{bmatrix} u(t) .
@@ -91,10 +98,11 @@ $$
 The matrix is triangular, so its eigenvalues are still the diagonal entries,
 $-1$ and $-10$.  But its eigenvectors are no longer perpendicular.  One still
 points along the horizontal axis, while the other is nearly parallel to it.
+The first slider below changes the upper-right entry, $a_{12}$.
 
 ```{ojs}
 //| echo: false
-viewof corner = Inputs.range([0, 60], {value: 30, step: 1, label: "upper-right entry"})
+viewof corner = Inputs.range([0, 60], {value: 30, step: 1, label: tex`a_{12}`})
 viewof psi3 = Inputs.range([0, 180], {value: 60, step: 1, label: "initial direction"})
 ```
 
@@ -123,7 +131,7 @@ non-normal matrices can make the solution grow like this.
 Things to try:
 
 - Move the $t$ slider and watch the green arrow shrink, leaving the long blue one.
-- Make the upper-right entry larger.  The eigenvectors become more nearly
+- Make $a_{12}$ larger.  The eigenvectors become more nearly
   parallel and the growth becomes larger.
 - Make it smaller.  At zero you have the diagonal system again.  Below about
   6, the solution doesn't grow from any starting direction, even though the
