@@ -6,3 +6,75 @@ figures, ...).  The title, authors, abstract and links above come from
 build_publications.py; edit 2012_ketchesonleveque_periodic in the .bib file or publication_tags.yml
 to change them.
 -->
+
+## Animations
+
+Below are some animations of some of the ideas discussed in the paper.
+These are solutions of the one-dimensional nonlinear elasticity equations
+$$
+\epsilon_t - u_x = 0, \qquad \rho(x)\, u_t - \sigma(\epsilon, x)_x = 0,
+$$
+where $\epsilon$ is strain, $u$ is velocity, $\rho$ is density, and the
+stress is $\sigma(\epsilon, x) = \exp(K(x)\epsilon) - 1$ with bulk modulus $K$.
+The layered media alternate between material A, with $\rho_A = K_A = 1$, and
+material B, with $\rho_B = K_B$.  The impedance of a material is
+$Z = \sqrt{\rho K}$, so the impedance ratio is $Z_B/Z_A = K_B$.
+
+In each animation the upper curve is stress.  The lower curve is either
+velocity or the total entropy $\int \eta\, dx$ plotted against time, where
+$\eta = \tfrac{1}{2}\rho u^2 + \int_0^\epsilon \sigma(s, x)\, ds$.
+
+### Time reversal in a homogeneous medium
+
+In the time-reversal test, we solve forward to some time, negate the
+velocity, and solve forward again for the same length of time.  If no
+shocks have formed, this returns the initial condition.  In these two
+movies the medium is homogeneous, the initial stress is a Gaussian hump,
+and the initial velocity is zero.  After the reversal, the black line is
+the reversed solution and the blue dots are the forward solution at the
+matching time, for comparison.  If the solution is reversible, the two
+stresses agree and the two velocities have opposite signs.
+
+In the first movie the velocity is reversed before shocks form, and the
+initial condition is recovered:
+
+{{< video movies/tr_beforeshock.mp4 >}}
+
+In the second movie the velocity is reversed after shocks have formed.
+The final solution differs from the initial condition:
+
+{{< video movies/tr_aftershock.mp4 >}}
+
+### Time reversal in a layered medium
+
+Here the initial pulse is the one used in the stegoton problem of LeVeque
+and Yong (2003), and the boundaries are periodic, so waves that leave on
+the right re-enter on the left.  As above, after the reversal the black
+line is the reversed solution and the blue dots are the forward solution.
+
+With impedance ratio $Z_B/Z_A = 4$, the pulse breaks up into a train of
+solitary waves (stegotons), and the reversed solution returns to the
+initial pulse:
+
+{{< video movies/tr_animation_Z4.mp4 >}}
+
+With impedance ratio $Z_B/Z_A = 2$, the waves have steep fronts with
+oscillations behind them, and the reversed solution does not return to the
+initial pulse:
+
+{{< video movies/tr_animation_Z2.mp4 >}}
+
+### Entropy
+
+The total entropy is conserved by smooth solutions and decreases when
+shocks form.  In these movies the lower curve shows the total entropy
+versus time.
+
+Homogeneous medium, with the same Gaussian initial stress as above.
+The entropy stays constant until shocks form and then decreases:
+
+{{< video movies/entropy_animation_Z1.mp4 >}}
+
+Layered medium with $Z_B/Z_A = 2$ and the stegoton-problem initial pulse:
+
+{{< video movies/entropy_animation_Z2.mp4 >}}
