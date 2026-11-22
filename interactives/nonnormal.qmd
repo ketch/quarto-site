@@ -38,10 +38,13 @@ where $\alpha$ is the angle between the eigenvectors and the norms are
 Euclidean norms.  When $\alpha = 90^\circ$, $\kappa(R) = 1$ and the solution
 never grows.
 
+The controls below set $\alpha$, the direction $\psi$ of the initial value
+$u(0) = (\cos\psi, \sin\psi)$ (both in degrees), and $\lambda_2$.
+
 ```{ojs}
 //| echo: false
-viewof alphaDeg = Inputs.range([2, 90], {value: 15, step: 1, label: tex`\alpha \text{ (angle between eigenvectors, degrees)}`})
-viewof psiDeg = Inputs.range([0, 180], {value: 60, step: 1, label: tex`\text{direction of } u(0) \text{ (degrees)}`})
+viewof alphaDeg = Inputs.range([2, 90], {value: 15, step: 1, label: tex`\alpha`})
+viewof psiDeg = Inputs.range([0, 180], {value: 60, step: 1, label: tex`\psi`})
 viewof lambda2 = Inputs.range([-50, -1], {value: -10, step: 0.5, label: tex`\lambda_2`})
 ```
 
