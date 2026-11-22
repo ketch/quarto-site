@@ -1,0 +1,878 @@
+---
+title: "An illustrated guide to limiters"
+date: '2026-11-22'
+image: limiters.png
+categories:
+- numerical-analysis
+- hyperbolic-PDEs
+resources:
+- limiters_advection.json
+---
+
+Many interesting wave phenomena -- like fluid dynamics, lasers, and water
+waves -- are described by nonlinear hyperbolic partial differential equations.
+The solutions of these problems often contain discontinuities.  So-called
+**limiters** (sometimes referred to as *slope limiters* or *flux limiters*)
+are one of the key ingredients in approximating these discontinuous solutions.
+This page explains how to interpolate non-smooth data without creating
+wiggles.
+
+It is an HTML version of a
+[Jupyter notebook](https://github.com/ketch/HyperPython/blob/master/Guide_to_limiters.ipynb)
+from my [HyperPython](https://github.com/ketch/HyperPython) course.  The
+notebook includes a Python implementation of everything shown here, which you
+can run and modify; some of that code is reproduced below in collapsible
+boxes.  On this page, the computations run in your browser, except for the
+advection solutions at the end, which were computed with
+[PyClaw](https://www.clawpack.org/pyclaw/).
+
+```{ojs}
+//| echo: false
+// Shared functions for the piecewise-linear interpolants.
+lib = {
+  const x = d3.range(-4, 5);  // sample points -4, -3, ..., 4
+  const datasets = {
+    "Smooth": x.map(t => Math.sin(t / 2) + 1),
+    "Discontinuous": x.map(t => Math.sin(t / 2) + 1 + 2 * (t > 0)),
+    "Monotone": x.map(t => Math.exp(t / 3))
+  };
+
+  function phi(theta, limiter) {
+    switch (limiter) {
+      case "minmod": return Math.max(0, Math.min(1, theta));
+      case "van Leer": return (theta + Math.abs(theta)) / (1 + Math.abs(theta));
+      case "MC": return Math.max(0, Math.min((1 + theta) / 2, 2, 2 * theta));
+      case "superbee": return Math.max(0, Math.min(1, 2 * theta), Math.min(2, theta));
+      default: throw new Error("Unrecognized limiter: " + limiter);
+    }
+  }
+  const limiters = ["minmod", "van Leer", "superbee", "MC"];
+  const differences = ["centered", "forward", "backward"];
+
+  // Slope sigma_i at each sample point.  Points where the needed data is
+  // missing (the ends), and limited slopes with B_i = 0, get sigma_i = 0.
+  function slopes(y, method) {
+    const n = y.length, s = new Array(n).fill(0);
+    const F = i => (y[i + 1] - y[i]) / (x[i + 1] - x[i]);
+    const B = i => (y[i] - y[i - 1]) / (x[i] - x[i - 1]);
+    for (let i = 0; i < n; i++) {
+      if (method === "piecewise constant") s[i] = 0;
+      else if (method === "centered") s[i] = (i > 0 && i < n - 1) ? (y[i + 1] - y[i - 1]) / (x[i + 1] - x[i - 1]) : 0;
+      else if (method === "forward") s[i] = i < n - 1 ? F(i) : 0;
+      else if (method === "backward") s[i] = i > 0 ? B(i) : 0;
+      else if (limiters.includes(method)) {
+        if (i > 0 && i < n - 1 && B(i) !== 0) s[i] = phi(F(i) / B(i), method) * B(i);
+      } else throw new Error("Unrecognized method: " + method);
+    }
+    return s;
+  }
+
+  // End points of each linear piece.  The piece around x_i extends to the
+  // midpoints between x_i and its neighbors (and stops at the first and last
+  // sample points).  Consecutive pieces are joined by vertical jumps.
+  function pieces(y, s) {
+    const n = y.length, pts = [];
+    for (let i = 0; i < n; i++) {
+      const a = i === 0 ? x[0] : (x[i - 1] + x[i]) / 2;
+      const b = i === n - 1 ? x[n - 1] : (x[i] + x[i + 1]) / 2;
+      pts.push({x: a, y: y[i] + s[i] * (a - x[i])}, {x: b, y: y[i] + s[i] * (b - x[i])});
+    }
+    return pts;
+  }
+
+  // Total variation: of the data, and of the piecewise-linear function
+  // (changes along the pieces plus the sizes of the jumps).
+  const tvData = y => d3.sum(y.slice(1), (v, i) => Math.abs(v - y[i]));
+  const tvPieces = pts => d3.sum(pts.slice(1), (p, i) => Math.abs(p.y - pts[i].y));
+
+  // Plot of the data and one piecewise-linear interpolant.
+  function plot(y, s, {label = null, yDomain = [-0.5, 4.8], height = 210, boxes = false} = {}) {
+    const pts = pieces(y, s);
+    const boxData = boxes ? d3.range(1, y.length - 1).map(i => ({
+      x1: (x[i - 1] + x[i]) / 2, x2: (x[i] + x[i + 1]) / 2,
+      y1: (y[i - 1] + y[i]) / 2, y2: (y[i] + y[i + 1]) / 2
+    })) : [];
+    return Plot.plot({
+      width: 700, height,
+      marginTop: 10,
+      x: {domain: [-4, 4], label: null},
+      y: {domain: yDomain, label: null, grid: true},
+      marks: [
+        Plot.rect(boxData, {x1: "x1", x2: "x2", y1: "y1", y2: "y2", fill: "gray", fillOpacity: 0.35}),
+        Plot.line(pts, {x: "x", y: "y", strokeWidth: 2, clip: true}),
+        Plot.dot(x.map((t, i) => ({x: t, y: y[i]})), {x: "x", y: "y", r: 6, fill: "red", fillOpacity: 0.5}),
+        label ? Plot.text([label], {text: d => d, frameAnchor: "bottom-right", dx: -8, dy: -8, fontSize: 14}) : null
+      ]
+    });
+  }
+
+  return {x, datasets, phi, limiters, differences, slopes, pieces, tvData, tvPieces, plot};
+}
+```
+
+```{ojs}
+//| echo: false
+// Table of TV and range for several methods applied to one data set.
+function tvTable(y, methods) {
+  const fmt = v => v.toFixed(3);
+  const rows = methods.map(m => {
+    const pts = lib.pieces(y, lib.slopes(y, m));
+    return html`<tr><td>${m}</td><td>${fmt(lib.tvPieces(pts))}</td>
+            <td>${fmt(d3.min(pts, p => p.y))}</td><td>${fmt(d3.max(pts, p => p.y))}</td></tr>`;
+  });
+  return html`<table class="table table-sm" style="max-width: 32rem">
+    <thead><tr><th>Slopes</th><th>Total variation</th><th>Minimum</th><th>Maximum</th></tr></thead>
+    <tbody>
+      <tr><td><em>data</em></td><td>${fmt(lib.tvData(y))}</td><td>${fmt(d3.min(y))}</td><td>${fmt(d3.max(y))}</td></tr>
+      ${rows}
+    </tbody></table>`;
+}
+```
+
+## Interpolation and wiggles
+
+Suppose you're given a set of data samples:
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  width: 700, height: 210, marginTop: 10,
+  x: {domain: [-5, 5], label: null},
+  y: {domain: [-0.1, 2.1], label: null, grid: true},
+  marks: [Plot.dot(lib.x.map((t, i) => ({x: t, y: lib.datasets.Smooth[i]})),
+                   {x: "x", y: "y", r: 6, fill: "red", fillOpacity: 0.5})]
+})
+```
+
+Now what you really want to know is, what is the state of the system at the
+points halfway between your samples?  And to figure that out, you need to
+guess at what's going on at the points in between those samples.  The
+simplest approximation would be to assume that the system just jumps from one
+value to the next somewhere in between:
+
+```{ojs}
+//| echo: false
+lib.plot(lib.datasets.Smooth, lib.slopes(lib.datasets.Smooth, "piecewise constant"),
+         {label: "Piecewise-constant approximation", yDomain: [-0.1, 2.1]})
+```
+
+For this set of data, you don't really believe that's what's happening, do
+you?  But our goal is to deal with systems that exhibit non-smooth (possibly
+discontinuous) behavior, so we need to at least admit the possibility of
+sudden jumps.  That's why we won't simply "connect the dots" to get a
+continuous approximation.
+
+Instead, we can try to approximate the slope around each of our sample points.
+The simplest way to do so is using finite differences.  If we let $\sigma_i$
+denote our approximation of the slope at $x_i$, then three common
+approximations are:
+
+- Forward difference: $\sigma_i = \dfrac{y_{i+1}-y_i}{x_{i+1}-x_i}$
+- Backward difference: $\sigma_i = \dfrac{y_i - y_{i-1}}{x_i - x_{i-1}}$
+- Centered difference: $\sigma_i = \dfrac{y_{i+1}-y_{i-1}}{x_{i+1}-x_{i-1}}$
+
+Here's what each of these approximations looks like for our data:
+
+```{ojs}
+//| echo: false
+html`${lib.differences.map(m => lib.plot(lib.datasets.Smooth, lib.slopes(lib.datasets.Smooth, m),
+                                         {label: m, yDomain: [-0.1, 2.1], height: 170}))}`
+```
+
+I've used $\sigma=0$ for the points at the edges where we don't have enough
+data to compute the appropriate slope.
+
+## The problem: overshoots!
+
+Looking closely, you can see that each of these approximations adds little
+jumps (called "overshoots") in some region where the data itself was
+monotone.  Worse still, each of them generates negative values, whereas the
+original values were non-negative!  If our data represent concentrations or
+probabilities, then we have no way to make sense of negative values.  The
+table below shows the minimum value of each approximation, and its total
+variation, which we'll define [below](#total-variation).
+
+```{ojs}
+//| echo: false
+tvTable(lib.datasets.Smooth, lib.differences)
+```
+
+Things look even worse if we take data samples from a function that is in
+fact discontinuous:
+
+```{ojs}
+//| echo: false
+html`${lib.differences.map(m => lib.plot(lib.datasets.Discontinuous, lib.slopes(lib.datasets.Discontinuous, m),
+                                         {label: m, height: 170}))}`
+```
+
+Now all three approaches have large, obvious overshoots.  This becomes even
+more problematic when actually solving a hyperbolic PDE; see
+[Lesson 3 of my HyperPython course](https://nbviewer.org/github/ketch/HyperPython/blob/master/Lesson_03_High-resolution_methods.ipynb)
+for details.
+
+Is there a better way?
+
+## The simplest limiter: minmod
+
+We'd like to avoid those overshoots and ensure that monotone regions of the
+data give monotone interpolations.  For equally spaced points, we can do that
+by choosing the slope $\sigma_i$ small enough that the interpolant near $x_i$
+stays bounded between the neighboring averages $(y_{i-1}+y_i)/2$ and
+$(y_i+y_{i+1})/2$.  There's an easy way to do that: just compute the forward
+and backward differences (like we did above), and then use *whichever is
+smaller* in absolute value.  If $y_i$ is an extremum, then to avoid increasing
+the overall range of the data we always choose $\sigma_i=0$.
+
+Here's what that looks like:
+
+```{ojs}
+//| echo: false
+lib.plot(lib.datasets.Discontinuous, lib.slopes(lib.datasets.Discontinuous, "minmod"),
+         {label: "Minmod approximation"})
+```
+
+Let's apply minmod to a monotone sequence of values, to illustrate the
+average-boundedness property:
+
+```{ojs}
+//| echo: false
+lib.plot(lib.datasets.Monotone, lib.slopes(lib.datasets.Monotone, "minmod"),
+         {label: "Minmod approximation", yDomain: [-0.1, 4.1], height: 300, boxes: true})
+```
+
+Each grey box extends from the average of $y_i$ and its left neighbor,
+$(y_{i-1}+y_i)/2$, to the average of $y_i$ and its right neighbor,
+$(y_i+y_{i+1})/2$.  The minmod interpolant around $x_i$ is guaranteed to stay
+within these bounds, so the right edge of one interpolated piece never
+"overshoots" the left edge of the next.
+
+## Total variation
+
+In fact, the minmod limiter guarantees an important mathematical property: the
+piecewise-linear function it produces has no more total variation (TV) than
+the data.  For discrete data, TV is defined as
+
+$$ TV(y) = \sum_i |y_i - y_{i-1}|.$$
+
+For a piecewise-linear function with jumps, the TV is the sum of the absolute
+changes along each linear piece plus the absolute size of each jump.
+Essentially, TV is a measure of how much a function wiggles!  This *total
+variation diminishing* (TVD) property is important because the true solutions
+of scalar hyperbolic PDEs have the same property: their total variation never
+increases.
+
+In the 1970s and 80s, researchers developed many other limiters.  Most of them
+do *not* guarantee that the interpolant has no more TV than the data.
+Instead, they guarantee that the full numerical method for a scalar hyperbolic
+PDE is TVD, as long as the time step is small enough.  These are known as
+*TVD limiters*.
+
+## TVD limiters
+
+Just for fun, let's look at 3 more such limiters.  Let $F_i$ and $B_i$ denote
+the forward- and backward-difference slope approximations at point $i$, and
+let $\theta_i = F_i/B_i$ be their ratio.  Each of these limiters can be
+described in terms of a function $\phi(\theta)$; the slope to be used is
+
+$$\sigma_i = \phi(\theta_i) B_i.$$
+
+(If $B_i = 0$, we take $\sigma_i = 0$.)  For instance, minmod corresponds to
+$\phi(\theta) = \max(0,\min(1,\theta))$.  The other limiter names and
+functions are:
+
+- Monotonized centered difference (**MC**): $\phi(\theta) = \max\left(0,\min\left(\frac{1+\theta}{2},2,2\theta\right)\right)$
+- **van Leer**: $\phi(\theta) = \dfrac{\theta + |\theta|}{1+ |\theta|}$
+- **Superbee**: $\phi(\theta) = \max(0,\min(1,2\theta),\min(2,\theta))$
+
+<details>
+<summary>Python code from the notebook</summary>
+
+```python
+def phi(theta,limiter):
+    if limiter == 'minmod':
+        phi = np.maximum(0,np.minimum(1,theta))
+    elif limiter == 'vanleer':
+        phi = (theta + np.abs(theta))/(1+np.abs(theta))
+    elif limiter == 'MC':
+        phi = np.maximum(0,np.minimum( (1.+theta)/2., np.minimum(2.,2*theta)))
+    elif limiter == 'superbee':
+        phi = np.maximum(0,np.maximum(np.minimum(1.,2*theta),np.minimum(2.,theta)))
+    else:
+        raise ValueError('Unrecognized limiter: '+limiter)
+    return phi
+
+def limited_slopes(x,y,limiter='minmod'):
+    "Slopes sigma_i = phi(theta_i) B_i, with sigma = 0 at the endpoints and wherever B_i = 0."
+    forward  = np.zeros_like(y)
+    backward = np.zeros_like(y)
+    theta    = np.zeros_like(y)
+
+    forward[:-1] = (y[1:]-y[:-1])/(x[1:]-x[:-1])
+    backward[1:] = (y[1:]-y[:-1])/(x[1:]-x[:-1])
+    interior = np.zeros(len(y),dtype=bool); interior[1:-1] = True
+    nonzero = interior & (backward != 0)
+    theta[nonzero] = forward[nonzero]/backward[nonzero]
+
+    sigma = phi(theta,limiter) * backward
+    sigma[~nonzero] = 0.
+    return sigma
+```
+
+</details>
+
+Here's what each of them looks like for our data.  You can also switch to the
+smooth data we started with.
+
+```{ojs}
+//| echo: false
+viewof tvdData = Inputs.radio(["Discontinuous", "Smooth"], {value: "Discontinuous", label: "Data"})
+```
+
+```{ojs}
+//| echo: false
+{
+  const y = lib.datasets[tvdData];
+  const yDomain = tvdData === "Smooth" ? [-0.1, 2.1] : [-0.1, 4.4];
+  return html`${lib.limiters.map(m => {
+    const s = lib.slopes(y, m);
+    return lib.plot(y, s, {label: `${m} (TV = ${lib.tvPieces(lib.pieces(y, s)).toFixed(3)})`,
+                           yDomain, height: 170});
+  })}`;
+}
+```
+
+```{ojs}
+//| echo: false
+tvTable(lib.datasets[tvdData], lib.limiters)
+```
+
+Compare these with [the finite difference approximations above](#the-problem-overshoots).
+
+You'll notice that -- except for minmod -- all the limiters *do* produce some
+overshoot near the discontinuity; the total variation of each of their
+interpolants is larger than that of the data.  Superbee even increases the
+total variation for the smooth data we used at the start.
+
+What gives?  Well, these limiters are used within a larger algorithm for
+solving hyperbolic PDEs.  It turns out that if the overshoots are small
+enough, they are removed in a full step of the algorithm: for the advection
+equation, the methods based on these limiters are TVD as long as the CFL
+number is at most 1, even though the interpolants themselves are not.  So no
+oscillations appear in the PDE solution.
+
+### Interactive comparison
+
+In each region, these limiters take three data points and give back a linear
+interpolant.  It's illuminating to compare their behavior on a single set of
+3 points: $(-1, y_{i-1})$, $(0, 0)$, and $(1, y_{i+1})$.
+
+```{ojs}
+//| echo: false
+viewof y1 = Inputs.range([-1, 1], {value: -0.3, step: 0.1, label: tex`y_{i-1}`})
+viewof y3 = Inputs.range([-1, 1], {value: 0.8, step: 0.1, label: tex`y_{i+1}`})
+```
+
+```{ojs}
+//| echo: false
+threePoint = {
+  const F = y3, B = -y1;   // forward and backward differences at x = 0
+  const sigma = Object.fromEntries(lib.limiters.map(m =>
+    [m, B === 0 ? 0 : lib.phi(F / B, m) * B]));
+  return {F, B, sigma};
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  const xx = d3.range(-0.5, 0.5001, 0.01);
+  const lines = lib.limiters.flatMap(m => xx.map(t => ({x: t, y: threePoint.sigma[m] * t, limiter: m})));
+  return Plot.plot({
+    width: 700, height: 360,
+    x: {domain: [-1.1, 1.1], label: null},
+    y: {domain: [-1.1, 1.1], label: null, grid: true},
+    color: {legend: true, domain: lib.limiters},
+    marks: [
+      Plot.areaY(xx, {x: d => d, y1: d => threePoint.F * d, y2: d => threePoint.B * d,
+                      fill: "gray", fillOpacity: 0.4}),
+      Plot.line(lines, {x: "x", y: "y", stroke: "limiter", z: "limiter", strokeWidth: 2.5, strokeOpacity: 0.8}),
+      Plot.dot([[-1, y1], [0, 0], [1, y3]], {x: d => d[0], y: d => d[1], r: 8, fill: "currentColor", fillOpacity: 0.5})
+    ]
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+html`<table class="table table-sm" style="max-width: 32rem">
+  <thead><tr><th></th><th>Slope</th></tr></thead>
+  <tbody>
+    <tr><td><em>backward difference</em> ${tex`B`}</td><td>${threePoint.B.toFixed(3)}</td></tr>
+    <tr><td><em>forward difference</em> ${tex`F`}</td><td>${threePoint.F.toFixed(3)}</td></tr>
+    ${lib.limiters.map(m => html`<tr><td>${m}</td><td>${threePoint.sigma[m].toFixed(3)}</td></tr>`)}
+  </tbody></table>`
+```
+
+The shaded region in the plot above shows the slopes that lie between the
+backward difference and the forward difference.  For smooth data, both of
+these differences approximate the derivative to first order, so any slope in
+this region gives an interpolant that is second-order accurate.  All four
+limiters always choose a slope in this region.  Play with the sliders and
+answer the following questions:
+
+- Which limiter usually chooses the flattest approximation?  Does it always?
+- Which limiter usually chooses the steepest approximation?  Does it always?
+- In which situations do all the limiters give the same slope?  Why?
+
+### Try your own data
+
+Here you can apply any of the methods above to any of the data sets, or to
+random data.
+
+```{ojs}
+//| echo: false
+viewof exData = Inputs.radio(["Smooth", "Discontinuous", "Monotone", "Random"], {value: "Random", label: "Data"})
+viewof exReroll = Inputs.button("New random data")
+viewof exMethod = Inputs.select(["piecewise constant", ...lib.differences, ...lib.limiters], {value: "minmod", label: "Slopes"})
+viewof exBoxes = Inputs.toggle({label: "Show neighbor averages", value: false})
+```
+
+```{ojs}
+//| echo: false
+exY = {
+  exReroll;  // re-run when the button is pressed
+  return exData === "Random" ? lib.x.map(() => 2 * Math.random()) : lib.datasets[exData];
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  const s = lib.slopes(exY, exMethod);
+  const tv = lib.tvPieces(lib.pieces(exY, s));
+  return html`${lib.plot(exY, s, {yDomain: [-1, 4.8], height: 300, boxes: exBoxes})}
+    <p>Total variation of the data: ${lib.tvData(exY).toFixed(3)}.
+    Total variation of the interpolant: <strong>${tv.toFixed(3)}</strong>.</p>`;
+}
+```
+
+## Higher-order interpolation: WENO
+
+If we want to get higher-order accuracy (in smooth regions), then we have to
+give up the TVD property -- at least, in the sense defined above.  The most
+common approach for higher order non-oscillatory piecewise interpolation is
+known as weighted essentially non-oscillatory (WENO) interpolation.
+
+WENO is a very effective technique for interpolating or reconstructing
+functions that contain discontinuities without introducing oscillations.
+We'll focus on 5th-order WENO interpolation, which is the most commonly used.
+As for the limiters above, we work with point values of a function.  (In
+finite volume methods, WENO is usually applied instead to cell averages; the
+idea is the same, but the coefficients are different.)
+
+We take 5 values $y_{i-2}, \dots, y_{i+2}$ at the points $x = -2, -1, 0, 1, 2$
+(so $x_i = 0$ and $\Delta x = 1$).  You can change them with the sliders
+below, or choose one of the preset data sets; all of the plots in this section
+use these values.
+
+```{ojs}
+//| echo: false
+viewof wenoPreset = Inputs.radio(["Example", "Step", "Random"], {value: "Example", label: "Data"})
+viewof wenoReroll = Inputs.button("New random data")
+```
+
+```{ojs}
+//| echo: false
+wenoStart = {
+  wenoReroll;
+  if (wenoPreset === "Example") return [0.262, 0.298, 0.814, 0.092, 0.600];
+  if (wenoPreset === "Step") return [1, 1, 1, 0, 0];
+  return d3.range(5).map(() => Math.round(1000 * Math.random()) / 1000);
+}
+viewof wenoY = Inputs.form(wenoStart.map((v, j) =>
+  Inputs.range([-0.5, 2], {value: v, step: 0.001, label: tex`y_{i${j === 2 ? "" : (j < 2 ? "-" : "+") + Math.abs(j - 2)}}`})))
+```
+
+```{ojs}
+//| echo: false
+weno = {
+  const xs = [-2, -1, 0, 1, 2];
+
+  // Solve A c = b by Gaussian elimination with partial pivoting.
+  function solve(A, b) {
+    const n = b.length, M = A.map((row, i) => [...row, b[i]]);
+    for (let col = 0; col < n; col++) {
+      let piv = col;
+      for (let r = col + 1; r < n; r++) if (Math.abs(M[r][col]) > Math.abs(M[piv][col])) piv = r;
+      [M[col], M[piv]] = [M[piv], M[col]];
+      for (let r = col + 1; r < n; r++) {
+        const f = M[r][col] / M[col][col];
+        for (let c = col; c <= n; c++) M[r][c] -= f * M[col][c];
+      }
+    }
+    const c = new Array(n);
+    for (let r = n - 1; r >= 0; r--) {
+      let s = M[r][n];
+      for (let j = r + 1; j < n; j++) s -= M[r][j] * c[j];
+      c[r] = s / M[r][r];
+    }
+    return c;
+  }
+  // Coefficients a_0, a_1, ... of the interpolating polynomial sum_j a_j x^j.
+  const polyfit = (px, py) => solve(px.map(t => px.map((_, j) => t ** j)), py);
+  const peval = (a, t) => a.reduceRight((s, aj) => s * t + aj, 0);
+
+  // Optimal weights (left, center, right) at x = -1/2 and x = +1/2, as computed
+  // by compute_opt_weights in the notebook.  They are checked below.
+  const gamma = {"-1": [5/16, 5/8, 1/16], "1": [1/16, 5/8, 5/16]};
+  const eps = 1e-6;
+
+  function analyze(y) {
+    const quartic = polyfit(xs, y);
+    const p = [0, 1, 2].map(r => polyfit(xs.slice(r, r + 3), y.slice(r, r + 3)));
+    // Jiang-Shu smoothness indicator for p(x) = a0 + a1 x + a2 x^2 on [-1/2, 1/2]
+    // with dx = 1:  int (p')^2 + int (p'')^2 = a1^2 + a2^2/3 + 4 a2^2.
+    const beta = p.map(a => a[1] ** 2 + (13 / 3) * a[2] ** 2);
+    const out = {quartic, p, beta, w: {}, q: {}};
+    for (const loc of ["-1", "1"]) {
+      const xe = +loc / 2, g = gamma[loc];
+      const opt = d3.sum(p, (a, j) => g[j] * peval(a, xe));
+      if (Math.abs(opt - peval(quartic, xe)) > 1e-9 * (1 + Math.abs(opt)))
+        throw new Error(`optimal weights do not reproduce the quartic at x = ${xe}`);
+      const wt = g.map((gj, j) => gj / (eps + beta[j]) ** 2);
+      const tot = d3.sum(wt);
+      out.w[loc] = wt.map(v => v / tot);
+      out.q[loc] = d3.sum(p, (a, j) => out.w[loc][j] * peval(a, xe));
+    }
+    return out;
+  }
+
+  const names = ["left", "center", "right"];
+  const colors = ["#1f77b4", "#d62728", "#2ca02c"];
+
+  // Plot the data, the given polynomials (on [-2, 2], thicker on [-1/2, 1/2]),
+  // and optionally the WENO values.
+  function plot(y, polys, {colorList, values = null, height = 300} = {}) {
+    const fine = d3.range(-2, 2.0001, 0.02), cell = d3.range(-0.5, 0.5001, 0.02);
+    return Plot.plot({
+      width: 700, height, marginTop: 10,
+      x: {domain: [-2.5, 2.5], label: null},
+      y: {domain: [-0.5, 2.1], label: null, grid: true},
+      marks: [
+        ...polys.flatMap((a, j) => [
+          Plot.line(fine, {x: d => d, y: d => peval(a, d), stroke: colorList[j], strokeWidth: 1.5, clip: true}),
+          Plot.line(cell, {x: d => d, y: d => peval(a, d), stroke: colorList[j], strokeWidth: 6, strokeOpacity: 0.5, clip: true})
+        ]),
+        Plot.dot(xs.map((t, i) => ({x: t, y: y[i]})), {x: "x", y: "y", r: 4, fill: "currentColor"}),
+        values ? Plot.dot(values, {x: "x", y: "y", r: 10, fill: "gray", fillOpacity: 0.5, stroke: "currentColor"}) : null
+      ]
+    });
+  }
+
+  return {xs, polyfit, peval, gamma, analyze, names, colors, plot};
+}
+```
+
+```{ojs}
+//| echo: false
+wenoResult = weno.analyze(wenoY)
+```
+
+Ordinary polynomial interpolation yields an oscillatory polynomial that, for
+the example data, also exceeds the bounds of the data:
+
+```{ojs}
+//| echo: false
+weno.plot(wenoY, [wenoResult.quartic], {colorList: ["currentColor"]})
+```
+
+For application to hyperbolic conservation laws, our main interest is in
+getting values of the function at the half-integer points (interfaces).
+Let's suppose we're trying to interpolate around $x=0$, at $x=\pm 1/2$.
+Instead of using all 5 points, we could just use three points, which might
+give us a less oscillatory interpolant, at least in that interval.  Using the
+5 points we're given, there are three natural choices of interpolation
+stencil: the leftmost three, the middle three, or the rightmost three.  Let's
+see what each of these quadratic interpolants looks like.
+
+```{ojs}
+//| echo: false
+html`${[0, 1, 2].map(j => html`<div style="margin-bottom: .5rem">
+  <strong style="color: ${weno.colors[j]}">${weno.names[j]} interpolant</strong>
+  ${weno.plot(wenoY, [wenoResult.p[j]], {colorList: [weno.colors[j]], height: 200})}</div>`)}`
+```
+
+Here are all three quadratic interpolants together with the quartic
+interpolant for comparison:
+
+```{ojs}
+//| echo: false
+weno.plot(wenoY, [...wenoResult.p, wenoResult.quartic], {colorList: [...weno.colors, "currentColor"]})
+```
+
+The quadratic interpolants look less oscillatory, but they're also less
+accurate.  The WENO idea is to use the high-order interpolant (with all 5
+points) if the data is smooth, but to use one of the lower-order interpolants
+(or a combination of them) if the data is not smooth.  This is achieved by
+computing point values of the interpolant as weighted averages of the point
+values of the candidate polynomials.  Let $p_1 = p_\text{left}$, $p_2 = p_\text{center}$,
+and $p_3 = p_\text{right}$.  Writing $\tilde{y}_{i-1/2}$ for the interpolated
+value at $x_{i-1/2}$,
+
+$$\tilde{y}_{i-1/2} = \sum_{j=1}^{3} w_{j,-1/2}\, p_j(x_{i-1/2}).$$
+
+Of course, there is some particular set of weights that gives the value of the
+quartic interpolant:
+
+$$p_\text{quartic}(x_{i-1/2}) = \sum_{j=1}^{3} \gamma_{j,-1/2}\, p_j(x_{i-1/2}).$$
+
+These *optimal weights* $\gamma$ do not depend on the data, but they do depend
+on the point where we evaluate.  Requiring this equation to hold for any data
+gives
+
+$$
+\gamma_{j,-1/2} = \left(\tfrac{5}{16}, \tfrac{5}{8}, \tfrac{1}{16}\right), \qquad
+\gamma_{j,+1/2} = \left(\tfrac{1}{16}, \tfrac{5}{8}, \tfrac{5}{16}\right)
+$$
+
+for $j = 1, 2, 3$.
+
+We will want to have $w_{j,\pm 1/2} \approx \gamma_{j,\pm 1/2}$ for smooth
+data.
+
+How does one determine if a polynomial is non-oscillatory?  There are several
+ways proposed in the literature, but the original and most widely used is the
+weighted Sobolev norm introduced by Jiang and Shu:
+
+$$\beta = \sum_{l=1}^{k-1} \Delta x^{2l-1} \int_{x_{i-1/2}}^{x_{i+1/2}} \left(\frac{d^l}{dx^l}p(x)\right)^2 dx.$$
+
+Here $k = 3$ is the number of points in each candidate stencil.  Put simply,
+$\beta$ is a scaled sum of the squared $L^2$ norms of all the derivatives of
+the polynomial over the interval where it will be used.  The scaling is
+chosen to make the "smoothness indicator" $\beta$ independent of the choice
+of $\Delta x$.
+
+As each of the interpolants above is a linear function of the values $y_j$,
+the smoothness indicators are quadratic functions of the $y_j$.  If we number
+the stencils $r = 0, 1, 2$ from left to right, so that stencil $r$ uses
+$y_{i-2+r}, y_{i-1+r}, y_{i+r}$, they can be written in the form
+
+$$\beta_r = \sum_{m=0}^{2} \sum_{n=0}^{m} C_{r,m,n}\, y_{i-2+r+m}\, y_{i-2+r+n}.$$
+
+The coefficients $C_{r,m,n}$ are different for each of the candidate
+polynomials $p_\text{left},p_\text{center},p_\text{right}$.  Here we simply
+compute $\beta$ directly from each polynomial.
+
+Next we use these smoothness indicators to determine a weighting for the
+candidate polynomials.  Observe that a large smoothness indicator means a
+polynomial has large derivatives, so we will want to give it less weight
+(perhaps they should be called non-smoothness indicators).
+
+$$\tilde{w}_j = \frac{\gamma_j}{(\epsilon + \beta_j)^2}$$
+
+Here $\epsilon$ is a small number used to avoid division by zero; we use
+$\epsilon = 10^{-6}$.  We also normalize the weights so that they sum to
+unity:
+
+$$w_j = \frac{\tilde{w}_j}{\sum_j\tilde{w}_j}$$
+
+<details>
+<summary>Python code from the notebook</summary>
+
+```python
+def stencil_coefficients(xs,xe):
+    """Coefficients c such that the polynomial interpolating (xs[j], f_j)
+       has the value sum_j c[j]*f_j at the point xe."""
+    n = len(xs)
+    V = np.vander(xs,n,increasing=True)
+    return np.linalg.solve(V.T, xe**np.arange(n))
+
+def compute_opt_weights(x,k,xi):
+    """
+    Optimal (linear) weights gamma for the k candidate stencils (ordered left, center, right)
+    at the points x_i + xi/2, where x_i is the middle point of x.  These are the weights
+    for which the combination of the degree-(k-1) interpolants equals the degree-(2k-2)
+    interpolant through all 2k-1 points.
+    """
+    gamma = {}
+    for xi_val in xi:
+        xe = x[k-1] + xi_val/2.
+        c_opt = stencil_coefficients(x,xe)
+        M = np.zeros((2*k-1,k))
+        for r in range(k):
+            M[r:r+k,r] = stencil_coefficients(x[r:r+k],xe)
+        g = np.linalg.lstsq(M,c_opt,rcond=None)[0]
+        assert np.allclose(M.dot(g),c_opt), 'no exact optimal weights at xi = %s' % xi_val
+        gamma[xi_val] = g
+    return gamma
+
+def compute_smoothness_indicators(polys,dx=1.):
+    "Jiang-Shu smoothness indicator of each polynomial on the interval [-dx/2, dx/2]."
+    beta = np.zeros(len(polys))
+    for r, poly in enumerate(polys):
+        degree = poly.order
+        for l in range(1,degree+1):
+            antiderivative = np.polyint(np.polyder(poly,l)**2)
+            beta[r] += dx**(2*l-1) * (antiderivative(dx/2.) - antiderivative(-dx/2.))
+    return beta
+
+def compute_weights(gamma, beta, epsilon=1.e-6):
+    k = len(beta)
+    w = np.empty(k)
+    for j in range(k):
+        w[j] = gamma[j]/(epsilon+beta[j])**2
+
+    wsum = np.sum(w)
+    return w/wsum
+```
+
+</details>
+
+Here are the final interpolated values given by WENO (indicated by the large
+grey circles), and the weights given to each of the quadratic interpolants
+when computing the left and right values:
+
+```{ojs}
+//| echo: false
+{
+  const r = wenoResult;
+  const values = [{x: -0.5, y: r.q["-1"]}, {x: 0.5, y: r.q["1"]}];
+  const bars = loc => html`<div><div style="font-size: .9rem">${loc === "-1" ? "Weights for x = −1/2" : "Weights for x = +1/2"}</div>${Plot.plot({
+    width: 220, height: 180, marginLeft: 40,
+    x: {domain: weno.names, label: null},
+    y: {domain: [0, 1], label: null, grid: true},
+    marks: [Plot.barY(weno.names.map((n, j) => ({n, w: r.w[loc][j]})),
+                      {x: "n", y: "w", fill: "n"})],
+    color: {domain: weno.names, range: weno.colors}
+  })}</div>`;
+  return html`${weno.plot(wenoY, [...r.p, r.quartic], {colorList: [...weno.colors, "currentColor"], values})}
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem">${bars("-1")}${bars("1")}</div>`;
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  const r = wenoResult, f = v => v.toFixed(4);
+  const row = (label, v) => html`<tr><td>${label}</td>${v.map(t => html`<td>${f(t)}</td>`)}</tr>`;
+  return html`<table class="table table-sm" style="max-width: 36rem">
+    <thead><tr><th></th><th>left</th><th>center</th><th>right</th></tr></thead>
+    <tbody>
+      ${row(tex`\beta`, r.beta)}
+      ${row(tex`w_{j,-1/2}`, r.w["-1"])}
+      ${row(tex`w_{j,+1/2}`, r.w["1"])}
+    </tbody></table>
+    <p>WENO values: ${tex`\tilde y_{i-1/2}`} = ${f(r.q["-1"])}, ${tex`\tilde y_{i+1/2}`} = ${f(r.q["1"])}.
+    Quartic interpolant: ${f(weno.peval(r.quartic, -0.5))} and ${f(weno.peval(r.quartic, 0.5))}.</p>`;
+}
+```
+
+Try different data.  What happens if you use a step function for $y$?
+Choose "Step" above.  For a perfect step function, WENO picks the flat
+interpolant, just like any TVD limiter would!
+
+## Comparison of several limiters for advection
+
+In practice, all of these limiters are used as components of numerical solvers
+for hyperbolic PDEs.  The simplest hyperbolic PDE is the advection equation:
+
+$$ q_t + a q_x = 0.$$
+
+The solution $q$ simply translates at velocity $a$; if you're not familiar
+with this, take a look at my
+[HyperPython lesson on advection](https://nbviewer.org/github/ketch/HyperPython/blob/master/Lesson_01_Advection.ipynb)
+and then the
+[lesson on high-resolution methods](https://nbviewer.org/github/ketch/HyperPython/blob/master/Lesson_03_High-resolution_methods.ipynb).
+
+The plots below show solutions of the advection equation with $a = 1$ on the
+interval $[0, 1]$ with periodic boundary conditions, using 100 grid cells and
+several of the methods we've discussed.  The TVD limiters are used in
+Clawpack's second-order finite volume method; "Lax-Wendroff" is the same
+method with no limiter, and "first-order" is the upwind method.  The WENO
+solutions use the method of lines with WENO reconstruction of order 5, 7, or
+9.  These solutions were computed with PyClaw, using the code in the notebook;
+the solution advects across the full domain once in each unit of time.  The
+grey curve is the initial condition, which is also the exact solution after
+each full cycle.
+
+```{ojs}
+//| echo: false
+advection = FileAttachment("limiters_advection.json").json()
+```
+
+```{ojs}
+//| echo: false
+viewof advFrame = {
+  const n = advection.cycles * advection.framesPerCycle;
+  const form = html`<div style="display: flex; align-items: center; gap: .75rem; flex-wrap: wrap">
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="min-width: 4.5rem">Play</button>
+    <input type="range" min="0" max="${n}" step="1" value="0" style="flex: 1; min-width: 10rem">
+    <output style="min-width: 7rem"></output></div>`;
+  const [button, range, output] = form.querySelectorAll("button, input, output");
+  let timer = null;
+  const show = v => {
+    form.value = v;
+    output.value = `t = ${(v / advection.framesPerCycle).toFixed(1)} cycles`;
+  };
+  const stop = () => { clearInterval(timer); timer = null; button.textContent = "Play"; };
+  range.oninput = () => show(+range.value);  // the input event then bubbles to the form
+  button.onclick = () => {
+    if (timer) return stop();
+    if (+range.value >= n) range.value = 0;
+    button.textContent = "Pause";
+    timer = setInterval(() => {
+      range.value = +range.value + 1;
+      show(+range.value);
+      form.dispatchEvent(new Event("input", {bubbles: true}));
+      if (+range.value >= n) stop();
+    }, 120);
+  };
+  invalidation.then(() => clearInterval(timer));
+  show(0);
+  return form;
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  const names = Object.keys(advection.schemes);
+  const display = name => name === "vanleer" ? "van Leer" : name;
+  const pos = name => { const i = names.indexOf(name); return {fx: i % 3, fy: Math.floor(i / 3)}; };
+  const rows = (frame) => names.flatMap(name => {
+    const q = advection.schemes[name].frames[frame], p = pos(name);
+    return advection.x.map((x, j) => ({x, q: q[j], ...p}));
+  });
+  return Plot.plot({
+    width: 760, height: 520,
+    marginLeft: 35, marginBottom: 30,
+    fx: {axis: null, padding: 0.06}, fy: {axis: null, padding: 0.08},
+    x: {domain: [0, 1], label: null, ticks: [0.5]},
+    y: {domain: [-0.1, 1.3], label: null, ticks: [0, 0.5, 1]},
+    marks: [
+      Plot.frame({strokeOpacity: 0.3}),
+      Plot.line(rows(0), {x: "x", y: "q", fx: "fx", fy: "fy", stroke: "gray", strokeOpacity: 0.6, clip: true}),
+      Plot.line(rows(advFrame), {x: "x", y: "q", fx: "fx", fy: "fy", stroke: "#1f77b4", strokeWidth: 2, clip: true}),
+      Plot.text(names.map(name => ({name: display(name), ...pos(name)})),
+                {text: "name", fx: "fx", fy: "fy", frameAnchor: "top", dy: 6, fontSize: 12})
+    ]
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+html`<table class="table table-sm" style="max-width: 24rem">
+  <thead><tr><th>Method</th><th>1-norm of the error after ${advection.cycles} cycles</th></tr></thead>
+  <tbody>${Object.entries(advection.schemes).map(([name, s]) =>
+    html`<tr><td>${name === "vanleer" ? "van Leer" : name}</td><td>${s.error.toFixed(4)}</td></tr>`)}</tbody></table>`
+```
+
+By stepping through the animation, you can see how each limiter modifies the
+shape of the solution over time.  The Lax-Wendroff method is based on a
+centered-difference approximation with no limiting; notice that it creates
+oscillations and is also less accurate than the limiter-based methods.  For
+the advection equation, oscillations and overshoots are not a serious problem,
+but in the context of fluid dynamics or water wave simulations, they can be
+catastrophic.

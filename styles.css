@@ -57,3 +57,7 @@ main#quarto-document-content {
    by default.  Its text and axes use the page's text color, so on the dark
    theme they become unreadable.  Let the page background show through. */
 svg[class^="plot-"] { background: transparent !important; }
+
+/* Let wide display equations scroll sideways on narrow screens instead of
+   overflowing the text column. */
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
