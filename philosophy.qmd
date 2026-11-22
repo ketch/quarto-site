@@ -3,6 +3,13 @@ title: Philosophy
 subtitle: Facilitating better science
 ---
 
+## Human-centric, computer-enabled research
+
+The ultimate purpose of research is human understanding and betterment of human lives.  Machines and AI are powerful tools toward those goals.  Research results should be provided in a form that is easy for machines to digest as well as in a form that is easy for humans to read and understand.
+
+I make my code and data publicly available so that other researchers can easily incorporate them into their own work.  Everything in my published papers is, at a minimum, reviewed and revised by myself and my coauthors (who are human).  AI tool usage is acknowledged in every publication with a clear indication of what it was used for.
+
+
 ## Openness in research and teaching
 
 I try to practice scientific research in the open as suggested in
@@ -12,7 +19,6 @@ and scientific teaching in the open as suggested by
 The idea is that openness enables massive collaboration, and collaboration
 leads to better tools, materials, and results.
 
- - My *open lab notebook* is hosted on this site
  - I post my [teaching materials on Github](/teaching.html)
  - I post my [research code on Github](https://github.com/ketch)
  - I have published some grant proposals on Figshare: 
