@@ -33,8 +33,10 @@ viewof t1 = timeSlider()
 figure(solve(0, 60), t1)
 ```
 
-Since both components shrink, so does the length $\|u(t)\|$ of the vector
-$u(t) = (u_1(t), u_2(t))$.
+In the left plot, the blue and green arrows are the two components of $u(t)$,
+and the dashed lines show the directions they point in.  Both arrows shrink:
+the green one quickly and the blue one slowly.  Since both components shrink,
+so does the length $\|u(t)\|$ of the vector $u(t) = (u_1(t), u_2(t))$.
 
 In matrix form, this system is
 
@@ -45,9 +47,42 @@ $$
 The eigenvalues are the diagonal entries, $-1$ and $-10$, and the
 eigenvectors point along the two axes (the dashed lines in the plot above).
 
-## A non-diagonal system with the same eigenvalues
+## A coupled system with perpendicular eigenvectors
 
-Now put a nonzero number in the upper-right corner:
+Now consider
+
+$$
+u'(t) = \begin{bmatrix} -5.5 & 4.5 \\ 4.5 & -5.5 \end{bmatrix} u(t) .
+$$
+
+The two equations are coupled, so we can no longer look at each component
+separately.  But the matrix has the same eigenvalues, $-1$ and $-10$, and its
+eigenvectors point along the diagonals $(1, 1)$ and $(-1, 1)$.  These are still
+perpendicular.  As before, the blue and green arrows are the parts of $u(t)$
+along the two eigenvectors.
+
+```{ojs}
+//| echo: false
+viewof t2 = timeSlider()
+```
+
+```{ojs}
+//| echo: false
+figure(solve([Math.SQRT1_2, Math.SQRT1_2], [-Math.SQRT1_2, Math.SQRT1_2], 60), t2)
+```
+
+The eigenvectors are rotated by $45^\circ$, but otherwise nothing has changed:
+the two arrows shrink and stay perpendicular, so the length of $u(t)$ shrinks
+too.  Notice that the
+component $u_1(t)$ grows at first (from 0.5 to about 0.55).  So it isn't
+essential that each component decays; what matters is that the eigenvectors
+are perpendicular.  A matrix with perpendicular eigenvectors is called
+*normal*.
+
+## A non-normal system with the same eigenvalues
+
+Finally, put a nonzero number in the upper-right corner of the diagonal
+matrix:
 
 $$
 u'(t) = \begin{bmatrix} -1 & 30 \\ 0 & -10 \end{bmatrix} u(t) .
@@ -60,7 +95,7 @@ points along the horizontal axis, while the other is nearly parallel to it.
 ```{ojs}
 //| echo: false
 viewof corner = Inputs.range([0, 60], {value: 30, step: 1, label: "upper-right entry"})
-viewof psi2 = Inputs.range([0, 180], {value: 60, step: 1, label: "initial direction"})
+viewof psi3 = Inputs.range([0, 180], {value: 60, step: 1, label: "initial direction"})
 ```
 
 ```{ojs}
@@ -70,24 +105,20 @@ tex.block`u'(t) = \begin{bmatrix} -1 & ${corner} \\ 0 & -10 \end{bmatrix} u(t)`
 
 ```{ojs}
 //| echo: false
-viewof t2 = timeSlider()
+viewof t3 = timeSlider()
 ```
 
 ```{ojs}
 //| echo: false
-figure(solve(corner, psi2), t2)
+figure(solve([1, 0], [-corner / Math.hypot(corner, 9), 9 / Math.hypot(corner, 9)], psi3), t3)
 ```
 
-This time the solution more than doubles in length before it decays.  The
-arrows show why.  They split the solution into its parts along the two
-eigenvectors, and each part shrinks, just as in the diagonal system: the green
-one quickly and the blue one slowly.  But because the eigenvectors are nearly
-parallel, the two parts are long and point in nearly opposite directions, so
-at the start they almost cancel.  Once the green part has decayed, what is
-left is the long blue one.
-
-A matrix with perpendicular eigenvectors is called *normal*.  Only non-normal
-matrices can make the solution grow like this.
+This time the solution more than doubles in length before it decays.  Each
+arrow still shrinks, the green one quickly and the blue one slowly.  But
+because the eigenvectors are nearly parallel, the two arrows are long and
+point in nearly opposite directions, so at the start they almost cancel.  Once
+the green arrow has shrunk, what is left is the long blue one.  Only
+non-normal matrices can make the solution grow like this.
 
 Things to try:
 
@@ -119,16 +150,16 @@ tMax = 3  // final time shown
 
 ```{ojs}
 //| echo: false
-// Exact solution of u' = [[-1, b], [0, -10]] u with u(0) = (cos psi, sin psi):
-// u(t) = z1 e^{-t} r1 + z2 e^{-10t} r2, where the eigenvectors are r1 = (1, 0)
-// and r2 = the unit vector along (-b, 9).
-function solve(b, psiDeg) {
+// Exact solution of u'(t) = A u(t) with u(0) = (cos psi, sin psi), where A has
+// eigenvalues -1 and -10 with unit eigenvectors r1 and r2:
+// u(t) = z1 e^{-t} r1 + z2 e^{-10t} r2.
+function solve(r1, r2, psiDeg) {
   const l1 = -1, l2 = -10;
-  const n2 = Math.hypot(b, 9);
-  const r1 = [1, 0], r2 = [-b / n2, 9 / n2];
   const psi = psiDeg * Math.PI / 180, u0 = [Math.cos(psi), Math.sin(psi)];
   // Solve [r1 r2] z = u0.
-  const z2 = u0[1] / r2[1], z1 = u0[0] - z2 * r2[0];
+  const det = r1[0] * r2[1] - r2[0] * r1[1];
+  const z1 = (u0[0] * r2[1] - r2[0] * u0[1]) / det;
+  const z2 = (r1[0] * u0[1] - u0[0] * r1[1]) / det;
   const parts = t => {
     const c1 = z1 * Math.exp(l1 * t), c2 = z2 * Math.exp(l2 * t);
     const p1 = [c1 * r1[0], c1 * r1[1]];
