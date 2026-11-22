@@ -16,8 +16,10 @@ This page is meant to accompany a reading of
 [Section 4.6 of Randall LeVeque's text on finite difference methods](https://doi.org/10.1137/1.9780898717839.ch4).
 Other good resources are cited there.  It is an HTML version of a
 [Jupyter notebook](https://github.com/ketch/AMCS-252-2026/blob/main/in-class%20notebook/Multigrid.ipynb)
-from my course on finite difference methods (AMCS 252).  All computations
-run in your browser.
+from my course on finite difference methods (AMCS 252).  The notebook
+includes a Python implementation of everything shown here, which you can run
+and modify; some of that code is reproduced below in collapsible boxes.  On
+this page, the computations run in your browser.
 
 ```{ojs}
 //| echo: false
@@ -216,8 +218,19 @@ $$
 $$
 
 The plot below shows these values for a grid with $m = 30$ interior points.
-Try changing $\omega$ to $2/3$ and notice that the values in the second half
-(for $p > m/2$, where $\cos(p\pi h) < 0$) all become at most $1/3$.
+The modes in the second half ($p \ge (m+1)/2$, where
+$-1 < \cos(p\pi h) \le 0$) are the high-frequency modes that Jacobi's method
+should damp.  For these modes, $\hat{\gamma}_p$ lies between $1-2\omega$ and
+$1-\omega$, so
+
+$$
+\max_{p \ge (m+1)/2} |\hat{\gamma}_p| \le \max\left(|1-\omega|,\, |1-2\omega|\right).
+$$
+
+The right-hand side is smallest when $1-\omega = 2\omega-1$, that is, for
+$\omega = 2/3$, where it equals $1/3$.  This is the reason for choosing
+$\omega = 2/3$: every high-frequency mode is reduced by at least a factor of 3
+in each iteration.  Try $\omega = 2/3$ in the plot.
 
 ```{ojs}
 //| echo: false
