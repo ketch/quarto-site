@@ -110,8 +110,9 @@ more than doubles in length before it decays!
 
 A matrix whose eigenvectors are perpendicular is called *normal*.  The first two
 examples are normal; the third is not.  If a normal matrix has negative
-eigenvalues, the length of the solution always decreases monotonically, so
-growth like this is only possible when the matrix is non-normal.
+eigenvalues, the length of the solution always decreases monotonically.  But
+with a non-normal matrix, the solution can grow dramatically before eventually
+decaying.
 
 ## Experiment
 
