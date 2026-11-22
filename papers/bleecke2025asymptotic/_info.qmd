@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/bleecke2025asymptotic.png" alt="Asymptotic-preserving and energy-conserving methods for a hyperbolic approximation of the BBM equation" />
 <p class="paper-venue"><span class="pub-journal">Communications on Applied Mathematics and Computation</span> (2025)</p>
-<p class="pub-links"><a href="https://doi.org/10.48550/arXiv.2511.10044">Published version</a> | <a href="https://arxiv.org/abs/2511.10044">arXiv version</a></p>
+<p class="pub-links"><a href="https://arxiv.org/abs/2511.10044">arXiv version</a></p>
 <div style="clear:both"></div>
 </div>
 ```

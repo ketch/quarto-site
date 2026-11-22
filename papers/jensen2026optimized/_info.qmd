@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/jensen2026optimized.png" alt="Optimized linear multistep methods for stiff problems" />
 <p class="paper-venue"><span class="pub-journal">Numerical Algorithms</span> (2026)</p>
-<p class="pub-links"><a href="https://doi.org/10.48550/arXiv.2610.22685">Published version</a> | <a href="https://arxiv.org/abs/2610.22685">arXiv version</a></p>
+<p class="pub-links"><a href="https://arxiv.org/abs/2610.22685">arXiv version</a></p>
 <div style="clear:both"></div>
 </div>
 ```

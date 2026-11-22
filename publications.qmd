@@ -94,7 +94,7 @@ include-after-body:
 <a href="/papers/jensen2026optimized/"><span class="pub-title">Optimized linear multistep methods for stiff problems</span></a><br>
 <span class="pub-authors">Tyler Jensen, David I Ketcheson,  and Lajos Lóczi</span>,
 <span class="pub-journal">Numerical Algorithms</span> (2026)<br>
-<span class="pub-links"><a href="/papers/jensen2026optimized/">More information</a> | <a href="https://doi.org/10.48550/arXiv.2610.22685">Published version</a> | <a href="https://arxiv.org/abs/2610.22685">arXiv version</a> | <a href="https://github.com/tylerj32/optimized_lmms_for_stiff_problems_repository">Reproducibility repository</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/jensen2026optimized/">More information</a> | <a href="https://arxiv.org/abs/2610.22685">arXiv version</a> | <a href="https://github.com/tylerj32/optimized_lmms_for_stiff_problems_repository">Reproducibility repository</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -129,7 +129,7 @@ include-after-body:
 <a href="/papers/bleecke2025asymptotic/"><span class="pub-title">Asymptotic-preserving and energy-conserving methods for a hyperbolic approximation of the BBM equation</span></a><br>
 <span class="pub-authors">Sebastian Bleecke, Abhijit Biswas, David I Ketcheson, Hendrik Ranocha,  and Jochen Schutz</span>,
 <span class="pub-journal">Communications on Applied Mathematics and Computation</span> (2025)<br>
-<span class="pub-links"><a href="/papers/bleecke2025asymptotic/">More information</a> | <a href="https://doi.org/10.48550/arXiv.2511.10044">Published version</a> | <a href="https://arxiv.org/abs/2511.10044">arXiv version</a> | <a href="https://github.com/sbleecke/2025_bbmh">Reproducibility repository</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/bleecke2025asymptotic/">More information</a> | <a href="https://arxiv.org/abs/2511.10044">arXiv version</a> | <a href="https://github.com/sbleecke/2025_bbmh">Reproducibility repository</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -679,7 +679,7 @@ include-after-body:
 <a href="/papers/2012_pyclaw-sisc/"><span class="pub-title">PyClaw: Accessible, Extensible, Scalable Tools for Wave Propagation Problems</span></a><br>
 <span class="pub-authors">David I. Ketcheson, Kyle T. Mandli, Aron J. Ahmadia, Amal Alghamdi, Manuel Quezada de Luna, Matteo Parsani, Matthew G. Knepley,  and Matthew Emmett</span>,
 <span class="pub-journal">SIAM Journal on Scientific Computing</span>, 34(4):C210--C231 (2012)<br>
-<span class="pub-links"><a href="/papers/2012_pyclaw-sisc/">More information</a> | <a href="/assets/papers/2012_pyclaw-sisc.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110856976">Published version</a> | <a href="https://arxiv.org/abs/1111.6583">arXiv version</a> | <a href="https://numerics.kaust.edu.sa/papers/pyclaw-sisc/pyclaw-sisc.html">Figures with interactive code</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/2012_pyclaw-sisc/">More information</a> | <a href="/assets/papers/2012_pyclaw-sisc.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110856976">Published version</a> | <a href="https://arxiv.org/abs/1111.6583">arXiv version</a> | <a href="https://numerics.kaust.edu.sa/papers/pyclaw-sisc/pyclaw-sisc.html">Figures with interactive code</a> | <a href="https://doi.org/10.5281/zenodo.24432819">Reproducibility repository</a></span><div style="clear:both"></div>
 
 </div>
 
@@ -914,7 +914,7 @@ in Bulletin of the American Astronomical Society. (2002)<br>
 <a href="/papers/internal_stability_report/"><span class="pub-title">Propagation of internal errors in explicit Runge–Kutta methods and internal stability of SSP and extrapolation methods</span></a><br>
 <span class="pub-authors">David I Ketcheson, Lajos Lóczi,  and Matteo Parsani</span>,
  (2013)<br>
-<span class="pub-links"><a href="/papers/internal_stability_report/">More information</a> | <a href="https://doi.org/10.48550/arXiv.1309.1317">Published version</a> | <a href="https://arxiv.org/abs/1309.1317">arXiv version</a></span><div style="clear:both"></div>
+<span class="pub-links"><a href="/papers/internal_stability_report/">More information</a> | <a href="https://arxiv.org/abs/1309.1317">arXiv version</a></span><div style="clear:both"></div>
 
 </div>
 

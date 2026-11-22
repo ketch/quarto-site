@@ -192,6 +192,19 @@ def gen_links() -> dict:
     return ast.literal_eval((JEKYLL_ROOT / "assets/paperlinks.txt").read_text())
 
 
+class UniqueKeyLoader(yaml.SafeLoader):
+    """A YAML loader that rejects duplicate keys (yaml.safe_load keeps the last one silently)."""
+
+    def construct_mapping(self, node, deep=False):
+        seen = set()
+        for key_node, _ in node.value:
+            key = self.construct_object(key_node, deep=deep)
+            if key in seen:
+                raise ValueError(f"Duplicate key {key!r} in {TAGS_FILE.name}, line {key_node.start_mark.line + 1}")
+            seen.add(key)
+        return super().construct_mapping(node, deep=deep)
+
+
 def load_generator():
     sys.path.insert(0, str(GENERATOR_DIR))
     import bibtex2htmldiv as gen
@@ -204,7 +217,7 @@ def load_generator():
 def main(bibfile: Path):
     if not PAPER_IMAGES.is_dir():
         raise FileNotFoundError(f"Paper image folder not found: {PAPER_IMAGES}")
-    extra = yaml.safe_load(TAGS_FILE.read_text())
+    extra = yaml.load(TAGS_FILE.read_text(), Loader=UniqueKeyLoader)
     tags = extra.get("tags") or {}
     overrides = extra.get("title_overrides") or {}
 
@@ -241,10 +254,11 @@ def main(bibfile: Path):
         if p["reference_type"] == "article" and p.get("journal", "").lower().startswith("arxiv"):
             p["reference_type"] = "unpublished"
             n_preprint += 1
-        # For a preprint, an arXiv DOI would give a "Published version" link
-        # that is the same paper as the "arXiv version" link.
-        if p["reference_type"] == "unpublished" and \
-                p.get("doi", "").lower().startswith("10.48550/arxiv"):
+        # An arXiv DOI would give a "Published version" link that is the same
+        # paper as the "arXiv version" link.  This applies to any entry type:
+        # preprints, technical reports, and accepted papers whose journal DOI
+        # isn't in the .bib yet.
+        if p.get("doi", "").lower().startswith("10.48550/arxiv"):
             if "arxivid" not in p:
                 raise ValueError(f"{key}: arXiv DOI but no arxivid field")
             del p["doi"]
@@ -269,6 +283,15 @@ def main(bibfile: Path):
             if k not in repos:
                 raise KeyError(f"{TAGS_FILE.name} repos: {k} is null but has no repository to hide")
             hidden_repos[k] = repos.pop(k)
+            continue
+        if isinstance(url, dict):   # {url: new, replaces: old}: a moved repository
+            if set(url) != {"url", "replaces"}:
+                raise ValueError(f"{TAGS_FILE.name} repos: {k} needs exactly 'url' and 'replaces'")
+            if repos.get(k) != url["replaces"]:
+                raise ValueError(f"{k}: {TAGS_FILE.name} replaces {url['replaces']} "
+                                 f"but paperlinks.txt has {repos.get(k)}")
+            hidden_repos[k] = repos.pop(k)
+            repos[k] = url["url"]
             continue
         if k in repos and repos[k] != url:
             raise ValueError(f"{k}: repository {url} in {TAGS_FILE.name} but {repos[k]} in paperlinks.txt")
