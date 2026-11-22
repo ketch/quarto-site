@@ -18,6 +18,8 @@ website:
         text: Home
       - href: posts.qmd
         text: Posts
+      - href: interactives.qmd
+        text: Interactives
       - href: publications.qmd
         text: Publications
       - href: teaching.qmd
@@ -37,6 +39,8 @@ website:
         text: "Home"
       - href: posts.qmd
         text: "Posts"
+      - href: interactives.qmd
+        text: "Interactives"
       - href: publications.qmd
         text: "Publications"
       - href: teaching.qmd
@@ -62,6 +66,9 @@ website:
       # listed here for the sidebar to appear on them.  Collapsed by default.
       - section: "All posts"
         contents: "/20*/**/*.{md,qmd}"
+      - section: "All interactives"
+        # (No leading slash: "/interactives/..." makes Quarto 1.x crash.)
+        contents: "interactives/*.qmd"
 
 format:
   html:

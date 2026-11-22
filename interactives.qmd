@@ -1,0 +1,11 @@
+---
+title: "Interactives"
+listing:
+  contents: "/interactives/*.qmd"
+  sort: "date desc"
+  type: default
+---
+
+Pages with interactive visualizations of mathematical models and numerical
+methods.  The computations run in your browser; move the sliders and the
+results are recomputed.

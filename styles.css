@@ -52,3 +52,8 @@ main#quarto-document-content {
 @media (max-width: 575.98px) {
   .paper-info .paper-image { float: none; display: block; margin: 0 0 .75rem; }
 }
+
+/* Observable Plot (used in ```{ojs} cells) gives each plot a white background
+   by default.  Its text and axes use the page's text color, so on the dark
+   theme they become unreadable.  Let the page background show through. */
+svg[class^="plot-"] { background: transparent !important; }

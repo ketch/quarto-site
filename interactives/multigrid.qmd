@@ -1,0 +1,552 @@
+---
+title: "Multigrid"
+description: "An interactive introduction to multigrid for a 1D boundary value problem: Jacobi smoothing, under-relaxation, grid representations of Fourier modes, coarse-grid correction, and the V-cycle."
+date: '2026-11-22'
+categories:
+- numerical-analysis
+- multigrid
+---
+
+Multigrid is one of the great algorithms for numerically solving PDEs; it is
+one of the few essentially optimal algorithms for solving a linear system of
+equations, since it computes the solution of an $N\times N$ system in
+$\mathcal{O}(N\log N)$ -- or even just $\mathcal{O}(N)$ -- operations.
+
+This page is meant to accompany a reading of
+[Section 4.6 of Randall LeVeque's text on finite difference methods](https://doi.org/10.1137/1.9780898717839.ch4).
+Other good resources are cited there.  It is an HTML version of a
+[Jupyter notebook](https://github.com/ketch/AMCS-252-2026/blob/main/in-class%20notebook/Multigrid.ipynb)
+from my course on finite difference methods (AMCS 252).  All computations
+run in your browser.
+
+```{ojs}
+//| echo: false
+// Functions shared by the interactive figures below.  They are JavaScript
+// ports of the Python functions in the notebook.
+lib = {
+  const phi = x => 20 * Math.PI * x ** 3;
+  // Right-hand side f(x) = u''(x) for the exact solution below.
+  const f = x => -20 + 0.5 * 120 * Math.PI * x * Math.cos(phi(x))
+                 - 0.5 * (60 * Math.PI * x ** 2) ** 2 * Math.sin(phi(x));
+  const uExact = x => 1 + 12 * x - 10 * x ** 2 + 0.5 * Math.sin(phi(x));
+  const alpha = 1, beta = 3;
+
+  // Interior grid points of a grid with m interior points.
+  const grid = m => Float64Array.from({length: m}, (_, i) => (i + 1) / (m + 1));
+  // Straight line from alpha to beta at m points (the initial guess).
+  const line = m => Float64Array.from({length: m}, (_, i) => alpha + (beta - alpha) * i / (m - 1));
+
+  // Restriction: keep the odd-numbered points.
+  const coarsen = v => v.filter((_, i) => i % 2 === 1);
+
+  // Prolongation: linear interpolation from m points to 2m+1 points,
+  // with boundary values a and b.
+  function interpolate(v, a, b) {
+    const mc = v.length, out = new Float64Array(2 * mc + 1);
+    for (let i = 0; i < mc; i++) out[2 * i + 1] = v[i];
+    for (let i = 0; i < mc - 1; i++) out[2 * i + 2] = 0.5 * (v[i] + v[i + 1]);
+    out[0] = 0.5 * (out[1] + a);
+    out[2 * mc] = 0.5 * (out[2 * mc - 1] + b);
+    return out;
+  }
+
+  // One damped Jacobi step for U'' = rhs with U(0) = a, U(1) = b.
+  function jacobiStep(U, rhs, a, b, w) {
+    const m = U.length, h = 1 / (m + 1), V = new Float64Array(m);
+    for (let i = 0; i < m; i++) {
+      const left = i > 0 ? U[i - 1] : a;
+      const right = i < m - 1 ? U[i + 1] : b;
+      V[i] = (1 - w) * U[i] + w * (0.5 * (left + right) - 0.5 * h * h * rhs[i]);
+    }
+    return V;
+  }
+
+  // Residual rhs - AU, where A is the second-difference matrix.
+  function residual(U, rhs, a, b) {
+    const m = U.length, h = 1 / (m + 1), r = new Float64Array(m);
+    for (let i = 0; i < m; i++) {
+      const left = i > 0 ? U[i - 1] : a;
+      const right = i < m - 1 ? U[i + 1] : b;
+      r[i] = rhs[i] - (left - 2 * U[i] + right) / (h * h);
+    }
+    return r;
+  }
+
+  // nu damped Jacobi steps (omega = 2/3, as in the notebook's Jacobi function).
+  // Returns the new iterate and its residual.
+  function jacobi(U, rhs, a, b, nu, w = 2 / 3) {
+    for (let s = 0; s < nu; s++) U = jacobiStep(U, rhs, a, b, w);
+    return [U, residual(U, rhs, a, b)];
+  }
+
+  // Exact solution of the discrete system AU = F (Thomas algorithm).
+  function solveDiscrete(F, a, b) {
+    const n = F.length, h = 1 / (n + 1);
+    const d = Float64Array.from(F, v => v * h * h);
+    d[0] -= a; d[n - 1] -= b;
+    const c = new Float64Array(n), g = new Float64Array(n);
+    c[0] = -0.5; g[0] = -0.5 * d[0];
+    for (let i = 1; i < n; i++) {
+      const den = -2 - c[i - 1];
+      c[i] = 1 / den;
+      g[i] = (d[i] - g[i - 1]) / den;
+    }
+    const U = new Float64Array(n);
+    U[n - 1] = g[n - 1];
+    for (let i = n - 2; i >= 0; i--) U[i] = g[i] - c[i] * U[i + 1];
+    return U;
+  }
+
+  const maxAbs = a => a.reduce((s, v) => Math.max(s, Math.abs(v)), 0);
+  const linspace = (a, b, n) => Array.from({length: n}, (_, i) => a + (b - a) * i / (n - 1));
+
+  return {phi, f, uExact, alpha, beta, grid, line, coarsen, interpolate,
+          jacobiStep, residual, jacobi, solveDiscrete, maxAbs, linspace};
+}
+```
+
+## Jacobi's method
+
+We use Jacobi's method to solve the problem given by Eq. (4.82) in the text:
+
+$$
+u''(x) = f(x), \qquad 0 < x < 1, \qquad u(0) = \alpha = 1, \quad u(1) = \beta = 3,
+$$
+
+where $f$ is chosen so that the exact solution is
+
+$$
+u(x) = 1 + 12x - 10x^2 + \tfrac{1}{2}\sin(20\pi x^3).
+$$
+
+We use a grid with $m = 2^8 - 1 = 255$ interior points $x_i = ih$ and mesh
+width $h = 1/(m+1)$.  The approximation $U_i \approx u(x_i)$ satisfies the
+centered difference equations
+
+$$
+\frac{U_{i-1} - 2U_i + U_{i+1}}{h^2} = f(x_i), \qquad i = 1, \dots, m,
+$$
+
+with $U_0 = \alpha$ and $U_{m+1} = \beta$.  We write this linear system as
+$AU = F$, where the boundary values have been moved into the first and last
+entries of $F$.  Here is the exact solution:
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  width: 700, height: 300,
+  x: {label: "x", domain: [0, 1]},
+  y: {label: "u(x)", grid: true},
+  marks: [Plot.line(lib.linspace(0, 1, 1000), {x: d => d, y: lib.uExact, strokeWidth: 2})]
+})
+```
+
+The (under-relaxed) Jacobi iteration with parameter $\omega$ is
+
+$$
+U_i \leftarrow (1-\omega)\, U_i + \omega \left( \frac{U_{i-1} + U_{i+1}}{2} - \frac{h^2}{2} f(x_i) \right).
+$$
+
+With $\omega = 1$ this is the original Jacobi method.  Below, we start from
+a straight line from $\alpha$ to $\beta$ as the initial guess and take up to
+100 iterations.  The slider sets the number of iterations shown.
+
+```{ojs}
+//| echo: false
+viewof jacIter = Inputs.range([0, 100], {value: 0, step: 1, label: "Iterations"})
+viewof jacOmega = Inputs.range([0, 1], {value: 1, step: 0.01, label: tex`\omega`})
+```
+
+```{ojs}
+//| echo: false
+jacobiRun = {
+  const m = 2 ** 8 - 1, x = lib.grid(m), F = x.map(lib.f);
+  let U = lib.line(m);
+  const iterates = [U];
+  for (let i = 0; i < 100; i++) {
+    U = lib.jacobiStep(U, F, lib.alpha, lib.beta, jacOmega);
+    iterates.push(U);
+  }
+  return {x, u: x.map(lib.uExact), iterates};
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  const U = jacobiRun.iterates[jacIter];
+  const pts = Array.from(jacobiRun.x, (x, i) => ({x, U: U[i], err: U[i] - jacobiRun.u[i]}));
+  return Plot.plot({
+    width: 700, height: 420,
+    title: `Number of iterations: ${jacIter}`,
+    x: {label: "x", domain: [0, 1]},
+    y: {label: null, domain: [-3, 6], grid: true},
+    color: {legend: true, domain: ["Exact", "Jacobi", "Error"]},
+    marks: [
+      Plot.ruleY([0]),
+      Plot.line(lib.linspace(0, 1, 1000), {x: d => d, y: lib.uExact, stroke: () => "Exact", strokeWidth: 2}),
+      Plot.line(pts, {x: "x", y: "U", stroke: () => "Jacobi", strokeWidth: 2}),
+      Plot.line(pts, {x: "x", y: "err", stroke: () => "Error", strokeWidth: 2})
+    ]
+  });
+}
+```
+
+Move the slider and notice how the high-frequency components of the error are
+damped very quickly, but the low-frequency error barely changes.  This is
+because the matrix appearing in Jacobi's method is tridiagonal, so in a single
+iteration each solution point only "feels" the values of its immediate
+neighbors.  It takes very many iterations for low-frequency information to
+propagate.  As we'll see, part of the power of multigrid lies in enabling
+information to propagate rapidly between distant points in the solution.
+
+### Under-relaxation
+
+Try changing the number of Jacobi iterations and $\omega$ above, and see how
+the error changes.  Remember that the $p$th Fourier mode
+
+$$
+u^p_j = \sin(p\pi x_j)
+$$
+
+is multiplied in each iteration by the factor $\hat{\gamma}_p$, where
+
+$$
+|\hat{\gamma}_p| = |1-\omega + \omega\cos(p\pi h)| = |1 + \omega(\cos(p \pi h) - 1)|.
+$$
+
+The plot below shows these values for a grid with $m = 30$ interior points.
+Try changing $\omega$ to $2/3$ and notice how the second half of the values
+(for $p \ge m/2$) are all shifted to be smaller.
+
+```{ojs}
+//| echo: false
+viewof dampOmega = Inputs.range([0, 1], {value: 1, step: 0.01, label: tex`\omega`})
+```
+
+```{ojs}
+//| echo: false
+{
+  const M = 30, H = 1 / (M + 1);
+  const pts = Array.from({length: M}, (_, i) => {
+    const p = i + 1;
+    return {p, g: Math.abs(1 + dampOmega * (Math.cos(p * Math.PI * H) - 1))};
+  });
+  return Plot.plot({
+    width: 700, height: 380,
+    title: `ω = ${dampOmega.toFixed(2)}`,
+    x: {label: "p", domain: [0, M]},
+    y: {label: "|γ̂ₚ|", domain: [0, 1], grid: true},
+    marks: [Plot.dot(pts, {x: "p", y: "g", fill: "currentColor", r: 4})]
+  });
+}
+```
+
+Notice that for $\omega=1$ the highest frequencies are also not damped much.
+
+### Grid representations of a given frequency
+
+The plot below shows the mode $\sin(p\pi x)$ (thin line) and its values on a
+grid with $m$ interior points (dots).  Notice how a *low-frequency* mode
+(one with many points per wavelength) on a fine grid becomes a
+*high-frequency* mode (one with very few points per wavelength) on a coarser
+grid.  Eventually, on grids with very few points, the mode is *aliased* to a
+completely different mode.
+
+```{ojs}
+//| echo: false
+viewof sineM = Inputs.range([1, 63], {value: 15, step: 1, label: "m (interior points)"})
+viewof sineP = Inputs.range([0, 50], {value: 0, step: 1, label: "p (frequency)"})
+```
+
+```{ojs}
+//| echo: false
+{
+  const xs = lib.linspace(0, 1, sineM + 2);
+  const pts = xs.map(x => ({x, y: Math.sin(sineP * Math.PI * x)}));
+  return Plot.plot({
+    width: 700, height: 380,
+    title: `sin(${sineP}πx) with m = ${sineM} points`,
+    x: {label: "x", domain: [0, 1]},
+    y: {label: null, domain: [-1.2, 1.2], grid: true},
+    marks: [
+      Plot.line(lib.linspace(0, 1, 1000), {x: d => d, y: d => Math.sin(sineP * Math.PI * d),
+                                            stroke: "red", strokeOpacity: 0.5, strokeWidth: 2}),
+      Plot.line(pts, {x: "x", y: "y", strokeWidth: 2}),
+      Plot.dot(pts, {x: "x", y: "y", fill: "currentColor", r: 4})
+    ]
+  });
+}
+```
+
+## Restriction and prolongation
+
+The multigrid idea is to solve successively on different grids, so that every
+mode has a small damping factor $\hat{\gamma}$ on some grid.
+
+To implement multigrid, we need a way to take a function with values on a fine
+grid and restrict it to its values on a coarser grid (*restriction*).  We also
+need a way to take a function with values on a coarse grid and interpolate
+onto a fine grid (*prolongation*).  Here we use the simplest choices.  If the
+fine grid has $m = 2m_c + 1$ interior points, the coarse grid has $m_c$
+interior points, located at the odd-numbered fine-grid points
+$x_2, x_4, \dots, x_{2m_c}$ in the 1-based numbering above.
+
+- Restriction keeps the values at those points and discards the others.
+- Prolongation copies the coarse-grid values to those points and sets each
+  remaining fine-grid value to the average of its two neighbors (linear
+  interpolation), using the boundary values at the ends.
+
+<details>
+<summary>Python code from the notebook</summary>
+
+```python
+def coarsen(f):
+    return f[1::2]  # This slicing just takes the odd-numbered points
+
+def interpolate(f,alpha,beta):
+    m_coarse=len(f)
+    m_fine  =2*m_coarse+1
+    f_interp = np.zeros(m_fine)
+    f_interp[1::2]=f                       #Set the values of the odd numbered points
+    f_interp[2:-1:2]=0.5*(f[:-1]+f[1:])    #Set the values of the (interior) even numbered points
+    f_interp[0]=0.5*(f_interp[1]+alpha)    #Set the values of the endpoints
+    f_interp[-1]=0.5*(f_interp[-2]+beta)
+    return f_interp
+```
+
+</details>
+
+## Correction using a second grid
+
+Now we take the result $U$ of 100 iterations of the original Jacobi method
+($\omega = 1$) from above, compute the residual
+
+$$
+r = F - AU
+$$
+
+on the fine grid, restrict it to the coarse grid, and approximately solve
+
+$$
+Ae = -r
+$$
+
+for the error $e$ on the coarse grid, using 3 iterations of under-relaxed
+Jacobi with $\omega = 2/3$, starting from $e = 0$.  Then we interpolate $e$
+to the fine grid and subtract it from the fine-grid solution.
+
+```{ojs}
+//| echo: false
+twoGrid = {
+  const m = 2 ** 8 - 1, x = lib.grid(m), F = x.map(lib.f), u = x.map(lib.uExact);
+  let U = lib.line(m);
+  for (let i = 0; i < 100; i++) U = lib.jacobiStep(U, F, lib.alpha, lib.beta, 1);
+  const r = lib.residual(U, F, lib.alpha, lib.beta);
+  const r2 = lib.coarsen(r);
+  let e2 = new Float64Array(r2.length);
+  for (let i = 0; i < 3; i++) e2 = lib.jacobiStep(e2, r2.map(v => -v), 0, 0, 2 / 3);
+  const Unew = U.map((v, j, a) => v - lib.interpolate(e2, 0, 0)[j]);
+  return {
+    pts: Array.from(x, (xi, i) => ({x: xi, u: u[i], U: Unew[i], err: Unew[i] - u[i]})),
+    errBefore: lib.maxAbs(U.map((v, i) => v - u[i])),
+    errAfter: lib.maxAbs(Unew.map((v, i) => v - u[i]))
+  };
+}
+```
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  width: 700, height: 420,
+  x: {label: "x", domain: [0, 1]},
+  y: {label: null, grid: true},
+  color: {legend: true, domain: ["Exact", "Corrected", "Error"]},
+  marks: [
+    Plot.ruleY([0]),
+    Plot.line(twoGrid.pts, {x: "x", y: "u", stroke: () => "Exact", strokeWidth: 2}),
+    Plot.line(twoGrid.pts, {x: "x", y: "U", stroke: () => "Corrected", strokeWidth: 2}),
+    Plot.line(twoGrid.pts, {x: "x", y: "err", stroke: () => "Error", strokeWidth: 2})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+md`Maximum error before the correction: ${twoGrid.errBefore.toFixed(3)}.
+Maximum error after the correction: ${twoGrid.errAfter.toFixed(3)}.`
+```
+
+## The multigrid V-cycle
+
+Now we do a full V-cycle.  Each Jacobi step below uses $\omega = 2/3$, and
+$\nu$ denotes the number of Jacobi iterations taken at each step.  The fine
+grid has $m = 2^k - 1$ interior points.
+
+1. On the fine grid, start from the straight-line initial guess, take $\nu$
+   Jacobi iterations for $AU = F$, and compute the residual.
+2. Going down: restrict the residual to the next coarser grid.  Starting from
+   zero, take $\nu$ Jacobi iterations for the error equation $Ae = -r$ on that
+   grid, and compute its residual.  Repeat until the grid has a single
+   interior point.
+3. Coming up: interpolate the error from each coarse grid to the next finer
+   grid, subtract it from the error there, and take $\nu$ more Jacobi
+   iterations.
+4. On the original grid, subtract the interpolated error from $U$ and take
+   $\nu$ more Jacobi iterations.
+
+<details>
+<summary>Python code from the notebook</summary>
+
+```python
+def Jacobi(U,f,alpha,beta,m,nu):
+    """Perform nu Jacobi iterations on a grid with m points, with initial guess U, right hand side function f and
+       Dirichlet boundary conditions with values alpha and beta.  The function returns both the approximate
+       solution and the residual."""
+    omega=2./3.
+    h=1./(m+1)
+    F=0.5*h**2*f.copy()
+    F[0]-=alpha/2.; F[-1]-=beta/2.
+    e=np.ones(m-1)
+    G=0.5*(np.diag(e,-1)+np.diag(e,1))
+    for i in range(nu):
+        U=(1.-omega)*U + omega*(np.dot(G,U)-F)
+    A=2./h**2*(G-np.eye(m))
+    FF=f.copy(); FF[0]-=alpha/h**2; FF[-1]-=beta/h**2
+    rr=FF-np.dot(A,U)
+    return U,rr
+
+k=10;
+m=2**k-1
+rdep=k-1  # Recursion depth; this is how many grids down we want to go
+          # rdep=k-1 gives a full V-cycle
+nu=3      # Number of Jacobi iterations to take at each step
+U=np.linspace(alpha,beta,m)  # Initial guess
+x=np.linspace(0,1,m+2); x=x[1:-1]  # grid
+F=f(x)
+r=[None]*(rdep+1); error=[None]*(rdep+1)
+U,rr=Jacobi(U,F,alpha,beta,m,nu)  # Initial iteration on fine grid
+for i in range(1,rdep+1): # Going down
+    m=(m-1)//2 #  = 2**(k-i) - 1
+    r[i]=coarsen(rr)             # residual restricted to next coarser grid
+    error[i],rr=Jacobi(np.zeros(m),-r[i],0.,0.,m,nu)
+for i in range(1,rdep): # Coming up
+    m=2*m+1
+    err=error[rdep-i]-interpolate(error[rdep+1-i],0,0)     # Interpolate and subtract the correction
+    error[-i-1],rr=Jacobi(err,-r[rdep-i],0.,0.,m,nu)
+m=2*m+1
+U=U-interpolate(error[1],0,0)                   # final solution correction
+U,rr=Jacobi(U,F,alpha,beta,m,nu)                #Final iterations on original grid
+```
+
+</details>
+
+```{ojs}
+//| echo: false
+viewof vk = Inputs.range([5, 10], {value: 10, step: 1, label: tex`k`})
+viewof vnu = Inputs.range([1, 6], {value: 3, step: 1, label: tex`\nu`})
+```
+
+```{ojs}
+//| echo: false
+vcycle = {
+  const {alpha, beta, jacobi, coarsen, interpolate} = lib;
+  let m = 2 ** vk - 1;
+  const rdep = vk - 1;  // number of coarser grids
+  const x = lib.grid(m), F = x.map(lib.f), u = x.map(lib.uExact);
+  const U0 = lib.line(m);
+  const r = new Array(rdep + 1), error = new Array(rdep + 1);
+  let [U, rr] = jacobi(U0, F, alpha, beta, vnu);
+  for (let i = 1; i <= rdep; i++) {  // going down
+    m = (m - 1) / 2;
+    r[i] = coarsen(rr);
+    [error[i], rr] = jacobi(new Float64Array(m), r[i].map(v => -v), 0, 0, vnu);
+  }
+  for (let i = 1; i < rdep; i++) {  // coming up
+    m = 2 * m + 1;
+    const ec = interpolate(error[rdep + 1 - i], 0, 0);
+    const err = error[rdep - i].map((v, j) => v - ec[j]);
+    [error[rdep - i], rr] = jacobi(err, r[rdep - i].map(v => -v), 0, 0, vnu);
+  }
+  const e1 = interpolate(error[1], 0, 0);
+  [U, rr] = jacobi(U.map((v, j) => v - e1[j]), F, alpha, beta, vnu);
+  const Ud = lib.solveDiscrete(F, alpha, beta);
+  return {
+    pts: Array.from(x, (xi, i) => ({x: xi, u: u[i], U: U[i], err: U[i] - u[i]})),
+    error, rdep, m: x.length,
+    errInit: lib.maxAbs(U0.map((v, i) => v - u[i])),
+    err: lib.maxAbs(U.map((v, i) => v - u[i])),
+    errDisc: lib.maxAbs(Ud.map((v, i) => v - u[i]))
+  };
+}
+```
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  width: 700, height: 420,
+  x: {label: "x", domain: [0, 1]},
+  y: {label: null, grid: true},
+  color: {legend: true, domain: ["Exact", "After one V-cycle", "Error"]},
+  marks: [
+    Plot.ruleY([0]),
+    Plot.line(vcycle.pts, {x: "x", y: "u", stroke: () => "Exact", strokeWidth: 2}),
+    Plot.line(vcycle.pts, {x: "x", y: "U", stroke: () => "After one V-cycle", strokeWidth: 2}),
+    Plot.line(vcycle.pts, {x: "x", y: "err", stroke: () => "Error", strokeWidth: 2})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+md`Fine grid: m = ${vcycle.m} interior points.
+Maximum error of the initial guess: ${vcycle.errInit.toFixed(3)}.
+Maximum error after one V-cycle: **${vcycle.err.toPrecision(3)}**.
+Maximum error of the exact solution of the discrete system ${tex`AU = F`}
+(the discretization error): ${vcycle.errDisc.toPrecision(3)}.`
+```
+
+The plotted error is $U - u$, so it includes the discretization error, and no
+iterative method can make it smaller than the discretization error shown
+above.  For $k = 5$ the grid is too coarse to resolve the oscillations of the
+exact solution near $x = 1$, and the discretization error is large.
+
+Since we have saved the error on each grid, we can plot them to see how they
+represent the accumulation of errors at different scales.  The slider goes
+from the coarsest grid (one interior point) to the finest grid on which an
+error is computed.  Each plot shows the error after the upward pass of the
+V-cycle, with zero values at the boundaries.
+
+```{ojs}
+//| echo: false
+viewof level = Inputs.range([1, vcycle.rdep], {value: 1, step: 1, label: "Grid (1 = coarsest)"})
+```
+
+```{ojs}
+//| echo: false
+{
+  const e = vcycle.error[vcycle.rdep + 1 - level];
+  const xs = lib.linspace(0, 1, e.length + 2);
+  const pts = xs.map((x, i) => ({x, y: i === 0 || i === xs.length - 1 ? 0 : e[i - 1]}));
+  return Plot.plot({
+    width: 700, height: 380,
+    title: `Error on the grid with ${e.length} interior point${e.length === 1 ? "" : "s"}`,
+    x: {label: "x", domain: [0, 1]},
+    y: {label: null, domain: [-5, 5], grid: true},
+    marks: [
+      Plot.ruleY([0]),
+      Plot.line(pts, {x: "x", y: "y", strokeWidth: 2}),
+      Plot.dot(e.length <= 127 ? pts : [], {x: "x", y: "y", fill: "currentColor", r: 3})
+    ]
+  });
+}
+```
+
+## Conclusion
+
+Now you have the basic ideas of multigrid.  Of course, for this
+one-dimensional problem (where the system to be solved is tridiagonal) it does
+not provide a big advantage over more naive methods.  The power of multigrid
+is that it can be used in multiple dimensions, where the algebraic system is
+much more challenging for other methods.  Furthermore, multigrid can be
+applied to nonlinear and time-dependent problems.

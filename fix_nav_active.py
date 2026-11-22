@@ -6,7 +6,8 @@ as current on every page.  This script recomputes it after each render:
 
   * a navbar link is current if it points to the page itself;
   * posts (pages under a YYYY/ directory) count as part of "Posts";
-  * paper pages (under papers/) count as part of "Publications".
+  * paper pages (under papers/) count as part of "Publications";
+  * pages under interactives/ count as part of "Interactives".
 
 Run by Quarto via `post-render` in _quarto.yml.  It raises an error on pages
 whose header doesn't look the way it expects instead of skipping them.
@@ -20,6 +21,7 @@ from pathlib import Path
 SITE = Path("_site").resolve()
 POSTS_PAGE = "posts.html"
 PUBLICATIONS_PAGE = "publications.html"
+INTERACTIVES_PAGE = "interactives.html"
 
 HEADER_RE = re.compile(r'<header id="quarto-header".*?</header>', re.S)
 LINK_RE = re.compile(r'<a class="nav-link( active)?" href="([^"]*)"( aria-current="page")?>')
@@ -32,6 +34,8 @@ def current_target(page_rel: str) -> str:
         return POSTS_PAGE
     if page_rel.startswith("papers/"):
         return PUBLICATIONS_PAGE
+    if page_rel.startswith("interactives/"):
+        return INTERACTIVES_PAGE
     return page_rel
 
 
