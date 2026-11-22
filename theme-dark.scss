@@ -5,6 +5,7 @@
 $mt-page:    #0a111c;  // page background behind the card
 $mt-bg:      #111b2b;  // article card
 $mt-surface: #1a2638;  // inline code, inputs
+$mt-pub:     #152133;  // publication cards on the publications page
 $mt-deep:    #0b1320;  // navbar, footer, code blocks
 $mt-side:    #0c2b2a;  // sidebar background (dark teal)
 $mt-text:    #cbd5e1;
@@ -85,6 +86,13 @@ main img.img-fluid, main .figure img, main p > img {
 }
 // ...but not the sidebar photo or publication thumbnails.
 .sidebar-logo { background: none !important; padding: 0 !important; }
+
+// Publication cards.
+#pub-list .pub {
+  background: $mt-pub;
+  border-color: $mt-border;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .45), 0 3px 8px rgba(0, 0, 0, .3);
+}
 
 // Publications page controls.
 #pub-search { background: $mt-surface; color: $mt-text; }

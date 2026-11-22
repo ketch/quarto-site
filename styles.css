@@ -14,7 +14,11 @@
   border-radius: 1rem; padding: .15rem .8rem; font-size: .9rem; }
 .pub-filter.active { background: var(--bs-primary); border-color: var(--bs-primary); color: #fff; }
 #pub-count { font-size: .9rem; color: var(--bs-secondary-color); margin: .6rem 0 0; }
-#pub-list .pub { margin: 0 0 1.1rem; overflow: hidden; }
+/* Each publication is a card; theme-light.scss and theme-dark.scss supply
+   its background, border color and shadow. */
+#pub-list .pub { margin: 0 0 1rem; padding: .9rem 1.1rem; border-radius: 8px;
+  border: 1px solid transparent; overflow: hidden; }
+@media (max-width: 575.98px) { #pub-list .pub { padding: .75rem .8rem; } }
 #pub-list .pub img { float: right; max-width: 140px; max-height: 100px; margin: 0 0 .5rem 1rem; }
 #pub-list .pub-title { font-weight: 600; }
 #pub-list .pub-authors, #pub-list .pub-links { font-size: .92rem; }
