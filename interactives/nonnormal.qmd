@@ -57,7 +57,7 @@ $$
 
 ## A coupled system with perpendicular eigenvectors
 
-Now consider
+To answer this question, next consider
 
 $$
 u'(t) = \begin{bmatrix} -5.5 & 4.5 \\ 4.5 & -5.5 \end{bmatrix} u(t) .
@@ -80,12 +80,10 @@ figure(solve([Math.SQRT1_2, Math.SQRT1_2], [-Math.SQRT1_2, Math.SQRT1_2], 60), t
 The eigenvectors are rotated by $45^\circ$, but otherwise nothing has changed:
 the two arrows shrink and stay perpendicular, so the length of $u(t)$ shrinks
 too.  Notice that the
-component $u_1(t)$ grows at first (from 0.5 to about 0.55).  So it isn't
-essential that each component decays; what matters is that the eigenvectors
-are perpendicular.  A matrix with perpendicular eigenvectors is called
-*normal*.
+component $u_1(t)$ grows at first (from 0.5 to about 0.55).  Nevertheless, the
+length of the overall vector is monotonically decreasing.
 
-## A non-normal system with the same eigenvalues
+## A system with non-orthogonal eigenvectors
 
 Finally, consider the system
 
@@ -123,8 +121,12 @@ This time the solution more than doubles in length before it decays.  Each
 arrow still shrinks, the green one quickly and the blue one slowly.  But
 because the eigenvectors are nearly parallel, the two arrows are long and
 point in nearly opposite directions, so at the start they almost cancel.  Once
-the green arrow has shrunk, what is left is the long blue one.  Only
-non-normal matrices can make the solution grow like this.
+the green arrow has shrunk, what is left is the long blue one.
+
+A matrix whose eigenvectors are orthogonal is called *normal*.  The first two
+examples are normal; the third is not.  If a normal matrix has negative
+eigenvalues, the length of the solution always decreases monotonically, so
+growth like this is only possible when the matrix is non-normal.
 
 Things to try:
 
