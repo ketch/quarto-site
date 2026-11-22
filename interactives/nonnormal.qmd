@@ -8,7 +8,7 @@ categories:
 ---
 
 If all the eigenvalues of a matrix are negative, then every solution of the
-linear ODE system $u' = Au$ eventually decays to zero.  Does that mean the
+linear ODE system $u'(t) = Au(t)$ eventually decays to zero.  Does that mean the
 solution shrinks from the start?
 
 ## A diagonal system
@@ -16,12 +16,12 @@ solution shrinks from the start?
 Consider the simple system of ODEs:
 
 $$
-u_1' = -u_1, \qquad u_2' = -10\, u_2 .
+u_1'(t) = -u_1(t), \qquad u_2'(t) = -10\, u_2(t) .
 $$
 
-Each component decays exponentially on its own: $u_1$ like $e^{-t}$ and $u_2$
-like $e^{-10t}$.  Here we visualize the components of $u$ (left) and the
-length $\|u\|$ (right) over time.
+Each component decays exponentially on its own: $u_1(t)$ like $e^{-t}$ and $u_2(t)$
+like $e^{-10t}$.  Here we visualize the components of $u(t)$ (left) and the
+length $\|u(t)\|$ (right) over time.
 
 ```{ojs}
 //| echo: false
@@ -33,13 +33,13 @@ viewof t1 = timeSlider()
 figure(solve(0, 60), t1)
 ```
 
-Since both components shrink, so does the length $\|u\|$ of the vector
-$u = (u_1, u_2)$.
+Since both components shrink, so does the length $\|u(t)\|$ of the vector
+$u(t) = (u_1(t), u_2(t))$.
 
 In matrix form, this system is
 
 $$
-u' = \begin{bmatrix} -1 & 0 \\ 0 & -10 \end{bmatrix} u .
+u'(t) = \begin{bmatrix} -1 & 0 \\ 0 & -10 \end{bmatrix} u(t) .
 $$
 
 The eigenvalues are the diagonal entries, $-1$ and $-10$, and the
@@ -50,7 +50,7 @@ eigenvectors point along the two axes (the dashed lines in the plot above).
 Now put a nonzero number in the upper-right corner:
 
 $$
-u' = \begin{bmatrix} -1 & 30 \\ 0 & -10 \end{bmatrix} u .
+u'(t) = \begin{bmatrix} -1 & 30 \\ 0 & -10 \end{bmatrix} u(t) .
 $$
 
 The matrix is triangular, so its eigenvalues are still the diagonal entries,
@@ -65,7 +65,7 @@ viewof psi2 = Inputs.range([0, 180], {value: 60, step: 1, label: "initial direct
 
 ```{ojs}
 //| echo: false
-tex.block`u' = \begin{bmatrix} -1 & ${corner} \\ 0 & -10 \end{bmatrix} u`
+tex.block`u'(t) = \begin{bmatrix} -1 & ${corner} \\ 0 & -10 \end{bmatrix} u(t)`
 ```
 
 ```{ojs}
@@ -147,7 +147,18 @@ function solve(b, psiDeg) {
 //| echo: false
 // The time slider; changing the other controls doesn't reset it.
 function timeSlider() {
-  return Inputs.range([0, tMax], {value: 0, step: tMax / 300, label: tex`t`});
+  const input = Inputs.range([0, tMax], {value: 0, step: tMax / 300, label: tex`t`});
+  input.style.setProperty("--label-width", "1.5rem");  // keep the short label next to its slider
+  return input;
+}
+
+// At most 5 tick values for an axis running from lo to hi.
+function fewTicks(lo, hi) {
+  for (let n = 5; n > 0; n--) {
+    const ticks = d3.ticks(lo, hi, n);
+    if (ticks.length <= 5) return ticks;
+  }
+  return [];
 }
 ```
 
@@ -164,7 +175,8 @@ function figure(sys, tNow) {
   const circle = d3.range(0, 2 * Math.PI + 0.01, 0.02).map(s => [Math.cos(s), Math.sin(s)]);
   const phase = Plot.plot({
     width: size, height: size, marginLeft: 40, marginBottom: 30,
-    x: {domain: [-L, L], label: null}, y: {domain: [-L, L], label: null},
+    x: {domain: [-L, L], label: null, ticks: fewTicks(-L, L), tickFormat: "~g"},
+    y: {domain: [-L, L], label: null, ticks: fewTicks(-L, L), tickFormat: "~g"},
     marks: [
       Plot.ruleX([0], {strokeOpacity: 0.2}), Plot.ruleY([0], {strokeOpacity: 0.2}),
       // eigenvector directions
@@ -190,9 +202,9 @@ function figure(sys, tNow) {
   ];
   const ymax = 1.05 * Math.max(1, d3.max(path, d => d.norm));
   const norms = Plot.plot({
-    width: size, height: size, marginLeft: 40, marginBottom: 30,
-    x: {domain: [0, tMax], label: "t"},
-    y: {domain: [0, ymax], label: null, grid: true},
+    width: size, height: size, marginLeft: 40, marginBottom: 50,
+    x: {domain: [0, tMax], label: null, ticks: fewTicks(0, tMax), tickFormat: "~g"},
+    y: {domain: [0, ymax], label: null, grid: true, ticks: fewTicks(0, ymax), tickFormat: "~g"},
     marks: [
       Plot.line(path, {x: "t", y: "norm", strokeWidth: 2}),
       Plot.ruleX([tNow], {strokeOpacity: 0.3}),
@@ -203,9 +215,13 @@ function figure(sys, tNow) {
   // y-axis label as a box in the empty upper-right corner (the curves decay toward the bottom)
   const yLabel = html`<div style="position: absolute; top: 12px; right: 24px; font-size: 1rem;
     padding: .1rem .4rem; border: 1px solid currentColor; border-radius: 4px; opacity: .85">${tex`\|u(t)\|`}</div>`;
+  // x-axis label, centered below the tick labels
+  const xMid = 100 * norms.scale("x").apply(tMax / 2) / size;
+  const xLabel = html`<div style="position: absolute; left: ${xMid}%; bottom: 0; transform: translateX(-50%);
+    font-size: 1rem; line-height: 1">${tex`t`}</div>`;
   return html`<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
     <div style="flex: 1 1 0; min-width: 260px"><div style="position: relative">${phase}${phaseLabels}</div></div>
-    <div style="flex: 1 1 0; min-width: 260px"><div style="position: relative">${norms}${yLabel}</div></div>
+    <div style="flex: 1 1 0; min-width: 260px"><div style="position: relative">${norms}${yLabel}${xLabel}</div></div>
   </div>`;
 }
 ```
