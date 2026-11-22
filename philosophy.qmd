@@ -51,9 +51,8 @@ See also: [posts tagged with **reproducible-research**](/posts.html#category=rep
 
 I believe that publishing publicly-funded scientific research should not
 be a profit-motivated activity.  Charges for access to scientific publications
-should be kept to a minimum.  I primarily publish my own work in relatively
-inexpensive but highly respected journals run by non-profit professional 
-societies ([SIAM](https://www.siam.org) and the [AMS](https://www.ams.org)).
+should be kept to a minimum.  I publish my work in journals with reasonable subscription prices and
+generous author-rights policies.
 I am a signatory to the [Cost of Knowledge](http://thecostofknowledge.com)
 (Elsevier Boycott).  I do not support gold open access (i.e., author-pay) journals,
 for reasons outlined 
