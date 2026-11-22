@@ -1,7 +1,7 @@
 ---
 title: "Multigrid"
-description: "An interactive introduction to multigrid for a 1D boundary value problem: Jacobi smoothing, under-relaxation, grid representations of Fourier modes, coarse-grid correction, and the V-cycle."
 date: '2026-11-22'
+image: multigrid.png
 categories:
 - numerical-analysis
 - multigrid
@@ -216,8 +216,8 @@ $$
 $$
 
 The plot below shows these values for a grid with $m = 30$ interior points.
-Try changing $\omega$ to $2/3$ and notice how the second half of the values
-(for $p \ge m/2$) are all shifted to be smaller.
+Try changing $\omega$ to $2/3$ and notice that the values in the second half
+(for $p > m/2$, where $\cos(p\pi h) < 0$) all become at most $1/3$.
 
 ```{ojs}
 //| echo: false
@@ -289,8 +289,9 @@ grid and restrict it to its values on a coarser grid (*restriction*).  We also
 need a way to take a function with values on a coarse grid and interpolate
 onto a fine grid (*prolongation*).  Here we use the simplest choices.  If the
 fine grid has $m = 2m_c + 1$ interior points, the coarse grid has $m_c$
-interior points, located at the odd-numbered fine-grid points
-$x_2, x_4, \dots, x_{2m_c}$ in the 1-based numbering above.
+interior points, located at the fine-grid points
+$x_2, x_4, \dots, x_{2m_c}$.  (The comments in the Python code below call
+these the odd-numbered points, because Python numbers them from 0.)
 
 - Restriction keeps the values at those points and discards the others.
 - Prolongation copies the coarse-grid values to those points and sets each
@@ -326,13 +327,16 @@ $$
 r = F - AU
 $$
 
-on the fine grid, restrict it to the coarse grid, and approximately solve
+on the fine grid.  If $U^*$ denotes the exact solution of $AU = F$, then the
+error $e = U - U^*$ satisfies
 
 $$
-Ae = -r
+Ae = -r.
 $$
 
-for the error $e$ on the coarse grid, using 3 iterations of under-relaxed
+We restrict $r$ to the coarse grid and approximately solve this equation
+there (with $A$ replaced by the corresponding coarse-grid matrix), using
+3 iterations of under-relaxed
 Jacobi with $\omega = 2/3$, starting from $e = 0$.  Then we interpolate $e$
 to the fine grid and subtract it from the fine-grid solution.
 
@@ -346,7 +350,8 @@ twoGrid = {
   const r2 = lib.coarsen(r);
   let e2 = new Float64Array(r2.length);
   for (let i = 0; i < 3; i++) e2 = lib.jacobiStep(e2, r2.map(v => -v), 0, 0, 2 / 3);
-  const Unew = U.map((v, j, a) => v - lib.interpolate(e2, 0, 0)[j]);
+  const e = lib.interpolate(e2, 0, 0);
+  const Unew = U.map((v, j) => v - e[j]);
   return {
     pts: Array.from(x, (xi, i) => ({x: xi, u: u[i], U: Unew[i], err: Unew[i] - u[i]})),
     errBefore: lib.maxAbs(U.map((v, i) => v - u[i])),
@@ -514,8 +519,16 @@ exact solution near $x = 1$, and the discretization error is large.
 Since we have saved the error on each grid, we can plot them to see how they
 represent the accumulation of errors at different scales.  The slider goes
 from the coarsest grid (one interior point) to the finest grid on which an
-error is computed.  Each plot shows the error after the upward pass of the
-V-cycle, with zero values at the boundaries.
+error is computed (the grid just below the original one).  On the coarsest
+grid, the plot shows the error computed on the way down; on the other grids,
+it shows the error after the correction and Jacobi iterations on the way up.
+The boundary values are zero.  The vertical scale is the same for all grids.
+
+Notice that the sign of the error alternates from one grid to the next.  The
+unknown on each coarser grid is the error in the error estimate from the next
+finer grid.  Because that estimate comes from a few Jacobi iterations starting
+from zero, it contains little of the smooth part of the error, so the error in
+it is roughly the negative of the error it is trying to approximate.
 
 ```{ojs}
 //| echo: false
@@ -526,13 +539,16 @@ viewof level = Inputs.range([1, vcycle.rdep], {value: 1, step: 1, label: "Grid (
 //| echo: false
 {
   const e = vcycle.error[vcycle.rdep + 1 - level];
+  // Same vertical scale on every grid: at least [-5, 5] (as in the notebook),
+  // enlarged if any grid's error goes beyond that.
+  const ymax = Math.max(5, ...vcycle.error.slice(1).map(lib.maxAbs));
   const xs = lib.linspace(0, 1, e.length + 2);
   const pts = xs.map((x, i) => ({x, y: i === 0 || i === xs.length - 1 ? 0 : e[i - 1]}));
   return Plot.plot({
     width: 700, height: 380,
     title: `Error on the grid with ${e.length} interior point${e.length === 1 ? "" : "s"}`,
     x: {label: "x", domain: [0, 1]},
-    y: {label: null, domain: [-5, 5], grid: true},
+    y: {label: null, domain: [-ymax, ymax], grid: true},
     marks: [
       Plot.ruleY([0]),
       Plot.line(pts, {x: "x", y: "y", strokeWidth: 2}),
