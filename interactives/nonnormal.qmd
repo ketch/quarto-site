@@ -1,5 +1,5 @@
 ---
-title: "Growth despite decaying eigenvalues"
+title: "Nonnormality"
 date: '2026-11-22'
 image: nonnormal.png
 categories:
