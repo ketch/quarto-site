@@ -94,18 +94,6 @@ $$
 The matrix is triangular, so its eigenvalues are still the diagonal entries,
 $-1$ and $-10$.  But its eigenvectors are no longer perpendicular.  One still
 points along the horizontal axis, while the other is nearly parallel to it.
-The first slider below changes the upper-right entry, $a_{12}$.
-
-```{ojs}
-//| echo: false
-viewof corner = Inputs.range([0, 60], {value: 30, step: 1, label: tex`a_{12}`})
-viewof psi3 = Inputs.range([0, 180], {value: 60, step: 1, label: "initial direction"})
-```
-
-```{ojs}
-//| echo: false
-tex.block`u'(t) = \begin{bmatrix} -1 & ${corner} \\ 0 & -10 \end{bmatrix} u(t)`
-```
 
 ```{ojs}
 //| echo: false
@@ -114,7 +102,7 @@ viewof t3 = timeSlider()
 
 ```{ojs}
 //| echo: false
-figure(solve([1, 0], [-corner / Math.hypot(corner, 9), 9 / Math.hypot(corner, 9)], psi3), t3)
+figure(triangular(30, 60), t3)
 ```
 
 This time the solution more than doubles in length before it decays.  Each
@@ -128,9 +116,34 @@ examples are normal; the third is not.  If a normal matrix has negative
 eigenvalues, the length of the solution always decreases monotonically, so
 growth like this is only possible when the matrix is non-normal.
 
+## Experiment
+
+Here you can also change the upper-right entry $a_{12}$ of the last matrix and
+the direction of the initial vector.
+
+```{ojs}
+//| echo: false
+viewof corner = Inputs.range([0, 60], {value: 30, step: 1, label: tex`a_{12}`})
+viewof psi4 = Inputs.range([0, 180], {value: 60, step: 1, label: "initial direction"})
+```
+
+```{ojs}
+//| echo: false
+tex.block`u'(t) = \begin{bmatrix} -1 & ${corner} \\ 0 & -10 \end{bmatrix} u(t)`
+```
+
+```{ojs}
+//| echo: false
+viewof t4 = timeSlider()
+```
+
+```{ojs}
+//| echo: false
+figure(triangular(corner, psi4), t4)
+```
+
 Things to try:
 
-- Move the $t$ slider and watch the green arrow shrink, leaving the long blue one.
 - Make $a_{12}$ larger.  The eigenvectors become more nearly
   parallel and the growth becomes larger.
 - Make it smaller.  At zero you have the diagonal system again.  Below about
@@ -184,6 +197,13 @@ function solve(r1, r2, psiDeg) {
 
 ```{ojs}
 //| echo: false
+// Solution for the triangular matrix [[-1, b], [0, -10]], whose eigenvectors
+// are (1, 0) and the direction of (-b, 9).
+function triangular(b, psiDeg) {
+  const n = Math.hypot(b, 9);
+  return solve([1, 0], [-b / n, 9 / n], psiDeg);
+}
+
 // The time slider; changing the other controls doesn't reset it.
 function timeSlider() {
   const input = Inputs.range([0, tMax], {value: 0, step: tMax / 300, label: tex`t`});
