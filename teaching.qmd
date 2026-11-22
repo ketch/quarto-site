@@ -4,7 +4,7 @@ subtitle: in an open, collaborative way
 ---
 
 This is an index of publicly available teaching materials 
-(primarily IPython notebooks) that I have authored or co-authored.
+(primarily Jupyter notebooks) that I have authored or co-authored.
 All of them are released under CC-BY licenses (Creative Commons attribution),
 so you are free -- and invited! -- to use or adapt them so long as you
 acknowledge the source.  If you do use them, I hope you'll drop me
@@ -13,16 +13,21 @@ improvements.
 
 ## Finite difference methods (AMCS 252)
 
-For 5 years, I have developed Sage worksheets and IPython notebooks
+For 5 years, I have developed Sage worksheets and Jupyter notebooks
 for a course on numerical methods at KAUST (AMCS 252).
 Some of the notebooks are fairly polished while others are quite 
 basic.
 
- - [Notebooks from Spring 2013](https://github.com/ketch/finite-difference-course/)
- - [Notebooks from Spring 2014](https://github.com/ketch/AMCS252/)
+ - [Course materials (2026)](https://github.com/ketch/AMCS-252-2026)
 
-I'm in the process of revising several of these for inclusion in an
-upcoming course (Fall 2014).  Stay tuned!
+## Book: Riemann Problems and Jupyter Solutions
+
+*Riemann Problems and Jupyter Solutions* (SIAM, 2020), written with
+Randall J. LeVeque and Mauricio J. del Razo, is an introduction to
+Riemann problems for hyperbolic PDEs.  Each chapter is a Jupyter notebook
+with code and interactive figures that you can run and modify.
+
+ - [Book notebooks on GitHub](https://github.com/clawpack/riemann_book)
 
 ## Short course: HyperPython
 
