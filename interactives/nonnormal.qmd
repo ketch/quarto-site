@@ -25,17 +25,12 @@ length $\|u\|$ (right) over time.
 
 ```{ojs}
 //| echo: false
-viewof psi1 = Inputs.range([0, 180], {value: 60, step: 1, label: "initial direction"})
+viewof t1 = timeSlider()
 ```
 
 ```{ojs}
 //| echo: false
-viewof t1 = timeControl(invalidation)
-```
-
-```{ojs}
-//| echo: false
-figure(solve(0, psi1), t1)
+figure(solve(0, 60), t1)
 ```
 
 Since both components shrink, so does the length $\|u\|$ of the vector
@@ -75,7 +70,7 @@ tex.block`u' = \begin{bmatrix} -1 & ${corner} \\ 0 & -10 \end{bmatrix} u`
 
 ```{ojs}
 //| echo: false
-viewof t2 = timeControl(invalidation)
+viewof t2 = timeSlider()
 ```
 
 ```{ojs}
@@ -96,7 +91,7 @@ matrices can make the solution grow like this.
 
 Things to try:
 
-- Press Play and watch the green arrow shrink, leaving the long blue one.
+- Move the $t$ slider and watch the green arrow shrink, leaving the long blue one.
 - Make the upper-right entry larger.  The eigenvectors become more nearly
   parallel and the growth becomes larger.
 - Make it smaller.  At zero you have the diagonal system again.  Below about
@@ -150,32 +145,9 @@ function solve(b, psiDeg) {
 
 ```{ojs}
 //| echo: false
-// A Play button and a time slider; changing the other controls doesn't reset it.
-function timeControl(invalidation) {
-  const n = 300, dt = tMax / n;
-  const form = html`<div style="display: flex; align-items: center; gap: .75rem; flex-wrap: wrap">
-    <button type="button" class="btn btn-sm btn-outline-secondary" style="min-width: 4.5rem">Play</button>
-    <input type="range" min="0" max="${n}" step="1" value="0" style="flex: 1; min-width: 10rem">
-    <output style="min-width: 5rem"></output></div>`;
-  const [button, range, output] = form.querySelectorAll("button, input, output");
-  let timer = null;
-  const show = i => { form.value = i * dt; output.value = `t = ${(i * dt).toFixed(2)}`; };
-  const stop = () => { clearInterval(timer); timer = null; button.textContent = "Play"; };
-  range.oninput = () => show(+range.value);  // the input event then bubbles to the form
-  button.onclick = () => {
-    if (timer) return stop();
-    if (+range.value >= n) range.value = 0;
-    button.textContent = "Pause";
-    timer = setInterval(() => {
-      range.value = +range.value + 1;
-      show(+range.value);
-      form.dispatchEvent(new Event("input", {bubbles: true}));
-      if (+range.value >= n) stop();
-    }, 30);
-  };
-  invalidation.then(() => clearInterval(timer));
-  show(0);
-  return form;
+// The time slider; changing the other controls doesn't reset it.
+function timeSlider() {
+  return Inputs.range([0, tMax], {value: 0, step: tMax / 300, label: tex`t`});
 }
 ```
 
