@@ -43,6 +43,9 @@ website:
         text: "Teaching"
       - href: philosophy.qmd
         text: "Philosophy"
+      - text: "Email"
+        icon: envelope
+        href: mailto:dketch@gmail.com
       - text: "GitHub"
         icon: github
         href: https://github.com/ketch
