@@ -2,15 +2,15 @@
 
 ```{=html}
 <ul class="recent-preprints">
-<li><a href="https://arxiv.org/abs/2611.03642">A hyperbolic nonlinear Schrödinger system in multiple spatial dimensions: structure, convergence, and numerical discretization</a><br>
+<li><a href="/papers/munoz2026hyperbolic/">A hyperbolic nonlinear Schrödinger system in multiple spatial dimensions: structure, convergence, and numerical discretization</a><br>
 <span class="pub-authors">Carlos Muñoz-Moncayo, Abhijit Biswas, David I Ketcheson, and Manvendra Rajvanshi</span>, <span class="pub-journal">arXiv:2611.03642</span></li>
-<li><a href="https://arxiv.org/abs/2610.01111">Compartmental epidemiological models with infection-driven immune escape</a><br>
+<li><a href="/papers/ramirez2026compartmental/">Compartmental epidemiological models with infection-driven immune escape</a><br>
 <span class="pub-authors">Daniela R Ramírez-Gutiérrez, Lajos Lóczi, Carlos Muñoz-Moncayo, and David I Ketcheson</span>, <span class="pub-journal">arXiv:2610.01111</span></li>
-<li><a href="https://arxiv.org/abs/2609.22864">Asymptotic-Preserving Exponential Integrators applied to the Hyperbolic Korteweg-de Vries System</a><br>
+<li><a href="/papers/biswas2026asymptotic/">Asymptotic-Preserving Exponential Integrators applied to the Hyperbolic Korteweg-de Vries System</a><br>
 <span class="pub-authors">Abhijit Biswas, Sebastiano Boscarino, David I Ketcheson, and Giovanni Russo</span>, <span class="pub-journal">arXiv:2609.22864</span></li>
-<li><a href="https://arxiv.org/abs/2606.12162">Adaptive, efficient, and scalable water wave modeling with dispersive hyperbolic systems</a><br>
+<li><a href="/papers/munoz2026adaptive/">Adaptive, efficient, and scalable water wave modeling with dispersive hyperbolic systems</a><br>
 <span class="pub-authors">Carlos Muñoz-Moncayo and David I Ketcheson</span>, <span class="pub-journal">arXiv:2606.12162</span></li>
-<li><a href="https://arxiv.org/abs/2604.05940">Efficient High-order Mass-conserving and Energy-balancing Schemes for Schrödinger-Poisson Equations</a><br>
+<li><a href="/papers/rajvanshi2026efficient/">Efficient High-order Mass-conserving and Energy-balancing Schemes for Schrödinger-Poisson Equations</a><br>
 <span class="pub-authors">Manvendra Pratap Rajvanshi and David I Ketcheson</span>, <span class="pub-journal">arXiv:2604.05940</span></li>
 </ul>
 ```

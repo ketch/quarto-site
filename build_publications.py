@@ -16,8 +16,9 @@ and after:
     index.qmd includes.
   - Paper images (<citekey>.png in PAPER_IMAGES) are copied into
     assets/paper_images/.
-  - Each listed paper gets a supplementary page papers/<citekey>/, linked
-    from its entry; see paper_pages.py.
+  - Each listed paper gets a supplementary page papers/<citekey>/; the
+    entry's title and image link to it, and its links line gets "More
+    information" and reproducibility-repository links.  See paper_pages.py.
 
 The search box and filter buttons are implemented in publications.js.
 Anything unexpected raises an error.
@@ -65,7 +66,6 @@ KEYWORD_FILTERS = {
 TEXT_FIELDS = ["title", "journal", "booktitle", "school", "annote", "institution"]
 SELF_LINK_RE = re.compile(r'(src|href)="https?://(?:www\.)?davidketcheson\.info/([^"]+)"')
 LOCAL_IMG_RE = re.compile(r'src="/(assets/paper_images/[^"]+)"')
-IMG_TITLE_RE = re.compile(r'(<img [^>]*/>)\n(?=<a href="([^"]+)"><name>)')
 
 
 def header() -> str:
@@ -261,13 +261,14 @@ def main(bibfile: Path):
     by_key = {p["pid"]: p for p in pubs}
     repos = {k: v["Reproducibility repository"] for k, v in gen_links().items()
              if k in by_key and "Reproducibility repository" in v}
+    hidden_repos = {}   # paperlinks.txt repositories hidden by a null in publication_tags.yml
     for k, url in (extra.get("repos") or {}).items():
         if k not in by_key:
             raise KeyError(f"{TAGS_FILE.name} repos has a key not in {bibfile.name}: {k}")
         if url is None:
             if k not in repos:
                 raise KeyError(f"{TAGS_FILE.name} repos: {k} is null but has no repository to hide")
-            del repos[k]
+            hidden_repos[k] = repos.pop(k)
             continue
         if k in repos and repos[k] != url:
             raise ValueError(f"{k}: repository {url} in {TAGS_FILE.name} but {repos[k]} in paperlinks.txt")
@@ -298,10 +299,6 @@ def main(bibfile: Path):
         raise FileNotFoundError("Linked files not in the Jekyll repo:\n  "
                                 + "\n  ".join(sorted(set(missing))))
 
-    # Make each paper image a link to the same place as the paper's title.
-    # Entries whose title has no link keep an unlinked image.
-    body, n_linked = IMG_TITLE_RE.subn(r'<a href="\2">\1</a>\n', body)
-
     body = clean_html(body)
     for doi, label in (extra.get("doi_labels") or {}).items():
         link = f'<a href="https://doi.org/{doi}">Published version</a>'
@@ -310,9 +307,9 @@ def main(bibfile: Path):
                              f"found {body.count(link)}")
         body = body.replace(link, f'<a href="https://doi.org/{doi}">{html.escape(label)}</a>')
 
+    body = paper_pages.link_entries(body, keys, by_key, repos, hidden_repos)
     entries = paper_pages.split_entries(body, keys, by_key)
     counts = paper_pages.write_pages(entries, by_key, abstracts, repos)
-    body = paper_pages.add_page_links(body, keys)
 
     images = LOCAL_IMG_RE.findall(body)
     for rel in images:
@@ -329,7 +326,7 @@ def main(bibfile: Path):
                                          "techreport", "phdthesis"}
               and not (PAPER_IMAGES / f"{p['pid']}.png").is_file()]
     print(f"Wrote {DEST.name}: {n} publications ({n_preprint} arXiv articles listed as "
-          f"preprints), {len(images)} with images ({n_linked} linked to the paper), "
+          f"preprints), {len(images)} with images, "
           f"{len(no_img)} without")
     print(f"Paper pages in {paper_pages.PAGES_DIR.name}/: {len(entries)} ({counts['new']} new); "
           f"abstracts from .bib {counts['bib']}, from arXiv {counts['arxiv']}, "

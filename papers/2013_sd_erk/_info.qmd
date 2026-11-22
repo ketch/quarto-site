@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/2013_sd_erk.png" alt="Optimized explicit Runge-Kutta schemes for the spectral difference method applied to wave propagation problems" />
 <p class="paper-venue"><span class="pub-journal">SIAM Journal on Scientific Computing</span>, 35(2):A957-A986 (2013)</p>
-<p class="pub-links"><a href="/assets/papers/2013_sd_erk.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/120885899">Published version</a> | <a href="https://arxiv.org/abs/1207.5830">arXiv version</a> | <a href="https://github.com/ketch/optimized-erk-sd-rr">Reproducibility repository</a></p>
+<p class="pub-links"><a href="/assets/papers/2013_sd_erk.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/120885899">Published version</a> | <a href="https://arxiv.org/abs/1207.5830">arXiv version</a></p>
 <div style="clear:both"></div>
 </div>
 ```

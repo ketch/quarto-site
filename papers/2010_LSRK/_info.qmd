@@ -3,7 +3,7 @@
 ```{=html}
 <div class="paper-info">
 <p class="paper-venue"><span class="pub-journal">Journal of Computational Physics</span>, 229(5):1763--1773 (2010)</p>
-<p class="pub-links"><a href="https://doi.org/10.1016/j.jcp.2009.11.006">Published version</a> | <a href="/assets/papers/2010_LSRK_postprint.pdf">Post-print</a></p>
+<p class="pub-links"><a href="https://linkinghub.elsevier.com/retrieve/pii/S0021999109006251">Paper</a> | <a href="https://doi.org/10.1016/j.jcp.2009.11.006">Published version</a> | <a href="/assets/papers/2010_LSRK_postprint.pdf">Post-print</a></p>
 <div style="clear:both"></div>
 </div>
 ```

@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/2014_hork.png" alt="A comparison of high order explicit Runge-Kutta, extrapolation, and deferred correction methods in serial and parallel" />
 <p class="paper-venue"><span class="pub-journal">CAMCoS</span>, 9(2):175-200 (2014)</p>
-<p class="pub-links"><a href="/assets/papers/2014_hork.pdf">Free PDF</a> | <a href="https://doi.org/10.2140/camcos.2014.9.175">Published version</a> | <a href="https://arxiv.org/abs/1305.6165">arXiv version</a> | <a href="https://github.com/ketch/high_order_RK_RR/">Code</a></p>
+<p class="pub-links"><a href="/assets/papers/2014_hork.pdf">Free PDF</a> | <a href="https://doi.org/10.2140/camcos.2014.9.175">Published version</a> | <a href="https://arxiv.org/abs/1305.6165">arXiv version</a></p>
 <div style="clear:both"></div>
 </div>
 ```

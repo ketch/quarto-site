@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/2009_implicit_ssp.png" alt="Optimal implicit strong stability preserving Runge–Kutta methods" />
 <p class="paper-venue"><span class="pub-journal">Applied Numerical Mathematics</span>, 59(2):373--392 (2009)</p>
-<p class="pub-links"><a href="https://doi.org/10.1016/j.apnum.2008.03.034">Published version</a> | <a href="/assets/papers/implicit_ssp_postprint.pdf">Post-print</a></p>
+<p class="pub-links"><a href="https://linkinghub.elsevier.com/retrieve/pii/S0168927408000688">Paper</a> | <a href="https://doi.org/10.1016/j.apnum.2008.03.034">Published version</a> | <a href="/assets/papers/implicit_ssp_postprint.pdf">Post-print</a></p>
 <div style="clear:both"></div>
 </div>
 ```

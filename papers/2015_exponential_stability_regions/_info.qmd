@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/2015_exponential_stability_regions.png" alt="On the absolute stability regions corresponding to partial sums of the exponential function" />
 <p class="paper-venue"><span class="pub-journal">IMA Journal of Numerical Analysis</span>, 35(3):1426-1455 (2015)</p>
-<p class="pub-links"><a href="https://doi.org/10.1093/imanum/dru039">Published version</a> | <a href="https://arxiv.org/abs/1312.0216">arXiv version</a></p>
+<p class="pub-links"><a href="https://imajna.oxfordjournals.org/cgi/content/abstract/dru039?ijkey=k8rlLsKUMTuJVk4&keytype=ref">Paper</a> | <a href="https://doi.org/10.1093/imanum/dru039">Published version</a> | <a href="https://arxiv.org/abs/1312.0216">arXiv version</a></p>
 <div style="clear:both"></div>
 </div>
 ```

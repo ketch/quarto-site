@@ -4,6 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/alghamdipetclaw.png" alt="PetClaw: A Scalable Parallel Nonlinear Wave Propagation Solver for Python" />
 <p class="paper-venue">in Proceedings of SpringSim '11. (2011)</p>
+<p class="pub-links"><a href="https://numerics.kaust.edu.sa/papers/petclaw2011/petclaw2011.html">Paper</a></p>
 <div style="clear:both"></div>
 </div>
 ```

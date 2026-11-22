@@ -93,21 +93,80 @@ def split_entries(body: str, keys: list, pubs_by_key: dict) -> list:
     return out
 
 
-def add_page_links(body: str, keys: list) -> str:
-    """Add a "Supplementary page" link to the links line of every entry."""
+ANCHOR_RE = re.compile(r'<a href="([^"]+)">(.*?)</a>', re.S)
+TITLE_LINK_RE = re.compile(r'(?:<a href="([^"]+)">)?<span class="pub-title">(.*?)</span><br>\n(?:</a>\n)?', re.S)
+IMG_RE = re.compile(r'(?:<a href="[^"]+">)?(<img [^>]*/>)(?:</a>)?')
+MORE_INFO = "More information"
+REPO_LABEL = "Reproducibility repository"
+
+
+def url_key(url: str) -> str:
+    """Normalized URL, so that e.g. dx.doi.org/X and https://doi.org/X compare equal."""
+    u = re.sub(r"^https?://(www\.)?", "", url.strip().lower()).rstrip("/")
+    return re.sub(r"^(dx\.doi\.org|doi\.org|doi\.wiley\.com)/", "doi:", u)
+
+
+def parse_links(span: str, where: str) -> list:
+    """The (url, label) pairs of a links line; error if it holds anything but " | "-separated links."""
+    links = ANCHOR_RE.findall(span)
+    if " | ".join(f'<a href="{u}">{t}</a>' for u, t in links) != span.strip():
+        raise ValueError(f"Unexpected links line for {where}: {span!r}")
+    return links
+
+
+def format_links(links: list) -> str:
+    return " | ".join(f'<a href="{u}">{t}</a>' for u, t in links)
+
+
+def link_entries(body: str, keys: list, pubs_by_key: dict, repos: dict, hidden: dict) -> str:
+    """Point each entry's title and image at its supplementary page and fill in its links line.
+
+    The links line gets, in order: "More information" (the supplementary page);
+    the title's former target, as "Paper" (or "Book"), unless another link already
+    goes there; the generator's links, minus those in `hidden` (key -> URL); and
+    the reproducibility repository from `repos` (relabeled if already linked).
+    """
     it = iter(keys)
 
     def entry(m):
         key = next(it)
-        link = f'<a href="/papers/{key}/">Supplementary page</a>'
+        page = f"/papers/{key}/"
         html_ = m.group(2)
-        if LINKS_RE.search(html_):
-            html_ = html_.replace('<span class="pub-links">', f'<span class="pub-links">{link} | ', 1)
+
+        title = TITLE_LINK_RE.search(html_)
+        if not title:
+            raise ValueError(f"No title found for {key}:\n{html_}")
+        old_target = title.group(1)
+        html_ = (html_[:title.start()] + f'<a href="{page}"><span class="pub-title">{title.group(2)}</span></a><br>\n'
+                 + html_[title.end():])
+        html_, n_img = IMG_RE.subn(rf'<a href="{page}">\1</a>', html_)
+        if n_img > 1:
+            raise ValueError(f"Several images for {key}")
+
+        span = LINKS_RE.search(html_)
+        links = parse_links(span.group(1), key) if span else []
+        if key in hidden:
+            dead = [x for x in links if url_key(x[0]) == url_key(hidden[key])]
+            if not dead:
+                raise ValueError(f"{key}: hidden repository {hidden[key]} is not in its links line")
+            links = [x for x in links if x not in dead]
+        seen = {url_key(u) for u, _ in links}
+        if old_target and url_key(old_target) not in seen:
+            label = "Book" if pubs_by_key[key]["reference_type"] == "book" else "Paper"
+            links.insert(0, (old_target, label))
+        if key in repos:
+            if url_key(repos[key]) in seen:   # e.g. listed as "Code" in paperlinks.txt
+                links = [(u, REPO_LABEL if url_key(u) == url_key(repos[key]) else t) for u, t in links]
+            else:
+                links.append((repos[key], REPO_LABEL))
+        links.insert(0, (page, MORE_INFO))
+        line = f'<span class="pub-links">{format_links(links)}</span>'
+        if span:
+            html_ = html_[:span.start()] + line + html_[span.end():]
         else:
-            html_ = html_.replace('<div style="clear:both">',
-                                  f'<br>\n<span class="pub-links">{link}</span><div style="clear:both">', 1)
-            if link not in html_:
-                raise ValueError(f"Could not add the page link for {key}:\n{m.group(2)}")
+            if html_.count('<div style="clear:both">') != 1:
+                raise ValueError(f"Could not add a links line for {key}:\n{m.group(2)}")
+            html_ = html_.replace('<div style="clear:both">', f'<br>\n{line}<div style="clear:both">')
         return m.group(1) + html_ + m.group(3)
 
     body = ENTRY_RE.sub(entry, body)
@@ -295,13 +354,16 @@ def write_pages(entries: list, pubs_by_key: dict, abstracts: dict, repos: dict) 
         if not venue:
             raise ValueError(f"No venue found in the list entry for {key}:\n{entry}")
         links = LINKS_RE.search(entry)
+        # The page shows its repository in its own section, and is itself the "More information" link.
+        page_links = [x for x in parse_links(links.group(1), key) if x[1] != MORE_INFO
+                      and not (key in repos and url_key(x[0]) == url_key(repos[key]))] if links else []
         info = ["<!-- Generated by build_publications.py; do not edit by hand. -->", "",
                 "```{=html}", '<div class="paper-info">']
         if img:
             info.append(img.group(0).replace("<img ", '<img class="paper-image" ', 1))
         info.append(f'<p class="paper-venue">{" ".join(venue.group(1).split())}</p>')
-        if links:
-            info.append(f'<p class="pub-links">{links.group(1)}</p>')
+        if page_links:
+            info.append(f'<p class="pub-links">{format_links(page_links)}</p>')
         info += ['<div style="clear:both"></div>', "</div>", "```", ""]
 
         cached = abstracts.get(key) or {}

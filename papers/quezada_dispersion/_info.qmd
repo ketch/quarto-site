@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/quezada_dispersion.png" alt="Two-dimensional wave propagation in layered periodic media" />
 <p class="paper-venue"><span class="pub-journal">SIAM Journal on Applied Mathematics</span>, 74(6):1852-1869 (2014)</p>
-<p class="pub-links"><a href="https://doi.org/10.1137/130937962">Published version</a> | <a href="https://arxiv.org/abs/1309.6666">arXiv version</a> | <a href="https://github.com/ketch/effective_dispersion_RR">Reproducibility repository</a></p>
+<p class="pub-links"><a href="https://doi.org/10.1137/130937962">Published version</a> | <a href="https://arxiv.org/abs/1309.6666">arXiv version</a></p>
 <div style="clear:both"></div>
 </div>
 ```

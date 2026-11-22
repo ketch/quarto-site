@@ -4,6 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/Parsani_finnish.png" alt="Optimized low-order explicit Runge-Kutta schemes for high- order spectral difference method" />
 <p class="paper-venue">in Proceedings of the 11th Finnish Mechanics Days. (2012)</p>
+<p class="pub-links"><a href="https://www.oulu.fi/mekapaivat2012/meka2012_proceedings.pdf">Paper</a></p>
 <div style="clear:both"></div>
 </div>
 ```

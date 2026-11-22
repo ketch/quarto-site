@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/2012_pyclaw-sisc.png" alt="PyClaw: Accessible, Extensible, Scalable Tools for Wave Propagation Problems" />
 <p class="paper-venue"><span class="pub-journal">SIAM Journal on Scientific Computing</span>, 34(4):C210--C231 (2012)</p>
-<p class="pub-links"><a href="/assets/papers/2012_pyclaw-sisc.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110856976">Published version</a> | <a href="https://arxiv.org/abs/1111.6583">arXiv version</a> | <a href="https://bitbucket.org/ahmadia/pyclaw-sisc-rr">Reproducibility repository</a> | <a href="https://numerics.kaust.edu.sa/papers/pyclaw-sisc/pyclaw-sisc.html">Figures with interactive code</a></p>
+<p class="pub-links"><a href="/assets/papers/2012_pyclaw-sisc.pdf">Free PDF</a> | <a href="https://doi.org/10.1137/110856976">Published version</a> | <a href="https://arxiv.org/abs/1111.6583">arXiv version</a> | <a href="https://numerics.kaust.edu.sa/papers/pyclaw-sisc/pyclaw-sisc.html">Figures with interactive code</a></p>
 <div style="clear:both"></div>
 </div>
 ```

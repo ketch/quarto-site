@@ -4,7 +4,7 @@
 <div class="paper-info">
 <img class="paper-image" src="/assets/paper_images/2011_dwssp.png" alt="Step Sizes for Strong Stability Preservation with Downwind-Biased Operators" />
 <p class="paper-venue"><span class="pub-journal">SIAM Journal on Numerical Analysis</span>, 49(4):1649 (2011)</p>
-<p class="pub-links"><a href="https://doi.org/10.1137/100818674">Published version</a> | <a href="https://arxiv.org/abs/1105.5798">arXiv version</a> | <a href="https://github.com/ketch/downwind_IRK_RR">Reproducibility repository</a></p>
+<p class="pub-links"><a href="https://numerics.kaust.edu.sa/papers/dwrk2011/downwind_ssp.html">Paper</a> | <a href="https://doi.org/10.1137/100818674">Published version</a> | <a href="https://arxiv.org/abs/1105.5798">arXiv version</a></p>
 <div style="clear:both"></div>
 </div>
 ```

@@ -3,7 +3,7 @@
 ```{=html}
 <div class="paper-info">
 <p class="paper-venue"><span class="pub-journal">Nuclear Science and Engineering</span> (2008)</p>
-<p class="pub-links"><a href="https://doi.org/10.13182/nse163-73">Published version</a></p>
+<p class="pub-links"><a href="http://www.new.ans.org/pubs/journals/nse/a_9070">Paper</a> | <a href="https://doi.org/10.13182/nse163-73">Published version</a></p>
 <div style="clear:both"></div>
 </div>
 ```
