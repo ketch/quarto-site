@@ -473,8 +473,8 @@ idea is the same, but the coefficients are different.)
 
 We take 5 values $y_{i-2}, \dots, y_{i+2}$ at the points $x = -2, -1, 0, 1, 2$
 (so $x_i = 0$ and $\Delta x = 1$).  You can change them with the sliders
-below, or choose one of the preset data sets; all of the plots in this section
-use these values.
+below, or choose one of the preset data sets.  The plots that follow use these
+values, until the final plot of this section, which has its own controls.
 
 ```{ojs}
 //| echo: false
@@ -484,14 +484,24 @@ viewof wenoReroll = Inputs.button("New random data")
 
 ```{ojs}
 //| echo: false
-wenoStart = {
-  wenoReroll;
-  if (wenoPreset === "Example") return [0.262, 0.298, 0.814, 0.092, 0.600];
-  if (wenoPreset === "Step") return [1, 1, 1, 0, 0];
-  return d3.range(5).map(() => Math.round(1000 * Math.random()) / 1000);
+// Helpers shared by the two sets of WENO data controls.
+function wenoPresetValues(preset) {
+  if (preset === "Example") return [0.262, 0.298, 0.814, 0.092, 0.600];
+  if (preset === "Step") return [1, 1, 1, 0, 0];
+  if (preset === "Random") return d3.range(5).map(() => Math.round(1000 * Math.random()) / 1000);
+  throw new Error("Unrecognized preset: " + preset);
 }
-viewof wenoY = Inputs.form(wenoStart.map((v, j) =>
-  Inputs.range([-0.5, 2], {value: v, step: 0.001, label: tex`y_{i${j === 2 ? "" : (j < 2 ? "-" : "+") + Math.abs(j - 2)}}`})))
+function wenoSliders(start) {
+  return Inputs.form(start.map((v, j) =>
+    Inputs.range([-0.5, 2], {value: v, step: 0.001,
+      label: tex`y_{i${j === 2 ? "" : (j < 2 ? "-" : "+") + Math.abs(j - 2)}}`})));
+}
+```
+
+```{ojs}
+//| echo: false
+wenoStart = { wenoReroll; return wenoPresetValues(wenoPreset); }
+viewof wenoY = wenoSliders(wenoStart)
 ```
 
 ```{ojs}
@@ -731,12 +741,31 @@ def compute_weights(gamma, beta, epsilon=1.e-6):
 
 Here are the final interpolated values given by WENO (indicated by the large
 grey circles), and the weights given to each of the quadratic interpolants
-when computing the left and right values:
+when computing the left and right values.  This plot has its own data
+controls.  Try different data.  What happens if you use a step function for
+$y$?
+
+```{ojs}
+//| echo: false
+viewof finalPreset = Inputs.radio(["Example", "Step", "Random"], {value: "Example", label: "Data"})
+viewof finalReroll = Inputs.button("New random data")
+```
+
+```{ojs}
+//| echo: false
+finalStart = { finalReroll; return wenoPresetValues(finalPreset); }
+viewof finalY = wenoSliders(finalStart)
+```
+
+```{ojs}
+//| echo: false
+finalResult = weno.analyze(finalY)
+```
 
 ```{ojs}
 //| echo: false
 {
-  const r = wenoResult;
+  const r = finalResult;
   const values = [{x: -0.5, y: r.q["-1"]}, {x: 0.5, y: r.q["1"]}];
   const bars = loc => html`<div><div style="font-size: .9rem">${loc === "-1" ? "Weights for x = −1/2" : "Weights for x = +1/2"}</div>${Plot.plot({
     width: 220, height: 180, marginLeft: 40,
@@ -746,7 +775,7 @@ when computing the left and right values:
                       {x: "n", y: "w", fill: "n"})],
     color: {domain: weno.names, range: weno.colors}
   })}</div>`;
-  return html`${weno.plot(wenoY, [...r.p, r.quartic], {colorList: [...weno.colors, "currentColor"], values})}
+  return html`${weno.plot(finalY, [...r.p, r.quartic], {colorList: [...weno.colors, "currentColor"], values})}
     <div style="display: flex; flex-wrap: wrap; gap: 1.5rem">${bars("-1")}${bars("1")}</div>`;
 }
 ```
@@ -754,7 +783,7 @@ when computing the left and right values:
 ```{ojs}
 //| echo: false
 {
-  const r = wenoResult, f = v => v.toFixed(4);
+  const r = finalResult, f = v => v.toFixed(4);
   const row = (label, v) => html`<tr><td>${label}</td>${v.map(t => html`<td>${f(t)}</td>`)}</tr>`;
   return html`<table class="table table-sm" style="max-width: 36rem">
     <thead><tr><th></th><th>left</th><th>center</th><th>right</th></tr></thead>
@@ -768,9 +797,8 @@ when computing the left and right values:
 }
 ```
 
-Try different data.  What happens if you use a step function for $y$?
-Choose "Step" above.  For a perfect step function, WENO picks the flat
-interpolant, just like any TVD limiter would!
+If you choose "Step", you'll see that for a perfect step function, WENO picks
+the flat interpolant, just like any TVD limiter would!
 
 ## Comparison of several limiters for advection
 
