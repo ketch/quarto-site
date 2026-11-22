@@ -1,0 +1,182 @@
+---
+title: "Growth despite decaying eigenvalues"
+date: '2026-11-22'
+image: nonnormal.png
+categories:
+- numerical-analysis
+- linear-algebra
+---
+
+Consider the linear system of ODEs $u'(t) = Au(t)$, where $A$ is a $2\times 2$
+matrix with real, negative eigenvalues $\lambda_1 = -1$ and $\lambda_2 \le
+\lambda_1$.  Every solution decays to zero as $t\to\infty$.  But does
+$\|u(t)\|$ decrease?  Only if the eigenvectors of $A$ are orthogonal (that is,
+if $A$ is *normal*).  Otherwise the solution can grow, possibly by a large
+factor, before it decays.
+
+To see why, let $r_1, r_2$ be unit eigenvectors of $A$, let $R = [r_1\ r_2]$,
+and write the initial value as $u(0) = z_1 r_1 + z_2 r_2$, where
+$z = R^{-1}u(0)$.  Then
+
+$$
+u(t) = z_1 e^{\lambda_1 t} r_1 + z_2 e^{\lambda_2 t} r_2 .
+$$
+
+Each component (blue and green arrows below) shrinks in time.  But if the
+eigenvectors are nearly parallel, then representing $u(0)$ requires large
+components with opposite directions that nearly cancel.  The faster component
+decays first, the cancellation is lost, and what is left is the large slower
+component.  The amount of growth is limited by the condition number of the
+eigenvector matrix:
+
+$$
+\|u(t)\| \le \kappa(R)\, e^{\lambda_1 t}\, \|u(0)\|, \qquad
+\kappa(R) = \|R\|\,\|R^{-1}\| = \cot(\alpha/2),
+$$
+
+where $\alpha$ is the angle between the eigenvectors and the norms are
+Euclidean norms.  When $\alpha = 90^\circ$, $\kappa(R) = 1$ and the solution
+never grows.
+
+```{ojs}
+//| echo: false
+viewof alphaDeg = Inputs.range([2, 90], {value: 15, step: 1, label: tex`\alpha \text{ (angle between eigenvectors, degrees)}`})
+viewof psiDeg = Inputs.range([0, 180], {value: 60, step: 1, label: tex`\text{direction of } u(0) \text{ (degrees)}`})
+viewof lambda2 = Inputs.range([-50, -1], {value: -10, step: 0.5, label: tex`\lambda_2`})
+```
+
+```{ojs}
+//| echo: false
+// Exact solution u(t) = z1 e^{l1 t} r1 + z2 e^{l2 t} r2, with unit eigenvectors
+// r1, r2 placed symmetrically about the x-axis at angle alpha.
+sys = {
+  const l1 = -1, l2 = lambda2;
+  const a = alphaDeg * Math.PI / 360;   // half the angle between eigenvectors
+  const r1 = [Math.cos(a), Math.sin(a)], r2 = [Math.cos(a), -Math.sin(a)];
+  const psi = psiDeg * Math.PI / 180, u0 = [Math.cos(psi), Math.sin(psi)];
+  // Solve R z = u0 for R = [r1 r2].
+  const det = r1[0] * r2[1] - r2[0] * r1[1];
+  const z1 = (u0[0] * r2[1] - r2[0] * u0[1]) / det;
+  const z2 = (r1[0] * u0[1] - u0[0] * r1[1]) / det;
+  const parts = t => {
+    const c1 = z1 * Math.exp(l1 * t), c2 = z2 * Math.exp(l2 * t);
+    const p1 = [c1 * r1[0], c1 * r1[1]];
+    return {p1, u: [p1[0] + c2 * r2[0], p1[1] + c2 * r2[1]]};
+  };
+  const ts = d3.range(0, tMax + 1e-9, 0.005);
+  const path = ts.map(t => { const {u} = parts(t); return {t, x: u[0], y: u[1], norm: Math.hypot(u[0], u[1])}; });
+  const kappa = 1 / Math.tan(a);
+  const L = 1.1 * Math.max(1, Math.abs(z1), Math.abs(z2), d3.max(path, d => Math.max(Math.abs(d.x), Math.abs(d.y))));
+  return {l1, l2, r1, r2, u0, z1, z2, parts, ts, path, kappa, L};
+}
+```
+
+```{ojs}
+//| echo: false
+tMax = 3  // final time shown; kept separate so that changing a slider doesn't reset the time control
+```
+
+```{ojs}
+//| echo: false
+viewof tNow = {
+  const n = 300, dt = tMax / n;
+  const form = html`<div style="display: flex; align-items: center; gap: .75rem; flex-wrap: wrap">
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="min-width: 4.5rem">Play</button>
+    <input type="range" min="0" max="${n}" step="1" value="0" style="flex: 1; min-width: 10rem">
+    <output style="min-width: 5rem"></output></div>`;
+  const [button, range, output] = form.querySelectorAll("button, input, output");
+  let timer = null;
+  const show = i => { form.value = i * dt; output.value = `t = ${(i * dt).toFixed(2)}`; };
+  const stop = () => { clearInterval(timer); timer = null; button.textContent = "Play"; };
+  range.oninput = () => show(+range.value);  // the input event then bubbles to the form
+  button.onclick = () => {
+    if (timer) return stop();
+    if (+range.value >= n) range.value = 0;
+    button.textContent = "Pause";
+    timer = setInterval(() => {
+      range.value = +range.value + 1;
+      show(+range.value);
+      form.dispatchEvent(new Event("input", {bubbles: true}));
+      if (+range.value >= n) stop();
+    }, 30);
+  };
+  invalidation.then(() => clearInterval(timer));
+  show(0);
+  return form;
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  const {r1, r2, L, path, parts, u0} = sys;
+  const {p1, u} = parts(tNow);
+  const blue = "#1f77b4", green = "#2ca02c";
+  const circle = d3.range(0, 2 * Math.PI + 0.01, 0.02).map(s => [Math.cos(s), Math.sin(s)]);
+  const phase = Plot.plot({
+    width: 360, height: 360, marginLeft: 40, marginBottom: 30,
+    x: {domain: [-L, L], label: null}, y: {domain: [-L, L], label: null},
+    marks: [
+      Plot.ruleX([0], {strokeOpacity: 0.2}), Plot.ruleY([0], {strokeOpacity: 0.2}),
+      // eigenvector directions
+      Plot.line([[-L * r1[0], -L * r1[1]], [L * r1[0], L * r1[1]]], {stroke: blue, strokeOpacity: 0.4, strokeDasharray: "4,4"}),
+      Plot.line([[-L * r2[0], -L * r2[1]], [L * r2[0], L * r2[1]]], {stroke: green, strokeOpacity: 0.4, strokeDasharray: "4,4"}),
+      // unit circle: ||u|| = ||u(0)||
+      Plot.line(circle, {strokeOpacity: 0.3}),
+      Plot.line(path, {x: "x", y: "y", strokeOpacity: 0.5}),
+      Plot.arrow([{x1: 0, y1: 0, x2: p1[0], y2: p1[1]}], {x1: "x1", y1: "y1", x2: "x2", y2: "y2", stroke: blue, strokeWidth: 2.5}),
+      Plot.arrow([{x1: p1[0], y1: p1[1], x2: u[0], y2: u[1]}], {x1: "x1", y1: "y1", x2: "x2", y2: "y2", stroke: green, strokeWidth: 2.5}),
+      Plot.dot([u0], {x: d => d[0], y: d => d[1], r: 4, stroke: "currentColor"}),
+      Plot.dot([u], {x: d => d[0], y: d => d[1], r: 5, fill: "currentColor"})
+    ]
+  });
+  const ref = path.map(d => ({t: d.t, normal: Math.exp(sys.l1 * d.t), bound: sys.kappa * Math.exp(sys.l1 * d.t)}));
+  const nNow = Math.hypot(u[0], u[1]);
+  const ymax = 1.05 * Math.max(1, d3.max(path, d => d.norm));
+  const norms = Plot.plot({
+    width: 360, height: 360, marginLeft: 40, marginBottom: 30,
+    x: {domain: [0, tMax], label: "t"},
+    y: {domain: [0, ymax], label: "‖u(t)‖", grid: true},
+    marks: [
+      Plot.line(ref, {x: "t", y: "bound", strokeDasharray: "2,3", strokeOpacity: 0.7, clip: true}),
+      Plot.line(ref, {x: "t", y: "normal", strokeDasharray: "6,4", strokeOpacity: 0.7}),
+      Plot.line(path, {x: "t", y: "norm", strokeWidth: 2}),
+      Plot.ruleX([tNow], {strokeOpacity: 0.3}),
+      Plot.dot([{t: tNow, n: nNow}], {x: "t", y: "n", r: 5, fill: "currentColor"})
+    ]
+  });
+  return html`<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start">
+    <div>${phase}<div style="font-size: .85rem">The solution ${tex`u(t)`} (filled dot), the initial value ${tex`u(0)`} (open dot), and the components of ${tex`u(t)`}
+      along the eigenvectors (<span style="color: ${blue}">blue</span>: ${tex`z_1 e^{\lambda_1 t} r_1`};
+      <span style="color: ${green}">green</span>: ${tex`z_2 e^{\lambda_2 t} r_2`}).
+      The circle is ${tex`\|u\| = \|u(0)\|`}.</div></div>
+    <div>${norms}<div style="font-size: .85rem">Solid: ${tex`\|u(t)\|`}.
+      Dashed: ${tex`e^{\lambda_1 t}`}, the most that ${tex`\|u(t)\|`} could be if the eigenvectors were orthogonal.
+      Dotted: the bound ${tex`\kappa(R) e^{\lambda_1 t}`}.</div></div>
+  </div>`;
+}
+```
+
+Things to try:
+
+- Press Play and watch how the green component shrinks quickly, leaving the
+  long blue one.
+- Make $\alpha$ smaller.  The eigenvectors become more nearly parallel and the
+  growth becomes larger.
+- Set $\alpha = 90^\circ$.  Now $A$ is symmetric and $\|u(t)\|$ only decreases.
+- Change the direction of $u(0)$.  Initial values along one of the
+  eigenvectors don't grow, and those close to one grow very little.
+- Move $\lambda_2$ toward $\lambda_1$.  When the two components decay at
+  similar rates, the cancellation persists and there is less growth.
+
+The same mechanism lies behind the transient growth of powers of non-normal
+matrices, which matters in the stability analysis of numerical methods, and
+behind transient amplification in fluid flows whose linearizations have only
+decaying modes.  A good reference is the book *Spectra and Pseudospectra* by
+Trefethen and Embree.
+
+This page is based on a
+[Jupyter notebook](https://github.com/ketch/ODE-counterexamples/blob/master/Vinograd-Dekker-Verwer.ipynb)
+that goes on to a more surprising example, due to Vinograd: if $A$ depends on
+time, the solution can grow without bound even though the eigenvalues of
+$A(t)$ are negative constants.
